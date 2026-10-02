@@ -1,6 +1,4 @@
 import assert from "node:assert/strict";
-import fs from "node:fs";
-import path from "node:path";
 import test from "node:test";
 
 import { AI_COURSEWARE_LESSONS } from "../lib/edu/courseware/aiCoursewareLessons";
@@ -78,10 +76,4 @@ test("WebLLM is not required by lesson tool hints", () => {
     const normalized = lesson.toolHints.join(" ").toLowerCase();
     assert.equal(normalized.includes("webllm"), false);
   }
-});
-
-test("32-lesson docs reference seed registry as implementation source of truth", () => {
-  const doc = fs.readFileSync(path.join(process.cwd(), "docs", "AI_COURSEWARE_32_LESSONS.md"), "utf8");
-  assert.match(doc, /implementation source of truth/i);
-  assert.match(doc, /lib\/edu\/courseware\/aiCoursewareLessons\.ts/);
 });

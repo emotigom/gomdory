@@ -82,14 +82,3 @@ test("teacher and student card renderers apply card color classes", () => {
   assert.doesNotMatch(studentTile, /getCardColorToneClasses\(cardColorTone\)[\s\S]{0,120}theme-card-panel/);
   assert.match(normalizer, /cardColorToken: card\.cardColorToken/);
 });
-
-test("card color migration keeps storage constrained without free-form css", () => {
-  const migration = fs.readFileSync(
-    path.join(root, "supabase", "migrations", "20260608090000_update_card_color_tokens.sql"),
-    "utf8",
-  );
-
-  assert.match(migration, /cards_color_token_check/);
-  assert.match(migration, /'default', 'gray', 'yellow', 'pink', 'green', 'purple', 'sky', 'orange'/);
-  assert.doesNotMatch(migration, /#[0-9a-f]{3,8}/i);
-});

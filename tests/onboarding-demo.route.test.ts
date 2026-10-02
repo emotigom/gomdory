@@ -180,7 +180,7 @@ test("demo onboarding route is idempotent for 24h", async () => {
 
   assert.equal(payload1.ok, true);
   assert.equal(payload1.shareCode, "share01");
-  assert.match(payload1.studentUrl, /gkrry\.com/);
+  assert.equal(new URL(payload1.studentUrl).pathname, "/share01");
   assert.ok(boards.find((board) => board.id === payload1.boardId));
 
   const second = await demoPost(request, undefined, deps as never);

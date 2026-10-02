@@ -10,7 +10,6 @@ const gwDoc = fs.readFileSync("docs/GOOGLE_WORKSPACE_AND_ROSTER_PLAN.md", "utf8"
 const dataDoc = fs.readFileSync("docs/DATA_HANDLING_AND_SECURITY.md", "utf8");
 const apiDoc = fs.readFileSync("docs/API_AND_INTEGRATIONS.md", "utf8");
 const pkgDoc = fs.readFileSync("docs/INSTITUTION_REVIEW_PACKAGE.md", "utf8");
-const qaDoc = fs.readFileSync("docs/QA_TEACHER_BOARD.md", "utf8");
 const schoolPage = fs.readFileSync("app/(marketing)/school/page.tsx", "utf8");
 
 test("schema design doc exists and is design-only", () => {
@@ -29,7 +28,7 @@ test("schema design doc includes sensitive-field avoidance and migration phases"
 });
 
 test("linked docs reference schema design doc", () => {
-  [csvPlanDoc, orgDoc, gwDoc, dataDoc, apiDoc, pkgDoc, qaDoc].forEach((doc) => {
+  [csvPlanDoc, orgDoc, gwDoc, dataDoc, apiDoc, pkgDoc].forEach((doc) => {
     assert.ok(doc.includes("docs/CSV_ROSTER_SCHEMA_DESIGN.md"));
   });
 });

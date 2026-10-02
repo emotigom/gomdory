@@ -28,12 +28,11 @@ test("publish callers use v2 RPC with in_slug payload", () => {
   assert.match(teacherRetryRoute, /resolveInSlug\(publishPayload\)\)[\s\S]*INVALID_SLUG/m);
 });
 
-test("migration defines v2 signature and legacy slug wrapper", () => {
-  const migrationPath = "supabase/migrations/20261216090000_add_edu_atomic_publish_v2_wrapper.sql";
-  const sql = read(migrationPath);
+test("successor baseline defines v2 signature and legacy slug wrapper", () => {
+  const sql = read("supabase/migrations/20260929093150_successor_baseline.sql");
 
-  assert.match(sql, /CREATE FUNCTION public\.edu_atomic_publish_v2\([\s\S]*\bin_slug text/i);
-  assert.match(sql, /CREATE FUNCTION public\.edu_atomic_publish\([\s\S]*\bslug text/i);
+  assert.match(sql, /CREATE OR REPLACE FUNCTION public\.edu_atomic_publish_v2\([\s\S]*\bin_slug text/i);
+  assert.match(sql, /CREATE OR REPLACE FUNCTION public\.edu_atomic_publish\([\s\S]*\bslug text/i);
   assert.match(sql, /DEPRECATED: legacy compatibility wrapper/i);
   assert.match(sql, /RETURN public\.edu_atomic_publish_v2\([\s\S]*\bslug,/i);
 });

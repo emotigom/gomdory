@@ -10,12 +10,10 @@ const shareSource = read("lib", "data", "share.ts");
 const actionsSource = read("app", "dashboard", "ops", "share-codes", "actions.ts");
 const pageSource = read("app", "dashboard", "ops", "share-codes", "page.tsx");
 const modulesSource = read("lib", "ops", "adminModules.ts");
-// Historical migration contract; the active successor inventory is checked separately.
-const migrationSource = read(
+const baselineSource = read(
   "supabase",
-  "history",
-  "migrations-pre-successor-20260929",
-  "20260714090000_enforce_share_code_charset.sql",
+  "migrations",
+  "20260929093150_successor_baseline.sql",
 );
 
 test("share-code policy permanently excludes ambiguous characters", () => {
@@ -27,15 +25,18 @@ test("share-code policy permanently excludes ambiguous characters", () => {
   );
 });
 
-test("archived migration rejects new or updated ambiguous share codes", () => {
-  assert.match(migrationSource, /boards_share_code_charset_check/);
+test("successor baseline rejects new or updated ambiguous share codes", () => {
+  assert.match(baselineSource, /boards_share_code_charset_check/i);
   assert.match(
-    migrationSource,
-    /share_code ~ '\^\[23456789abcdefghjkmnpqrstuvwxyz\]\{6\}\$'/,
+    baselineSource,
+    /share_code\s+IS\s+NULL\s+OR\s+share_code\s+~\s+'\^\[23456789abcdefghjkmnpqrstuvwxyz\]\{6\}\$'(?:::text)?/i,
   );
-  assert.match(migrationSource, /not valid/i);
+  assert.match(
+    baselineSource,
+    /boards_share_code_charset_check[\s\S]*?NOT\s+VALID/i,
+  );
   assert.doesNotMatch(
-    migrationSource.match(/share_code ~ '\^\[([^\]]+)\]/)?.[1] ?? "",
+    baselineSource.match(/share_code\s+~\s+'\^\[([^\]]+)\]/i)?.[1] ?? "",
     /[01ilo]/,
   );
 });

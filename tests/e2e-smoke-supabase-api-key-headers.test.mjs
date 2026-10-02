@@ -1,9 +1,12 @@
 import assert from "node:assert/strict";
 import { createRequire } from "node:module";
+import path from "node:path";
 import test from "node:test";
 
 const require = createRequire(import.meta.url);
-const { buildSupabaseApiKeyHeaders } = require("../scripts/supabase-api-key-headers.cjs");
+const { buildSupabaseApiKeyHeaders } = require(
+  path.join(process.cwd(), "scripts", "supabase-api-key-headers.cjs"),
+);
 
 test("modern Supabase secret keys use apikey without Bearer authorization", () => {
   const headers = buildSupabaseApiKeyHeaders("sb_secret_example");

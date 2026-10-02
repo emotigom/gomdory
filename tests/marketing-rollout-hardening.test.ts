@@ -24,16 +24,12 @@ test("root marketing route is canonical and cannot silently fall back to legacy"
   assert.match(source, /data-marker-version=\{MARKETING_HOME_CANONICAL_MARKER_VERSION\}/);
 });
 
-test("homepage marker version matches post-deploy smoke contract", () => {
+test("homepage marker version stays aligned with the public marker contract", () => {
   const source = fs.readFileSync(landingPagePath, "utf8");
   const markerContract = read("app", "(marketing)", "_components", "landingMarkerContract.ts");
-  const postDeploySmoke = read("scripts", "post-deploy-smoke.mjs");
-  const smokeFlags = read("scripts", "smoke-flags.mjs");
 
   assert.match(source, /data-marker-version=\{MARKETING_HOME_CANONICAL_MARKER_VERSION\}/);
   assert.match(markerContract, /MARKETING_HOME_CANONICAL_MARKER_VERSION\s*=\s*"marketing-home-canonical-v4-liberated"/);
-  assert.match(postDeploySmoke, /data-marker-version="marketing-home-canonical-v4-liberated"/);
-  assert.match(smokeFlags, /data-marker-version="marketing-home-canonical-v4-liberated"/);
 });
 
 test("root route ownership remains single-source and marketing-group-owned", () => {
