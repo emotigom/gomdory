@@ -1,0 +1,10 @@
+"use client";
+import { useState } from "react";
+import type { CoursewareAiHelperTask, CoursewareAiSuggestion } from "@/lib/edu/courseware/aiHelper/aiCoursewareAiHelperTypes";
+import CoursewareAiSuggestionCard from "./CoursewareAiSuggestionCard";
+import CoursewareRevisionEvidenceEditor from "./CoursewareRevisionEvidenceEditor";
+const TASKS: CoursewareAiHelperTask[] = ["title-suggestions","intro-copy","menu-names","faq-draft","presentation-summary","reflection-prompts"];
+export default function CoursewareAiHelperPanel({ onApply }: { onApply?: (text: string) => void }) {
+ const [task,setTask]=useState<CoursewareAiHelperTask>("title-suggestions"); const [topic,setTopic]=useState(""); const [suggestions,setSuggestions]=useState<CoursewareAiSuggestion[]>([]); const [selected,setSelected]=useState<CoursewareAiSuggestion|null>(null);
+ return <section className="mt-3 rounded border border-indigo-200 bg-indigo-50 p-3"><p className="text-xs">AI 기능이 꺼져 있어도 템플릿 예시로 수업을 계속할 수 있어요. 마지막 판단은 학생이 합니다.</p><p className="text-xs text-rose-700">이름, 얼굴, 전화번호, 주소 같은 개인정보는 AI에게 보내지 않아요.</p><div className="mt-2 flex gap-2"><select className="rounded border" value={task} onChange={(e)=>setTask(e.target.value as CoursewareAiHelperTask)}>{TASKS.map(t=><option key={t} value={t}>{t}</option>)}</select><input className="rounded border px-2" value={topic} onChange={(e)=>setTopic(e.target.value)} placeholder="주제"/><button className="rounded bg-slate-900 px-2 py-1 text-white" onClick={async()=>{const res=await fetch('/api/edu/courseware/ai-helper',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({task,studentTopicKo:topic,tone:'middle-school',maxSuggestions:3,source:'courseware-ai-helper',version:1})}); const data = (await res.json()) as { suggestions?: CoursewareAiSuggestion[] }; setSuggestions(Array.isArray(data.suggestions) ? data.suggestions : []);}}>초안 생성</button></div><div className="mt-2 space-y-2">{suggestions.map(s=><CoursewareAiSuggestionCard key={s.suggestionId} suggestion={s} onSelect={()=>setSelected(s)} />)}</div><CoursewareRevisionEvidenceEditor suggestion={selected} onApply={onApply} /></section>;
+}

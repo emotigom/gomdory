@@ -1,0 +1,32 @@
+name: Public CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  core:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      NEXT_PUBLIC_SITE_URL: https://example.invalid
+      NEXT_PUBLIC_SHORT_SITE_URL: https://example.invalid
+      NEXT_PUBLIC_SUPABASE_URL: https://example.supabase.co
+      NEXT_PUBLIC_SUPABASE_ANON_KEY: public-ci-placeholder
+      NEXT_PUBLIC_TURNSTILE_SITE_KEY: public-ci-placeholder
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+          cache: npm
+      - run: npm ci --include=optional --no-audit --progress=false
+      - run: npm run lint
+      - run: npm run check:route-invariants
+      - run: npm run typecheck
+      - run: npm run test:public
+      - run: npm run build:opennext:public

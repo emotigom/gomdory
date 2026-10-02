@@ -1,0 +1,12 @@
+{
+  "dashboardBoards": { "schemaVersion": 1, "contractHash": "535rq2" },
+  "filesPrepare": { "schemaVersion": 1, "contractHash": "1qmx7x" },
+  "sharePresent": { "schemaVersion": 1, "contractHash": "bll3bf" },
+  "boardMeRole": { "schemaVersion": 1, "contractHash": "0yppxp" },
+  "boardPolicy": { "schemaVersion": 1, "contractHash": "hc6gur" },
+  "dashboardWallGrid": { "schemaVersion": 1, "contractHash": "1s3a32n" },
+  "filesMeta": { "schemaVersion": 1, "contractHash": "ezlg55" },
+  "shareSettings": { "schemaVersion": 1, "contractHash": "1yb2cja" },
+  "shareFeed": { "schemaVersion": 1, "contractHash": "1swt1w" },
+  "boardSessionsList": { "schemaVersion": 1, "contractHash": "1uujtco" }
+}

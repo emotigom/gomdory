@@ -1,0 +1,1885 @@
+{
+  "generatedAt": "2026-02-11T10:23:50.430Z",
+  "items": {
+    "missing_route_file": [],
+    "missing_in_ssot": [
+      {
+        "kind": "page",
+        "path": "/",
+        "file": "app/(marketing)/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/:code",
+        "file": "app/[code]/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/:code/present",
+        "file": "app/[code]/present/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/:code/slides",
+        "file": "app/[code]/slides/page.tsx"
+      },
+      {
+        "kind": "api",
+        "path": "/api/health",
+        "file": "app/api/health/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/turnstile/verify",
+        "file": "app/api/turnstile/verify/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/audit",
+        "file": "app/api/v1/audit/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/billing/checkout",
+        "file": "app/api/v1/billing/checkout/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/billing/institution/request",
+        "file": "app/api/v1/billing/institution/request/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/billing/license/create",
+        "file": "app/api/v1/billing/license/create/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/billing/license/list",
+        "file": "app/api/v1/billing/license/list/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/billing/plan",
+        "file": "app/api/v1/billing/plan/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/billing/portal",
+        "file": "app/api/v1/billing/portal/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/billing/redeem",
+        "file": "app/api/v1/billing/redeem/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/billing/start-trial",
+        "file": "app/api/v1/billing/start-trial/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/billing/upgrade-intent",
+        "file": "app/api/v1/billing/upgrade-intent/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/billing/upgrade-request",
+        "file": "app/api/v1/billing/upgrade-request/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/billing/webhook",
+        "file": "app/api/v1/billing/webhook/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/boards/:boardId/audit",
+        "file": "app/api/v1/boards/[boardId]/audit/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/boards/:boardId/cards/tags/bulk",
+        "file": "app/api/v1/boards/[boardId]/cards/tags/bulk/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/boards/:boardId/class/views",
+        "file": "app/api/v1/boards/[boardId]/class/views/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/boards/:boardId/collab/invites",
+        "file": "app/api/v1/boards/[boardId]/collab/invites/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/boards/:boardId/collab/members",
+        "file": "app/api/v1/boards/[boardId]/collab/members/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/boards/:boardId/controls",
+        "file": "app/api/v1/boards/[boardId]/controls/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/boards/:boardId/files",
+        "file": "app/api/v1/boards/[boardId]/files/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/boards/:boardId/files/:fileId/download",
+        "file": "app/api/v1/boards/[boardId]/files/[fileId]/download/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/boards/:boardId/files/:fileId/insert",
+        "file": "app/api/v1/boards/[boardId]/files/[fileId]/insert/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/boards/:boardId/files/attach",
+        "file": "app/api/v1/boards/[boardId]/files/attach/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/boards/:boardId/files/commit",
+        "file": "app/api/v1/boards/[boardId]/files/commit/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/boards/:boardId/files/insert",
+        "file": "app/api/v1/boards/[boardId]/files/insert/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/boards/:boardId/files/upload-plan",
+        "file": "app/api/v1/boards/[boardId]/files/upload-plan/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/boards/:boardId/files/upload-url",
+        "file": "app/api/v1/boards/[boardId]/files/upload-url/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/boards/:boardId/hud/settings",
+        "file": "app/api/v1/boards/[boardId]/hud/settings/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/boards/:boardId/launch",
+        "file": "app/api/v1/boards/[boardId]/launch/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/boards/:boardId/live",
+        "file": "app/api/v1/boards/[boardId]/live/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/boards/:boardId/live-hud",
+        "file": "app/api/v1/boards/[boardId]/live-hud/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/boards/:boardId/me/role",
+        "file": "app/api/v1/boards/[boardId]/me/role/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/boards/:boardId/ownership-requests",
+        "file": "app/api/v1/boards/[boardId]/ownership-requests/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/boards/:boardId/ownership-requests/:requestId/approve",
+        "file": "app/api/v1/boards/[boardId]/ownership-requests/[requestId]/approve/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/boards/:boardId/policy",
+        "file": "app/api/v1/boards/[boardId]/policy/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/boards/:boardId/polls",
+        "file": "app/api/v1/boards/[boardId]/polls/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/boards/:boardId/polls/:pollId",
+        "file": "app/api/v1/boards/[boardId]/polls/[pollId]/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/boards/:boardId/presence",
+        "file": "app/api/v1/boards/[boardId]/presence/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/boards/:boardId/present/state",
+        "file": "app/api/v1/boards/[boardId]/present/state/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/boards/:boardId/pulse",
+        "file": "app/api/v1/boards/[boardId]/pulse/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/boards/:boardId/questions",
+        "file": "app/api/v1/boards/[boardId]/questions/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/boards/:boardId/quick-polls",
+        "file": "app/api/v1/boards/[boardId]/quick-polls/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/boards/:boardId/reactions",
+        "file": "app/api/v1/boards/[boardId]/reactions/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/boards/:boardId/sessions",
+        "file": "app/api/v1/boards/[boardId]/sessions/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/boards/:boardId/sessions/:sessionId",
+        "file": "app/api/v1/boards/[boardId]/sessions/[sessionId]/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/boards/:boardId/sessions/:sessionId/bookmarks",
+        "file": "app/api/v1/boards/[boardId]/sessions/[sessionId]/bookmarks/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/boards/:boardId/sessions/:sessionId/clips",
+        "file": "app/api/v1/boards/[boardId]/sessions/[sessionId]/clips/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/boards/:boardId/sessions/:sessionId/clips/revoke",
+        "file": "app/api/v1/boards/[boardId]/sessions/[sessionId]/clips/revoke/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/boards/:boardId/sessions/:sessionId/clips/share",
+        "file": "app/api/v1/boards/[boardId]/sessions/[sessionId]/clips/share/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/boards/:boardId/sessions/:sessionId/end",
+        "file": "app/api/v1/boards/[boardId]/sessions/[sessionId]/end/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/boards/:boardId/sessions/:sessionId/events",
+        "file": "app/api/v1/boards/[boardId]/sessions/[sessionId]/events/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/boards/:boardId/sessions/:sessionId/share",
+        "file": "app/api/v1/boards/[boardId]/sessions/[sessionId]/share/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/boards/:boardId/sessions/:sessionId/share/revoke",
+        "file": "app/api/v1/boards/[boardId]/sessions/[sessionId]/share/revoke/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/boards/:boardId/settings",
+        "file": "app/api/v1/boards/[boardId]/settings/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/boards/:boardId/share-settings",
+        "file": "app/api/v1/boards/[boardId]/share-settings/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/boards/:boardId/share/ensure",
+        "file": "app/api/v1/boards/[boardId]/share/ensure/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/boards/:boardId/showcase/ensure",
+        "file": "app/api/v1/boards/[boardId]/showcase/ensure/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/boards/:boardId/tag-rules",
+        "file": "app/api/v1/boards/[boardId]/tag-rules/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/boards/:boardId/tag-rules/preview",
+        "file": "app/api/v1/boards/[boardId]/tag-rules/preview/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/boards/:boardId/tags",
+        "file": "app/api/v1/boards/[boardId]/tags/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/boards/:boardId/trash/cards",
+        "file": "app/api/v1/boards/[boardId]/trash/cards/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/boards/:boardId/triage",
+        "file": "app/api/v1/boards/[boardId]/triage/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/boards/:boardId/triage/:id",
+        "file": "app/api/v1/boards/[boardId]/triage/[id]/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/boards/:boardId/triage/actions/:actionId",
+        "file": "app/api/v1/boards/[boardId]/triage/actions/[actionId]/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/boards/:boardId/triage/reply",
+        "file": "app/api/v1/boards/[boardId]/triage/reply/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/c/:token",
+        "file": "app/api/v1/c/[token]/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/cards/:cardId/files/initiate",
+        "file": "app/api/v1/cards/[cardId]/files/initiate/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/classes",
+        "file": "app/api/v1/classes/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/classes/:classId/active",
+        "file": "app/api/v1/classes/[classId]/active/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/classes/:classId/sections",
+        "file": "app/api/v1/classes/[classId]/sections/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/classes/:classId/sections/:sectionId",
+        "file": "app/api/v1/classes/[classId]/sections/[sectionId]/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/classes/:classId/sessions",
+        "file": "app/api/v1/classes/[classId]/sessions/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/classes/:classId/sessions/:sessionId",
+        "file": "app/api/v1/classes/[classId]/sessions/[sessionId]/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/classes/:classId/sessions/:sessionId/end",
+        "file": "app/api/v1/classes/[classId]/sessions/[sessionId]/end/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/classes/:classId/sessions/start",
+        "file": "app/api/v1/classes/[classId]/sessions/start/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/coupons/redeem",
+        "file": "app/api/v1/coupons/redeem/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/dashboard/boards",
+        "file": "app/api/v1/dashboard/boards/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/dashboard/boards/:boardId",
+        "file": "app/api/v1/dashboard/boards/[boardId]/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/dashboard/boards/:boardId/export",
+        "file": "app/api/v1/dashboard/boards/[boardId]/export/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/dashboard/boards/:boardId/export-zip",
+        "file": "app/api/v1/dashboard/boards/[boardId]/export-zip/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/dashboard/boards/:boardId/files",
+        "file": "app/api/v1/dashboard/boards/[boardId]/files/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/dashboard/boards/:boardId/wall-v2",
+        "file": "app/api/v1/dashboard/boards/[boardId]/wall-v2/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/dashboard/boards/:boardId/wall-v2/migrate",
+        "file": "app/api/v1/dashboard/boards/[boardId]/wall-v2/migrate/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/dashboard/boards/:boardId/walls",
+        "file": "app/api/v1/dashboard/boards/[boardId]/walls/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/dashboard/boards/:boardId/walls/reorder",
+        "file": "app/api/v1/dashboard/boards/[boardId]/walls/reorder/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/dashboard/cards/:cardId",
+        "file": "app/api/v1/dashboard/cards/[cardId]/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/dashboard/cards/:cardId/color",
+        "file": "app/api/v1/dashboard/cards/[cardId]/color/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/dashboard/cards/:cardId/feature",
+        "file": "app/api/v1/dashboard/cards/[cardId]/feature/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/dashboard/cards/:cardId/move",
+        "file": "app/api/v1/dashboard/cards/[cardId]/move/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/dashboard/cards/:cardId/pin",
+        "file": "app/api/v1/dashboard/cards/[cardId]/pin/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/dashboard/cards/:cardId/purge",
+        "file": "app/api/v1/dashboard/cards/[cardId]/purge/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/dashboard/cards/:cardId/restore",
+        "file": "app/api/v1/dashboard/cards/[cardId]/restore/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/dashboard/cards/:cardId/tags",
+        "file": "app/api/v1/dashboard/cards/[cardId]/tags/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/dashboard/cards/:cardId/update",
+        "file": "app/api/v1/dashboard/cards/[cardId]/update/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/dashboard/cards/:cardId/visibility",
+        "file": "app/api/v1/dashboard/cards/[cardId]/visibility/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/dashboard/cards/batch",
+        "file": "app/api/v1/dashboard/cards/batch/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/dashboard/edu/completions",
+        "file": "app/api/v1/dashboard/edu/completions/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/dashboard/import/board/commit-zip",
+        "file": "app/api/v1/dashboard/import/board/commit-zip/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/dashboard/import/board/parse-zip",
+        "file": "app/api/v1/dashboard/import/board/parse-zip/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/dashboard/import/padlet/commit",
+        "file": "app/api/v1/dashboard/import/padlet/commit/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/dashboard/import/padlet/parse",
+        "file": "app/api/v1/dashboard/import/padlet/parse/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/dashboard/import/recap/commit-json",
+        "file": "app/api/v1/dashboard/import/recap/commit-json/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/dashboard/import/recap/commit-zip",
+        "file": "app/api/v1/dashboard/import/recap/commit-zip/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/dashboard/import/recap/parse-zip",
+        "file": "app/api/v1/dashboard/import/recap/parse-zip/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/dashboard/sessions/:sessionId/export",
+        "file": "app/api/v1/dashboard/sessions/[sessionId]/export/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/dashboard/walls/:wallId",
+        "file": "app/api/v1/dashboard/walls/[wallId]/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/dashboard/walls/:wallId/cards",
+        "file": "app/api/v1/dashboard/walls/[wallId]/cards/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/dashboard/walls/:wallId/grid",
+        "file": "app/api/v1/dashboard/walls/[wallId]/grid/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/e2e/login",
+        "file": "app/api/v1/e2e/login/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/edu/ai/chat",
+        "file": "app/api/v1/edu/ai/chat/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/edu/assignment/create",
+        "file": "app/api/v1/edu/assignment/create/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/edu/assignment/get",
+        "file": "app/api/v1/edu/assignment/get/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/edu/assignment/list",
+        "file": "app/api/v1/edu/assignment/list/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/edu/assignment/submissions",
+        "file": "app/api/v1/edu/assignment/submissions/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/edu/broadcast",
+        "file": "app/api/v1/edu/broadcast/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/edu/broadcast/clear",
+        "file": "app/api/v1/edu/broadcast/clear/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/edu/class/archive",
+        "file": "app/api/v1/edu/class/archive/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/edu/class/export/links.csv",
+        "file": "app/api/v1/edu/class/export/links.csv/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/edu/class/export/submissions.csv",
+        "file": "app/api/v1/edu/class/export/submissions.csv/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/edu/class/join",
+        "file": "app/api/v1/edu/class/join/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/edu/class/lock",
+        "file": "app/api/v1/edu/class/lock/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/edu/class/progress",
+        "file": "app/api/v1/edu/class/progress/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/edu/class/roster",
+        "file": "app/api/v1/edu/class/roster/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/edu/class/roster.csv",
+        "file": "app/api/v1/edu/class/roster.csv/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/edu/class/rotate-code",
+        "file": "app/api/v1/edu/class/rotate-code/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/edu/class/start",
+        "file": "app/api/v1/edu/class/start/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/edu/course/ensure",
+        "file": "app/api/v1/edu/course/ensure/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/edu/eduview/health",
+        "file": "app/api/v1/edu/eduview/health/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/edu/feature-flags",
+        "file": "app/api/v1/edu/feature-flags/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/edu/join-session",
+        "file": "app/api/v1/edu/join-session/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/edu/me/projects",
+        "file": "app/api/v1/edu/me/projects/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/edu/presentation/link/ensure",
+        "file": "app/api/v1/edu/presentation/link/ensure/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/edu/presentation/link/rotate",
+        "file": "app/api/v1/edu/presentation/link/rotate/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/edu/presentation/rehearsal",
+        "file": "app/api/v1/edu/presentation/rehearsal/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/edu/presentation/rehearsal/fix",
+        "file": "app/api/v1/edu/presentation/rehearsal/fix/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/edu/presentation/settings",
+        "file": "app/api/v1/edu/presentation/settings/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/edu/projects/feature",
+        "file": "app/api/v1/edu/projects/feature/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/edu/projects/featured",
+        "file": "app/api/v1/edu/projects/featured/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/edu/projects/featured/apply-recommendation",
+        "file": "app/api/v1/edu/projects/featured/apply-recommendation/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/edu/projects/featured/reorder",
+        "file": "app/api/v1/edu/projects/featured/reorder/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/edu/projects/featured/trim",
+        "file": "app/api/v1/edu/projects/featured/trim/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/edu/projects/feedback",
+        "file": "app/api/v1/edu/projects/feedback/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/edu/projects/files",
+        "file": "app/api/v1/edu/projects/files/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/edu/projects/hide",
+        "file": "app/api/v1/edu/projects/hide/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/edu/projects/list",
+        "file": "app/api/v1/edu/projects/list/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/edu/projects/recommend",
+        "file": "app/api/v1/edu/projects/recommend/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/edu/projects/report",
+        "file": "app/api/v1/edu/projects/report/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/edu/projects/view",
+        "file": "app/api/v1/edu/projects/view/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/edu/publish/commit",
+        "file": "app/api/v1/edu/publish/commit/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/edu/publish/prepare",
+        "file": "app/api/v1/edu/publish/prepare/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/edu/publish/retry",
+        "file": "app/api/v1/edu/publish/retry/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/edu/publish/status",
+        "file": "app/api/v1/edu/publish/status/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/edu/teacher/classroom/:shareCode/overview",
+        "file": "app/api/v1/edu/teacher/classroom/[shareCode]/overview/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/edu/teacher/publish-status",
+        "file": "app/api/v1/edu/teacher/publish-status/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/edu/teacher/publish/retry",
+        "file": "app/api/v1/edu/teacher/publish/retry/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/edu/teacher/student/projects",
+        "file": "app/api/v1/edu/teacher/student/projects/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/edu/telemetry/lesson-complete",
+        "file": "app/api/v1/edu/telemetry/lesson-complete/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/edu/telemetry/lesson-open",
+        "file": "app/api/v1/edu/telemetry/lesson-open/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/edu/ui-error",
+        "file": "app/api/v1/edu/ui-error/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/edu/webllm/asset-validator",
+        "file": "app/api/v1/edu/webllm/asset-validator/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/edu/webllm/health",
+        "file": "app/api/v1/edu/webllm/health/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/exhibits/:id/refresh",
+        "file": "app/api/v1/exhibits/[id]/refresh/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/exhibits/:id/revoke",
+        "file": "app/api/v1/exhibits/[id]/revoke/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/exhibits/ensure",
+        "file": "app/api/v1/exhibits/ensure/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/files",
+        "file": "app/api/v1/files/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/files/:fileId",
+        "file": "app/api/v1/files/[fileId]/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/files/:fileId/complete",
+        "file": "app/api/v1/files/[fileId]/complete/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/files/:fileId/delete",
+        "file": "app/api/v1/files/[fileId]/delete/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/files/:fileId/download",
+        "file": "app/api/v1/files/[fileId]/download/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/files/:fileId/finalize",
+        "file": "app/api/v1/files/[fileId]/finalize/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/files/:fileId/tags",
+        "file": "app/api/v1/files/[fileId]/tags/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/files/:fileId/thumb",
+        "file": "app/api/v1/files/[fileId]/thumb/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/files/:fileId/touch",
+        "file": "app/api/v1/files/[fileId]/touch/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/files/:fileId/view",
+        "file": "app/api/v1/files/[fileId]/view/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/files/complete",
+        "file": "app/api/v1/files/complete/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/files/dedup-check",
+        "file": "app/api/v1/files/dedup-check/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/files/prepare",
+        "file": "app/api/v1/files/prepare/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/files/tags/suggest",
+        "file": "app/api/v1/files/tags/suggest/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/files/upload/commit",
+        "file": "app/api/v1/files/upload/commit/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/files/upload/prepare",
+        "file": "app/api/v1/files/upload/prepare/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/invites/:token/accept",
+        "file": "app/api/v1/invites/[token]/accept/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/me/ui-prefs",
+        "file": "app/api/v1/me/ui-prefs/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/onboarding/demo",
+        "file": "app/api/v1/onboarding/demo/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/onboarding/demo/bootstrap",
+        "file": "app/api/v1/onboarding/demo/bootstrap/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/onboarding/kickstart",
+        "file": "app/api/v1/onboarding/kickstart/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/ops/admin/coupons/create",
+        "file": "app/api/v1/ops/admin/coupons/create/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/ops/admin/coupons/list",
+        "file": "app/api/v1/ops/admin/coupons/list/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/ops/admin/storage/quota",
+        "file": "app/api/v1/ops/admin/storage/quota/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/ops/admin/users",
+        "file": "app/api/v1/ops/admin/users/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/ops/banner",
+        "file": "app/api/v1/ops/banner/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/ops/billing/requests",
+        "file": "app/api/v1/ops/billing/requests/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/ops/billing/requests/:id",
+        "file": "app/api/v1/ops/billing/requests/[id]/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/ops/billing/users/:userId",
+        "file": "app/api/v1/ops/billing/users/[userId]/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/ops/cost-snapshot",
+        "file": "app/api/v1/ops/cost-snapshot/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/ops/diag/request/:requestId",
+        "file": "app/api/v1/ops/diag/request/[requestId]/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/ops/edu/summary",
+        "file": "app/api/v1/ops/edu/summary/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/ops/events",
+        "file": "app/api/v1/ops/events/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/ops/log",
+        "file": "app/api/v1/ops/log/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/ops/not-found/alert",
+        "file": "app/api/v1/ops/not-found/alert/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/ops/not-found/broken-links",
+        "file": "app/api/v1/ops/not-found/broken-links/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/ops/not-found/broken-links/bundle",
+        "file": "app/api/v1/ops/not-found/broken-links/bundle/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/ops/not-found/work-queue",
+        "file": "app/api/v1/ops/not-found/work-queue/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/ops/ping",
+        "file": "app/api/v1/ops/ping/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/ops/runtime",
+        "file": "app/api/v1/ops/runtime/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/ops/ui-error",
+        "file": "app/api/v1/ops/ui-error/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/ops/users",
+        "file": "app/api/v1/ops/users/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/ops/users/:userId/edu-flags",
+        "file": "app/api/v1/ops/users/[userId]/edu-flags/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/ops/users/feature-flags",
+        "file": "app/api/v1/ops/users/feature-flags/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/ops/users/feature-flags/update",
+        "file": "app/api/v1/ops/users/feature-flags/update/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/ops/whoami",
+        "file": "app/api/v1/ops/whoami/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/pro/waitlist",
+        "file": "app/api/v1/pro/waitlist/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/quick-polls/:pollId/close",
+        "file": "app/api/v1/quick-polls/[pollId]/close/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/quick-polls/:pollId/vote",
+        "file": "app/api/v1/quick-polls/[pollId]/vote/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/r/:token",
+        "file": "app/api/v1/r/[token]/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/s/:code/actions",
+        "file": "app/api/v1/s/[code]/actions/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/s/:code/live",
+        "file": "app/api/v1/s/[code]/live/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/s/:code/polls/:pollId/submit",
+        "file": "app/api/v1/s/[code]/polls/[pollId]/submit/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/s/:code/presence",
+        "file": "app/api/v1/s/[code]/presence/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/s/:code/pulse",
+        "file": "app/api/v1/s/[code]/pulse/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/s/:code/questions",
+        "file": "app/api/v1/s/[code]/questions/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/s/:code/requests",
+        "file": "app/api/v1/s/[code]/requests/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/sessions/:sessionId/controls",
+        "file": "app/api/v1/sessions/[sessionId]/controls/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/sessions/:sessionId/hud",
+        "file": "app/api/v1/sessions/[sessionId]/hud/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/sessions/:sessionId/questions/:questionId/moderate",
+        "file": "app/api/v1/sessions/[sessionId]/questions/[questionId]/moderate/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/sessions/:sessionId/questions/:questionId/reply",
+        "file": "app/api/v1/sessions/[sessionId]/questions/[questionId]/reply/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/share/:code/cards/:cardId",
+        "file": "app/api/v1/share/[code]/cards/[cardId]/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/share/:code/cards/:cardId/files/initiate",
+        "file": "app/api/v1/share/[code]/cards/[cardId]/files/initiate/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/share/:code/feed",
+        "file": "app/api/v1/share/[code]/feed/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/share/:code/feed/walls/:wallId",
+        "file": "app/api/v1/share/[code]/feed/walls/[wallId]/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/share/:code/files/:fileId/delete",
+        "file": "app/api/v1/share/[code]/files/[fileId]/delete/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/share/:code/files/:fileId/download",
+        "file": "app/api/v1/share/[code]/files/[fileId]/download/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/share/:code/files/:fileId/finalize",
+        "file": "app/api/v1/share/[code]/files/[fileId]/finalize/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/share/:code/ownership/request",
+        "file": "app/api/v1/share/[code]/ownership/request/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/share/:code/present",
+        "file": "app/api/v1/share/[code]/present/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/share/:code/recap/:sessionId/export",
+        "file": "app/api/v1/share/[code]/recap/[sessionId]/export/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/share/:code/settings",
+        "file": "app/api/v1/share/[code]/settings/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/share/:code/walls/:wallId/cards",
+        "file": "app/api/v1/share/[code]/walls/[wallId]/cards/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/share/:code/walls/:wallId/grid",
+        "file": "app/api/v1/share/[code]/walls/[wallId]/grid/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/share/present-state",
+        "file": "app/api/v1/share/present-state/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/showcase/:token",
+        "file": "app/api/v1/showcase/[token]/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/showcase/:token/refresh",
+        "file": "app/api/v1/showcase/[token]/refresh/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/showcase/:token/revoke",
+        "file": "app/api/v1/showcase/[token]/revoke/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/showcase/:token/template",
+        "file": "app/api/v1/showcase/[token]/template/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/showcase/ensure",
+        "file": "app/api/v1/showcase/ensure/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/showcases/:showcaseId/revoke",
+        "file": "app/api/v1/showcases/[showcaseId]/revoke/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/showcases/:showcaseId/rotate-token",
+        "file": "app/api/v1/showcases/[showcaseId]/rotate-token/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/storage/quota",
+        "file": "app/api/v1/storage/quota/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/storage/refresh",
+        "file": "app/api/v1/storage/refresh/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/storage/savings",
+        "file": "app/api/v1/storage/savings/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/storage/summary",
+        "file": "app/api/v1/storage/summary/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/storage/usage",
+        "file": "app/api/v1/storage/usage/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/system/diag",
+        "file": "app/api/v1/system/diag/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/teacher/ai-telemetry/summary",
+        "file": "app/api/v1/teacher/ai-telemetry/summary/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/template-collections",
+        "file": "app/api/v1/template-collections/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/template-collections/:slug",
+        "file": "app/api/v1/template-collections/[slug]/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/templates",
+        "file": "app/api/v1/templates/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/templates/:id",
+        "file": "app/api/v1/templates/[id]/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/templates/:id/admin",
+        "file": "app/api/v1/templates/[id]/admin/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/templates/:id/clone",
+        "file": "app/api/v1/templates/[id]/clone/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/templates/:id/copy",
+        "file": "app/api/v1/templates/[id]/copy/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/templates/:id/import",
+        "file": "app/api/v1/templates/[id]/import/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/templates/:id/install",
+        "file": "app/api/v1/templates/[id]/install/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/templates/:id/report",
+        "file": "app/api/v1/templates/[id]/report/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/templates/picks",
+        "file": "app/api/v1/templates/picks/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v1/templates/publish",
+        "file": "app/api/v1/templates/publish/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v2/share/:code/sections/:sectionId/cards",
+        "file": "app/api/v2/share/[code]/sections/[sectionId]/cards/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v2/share/:code/wall",
+        "file": "app/api/v2/share/[code]/wall/route.ts"
+      },
+      {
+        "kind": "api",
+        "path": "/api/v2/share/:code/wall/sections/:sectionId/cards",
+        "file": "app/api/v2/share/[code]/wall/sections/[sectionId]/cards/route.ts"
+      },
+      {
+        "kind": "page",
+        "path": "/auth/confirm",
+        "file": "app/auth/confirm/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/auth/login",
+        "file": "app/auth/login/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/c/:token",
+        "file": "app/c/[token]/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/community",
+        "file": "app/(marketing)/community/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/dashboard",
+        "file": "app/dashboard/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/dashboard-legacy",
+        "file": "app/dashboard-legacy/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/dashboard/audit",
+        "file": "app/dashboard/audit/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/dashboard/billing",
+        "file": "app/dashboard/billing/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/dashboard/billing/institution",
+        "file": "app/dashboard/billing/institution/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/dashboard/billing/institution/quote",
+        "file": "app/dashboard/billing/institution/quote/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/dashboard/billing/success",
+        "file": "app/dashboard/billing/success/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/dashboard/boards/:boardId",
+        "file": "app/dashboard/boards/[boardId]/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/dashboard/boards/:boardId/audit",
+        "file": "app/dashboard/boards/[boardId]/audit/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/dashboard/boards/:boardId/board",
+        "file": "app/dashboard/boards/[boardId]/board/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/dashboard/boards/:boardId/class",
+        "file": "app/dashboard/boards/[boardId]/class/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/dashboard/boards/:boardId/edit",
+        "file": "app/dashboard/boards/[boardId]/edit/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/dashboard/boards/:boardId/files",
+        "file": "app/dashboard/boards/[boardId]/files/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/dashboard/boards/:boardId/grid",
+        "file": "app/dashboard/boards/[boardId]/grid/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/dashboard/boards/:boardId/moderation",
+        "file": "app/dashboard/boards/[boardId]/moderation/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/dashboard/boards/:boardId/present",
+        "file": "app/dashboard/boards/[boardId]/present/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/dashboard/boards/:boardId/remote",
+        "file": "app/dashboard/boards/[boardId]/remote/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/dashboard/boards/:boardId/replay/:sessionId",
+        "file": "app/dashboard/boards/[boardId]/replay/[sessionId]/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/dashboard/boards/:boardId/reports/:sessionId",
+        "file": "app/dashboard/boards/[boardId]/reports/[sessionId]/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/dashboard/boards/:boardId/sessions",
+        "file": "app/dashboard/boards/[boardId]/sessions/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/dashboard/boards/:boardId/showcase",
+        "file": "app/dashboard/boards/[boardId]/showcase/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/dashboard/boards/:boardId/trash",
+        "file": "app/dashboard/boards/[boardId]/trash/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/dashboard/boards/:boardId/walls/:wallId",
+        "file": "app/dashboard/boards/[boardId]/walls/[wallId]/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/dashboard/boards/:boardId/walls/:wallId/edit",
+        "file": "app/dashboard/boards/[boardId]/walls/[wallId]/edit/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/dashboard/classes/:classId",
+        "file": "app/dashboard/classes/[classId]/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/dashboard/classes/:classId/gallery",
+        "file": "app/dashboard/classes/[classId]/gallery/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/dashboard/classes/:classId/launch",
+        "file": "app/dashboard/classes/[classId]/launch/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/dashboard/classes/:classId/sessions/:sessionId/report",
+        "file": "app/dashboard/classes/[classId]/sessions/[sessionId]/report/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/dashboard/classes/:classId/showcases/:showcaseId",
+        "file": "app/dashboard/classes/[classId]/showcases/[showcaseId]/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/dashboard/classes/:classId/showcases/:showcaseId/present",
+        "file": "app/dashboard/classes/[classId]/showcases/[showcaseId]/present/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/dashboard/files",
+        "file": "app/dashboard/files/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/dashboard/first-lesson",
+        "file": "app/dashboard/first-lesson/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/dashboard/gallery",
+        "file": "app/dashboard/gallery/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/dashboard/import/board",
+        "file": "app/dashboard/import/board/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/dashboard/import/padlet",
+        "file": "app/dashboard/import/padlet/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/dashboard/import/recap",
+        "file": "app/dashboard/import/recap/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/dashboard/offline",
+        "file": "app/dashboard/offline/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/dashboard/ops",
+        "file": "app/dashboard/ops/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/dashboard/ops/admin/users",
+        "file": "app/dashboard/ops/admin/users/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/dashboard/ops/billing",
+        "file": "app/dashboard/ops/billing/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/dashboard/ops/coupons",
+        "file": "app/dashboard/ops/coupons/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/dashboard/ops/edu",
+        "file": "app/dashboard/ops/edu/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/dashboard/ops/homepage-style",
+        "file": "app/dashboard/ops/homepage-style/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/dashboard/ops/not-found",
+        "file": "app/dashboard/ops/not-found/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/dashboard/ops/templates",
+        "file": "app/dashboard/ops/templates/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/dashboard/ops/users",
+        "file": "app/dashboard/ops/users/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/dashboard/ops/work-queue",
+        "file": "app/dashboard/ops/work-queue/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/dashboard/pro",
+        "file": "app/dashboard/pro/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/dashboard/settings",
+        "file": "app/dashboard/settings/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/dashboard/storage",
+        "file": "app/dashboard/storage/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/dashboard/system",
+        "file": "app/dashboard/system/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/dashboard/templates",
+        "file": "app/dashboard/templates/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/dashboard/templates/community",
+        "file": "app/dashboard/templates/community/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/demo/gallery",
+        "file": "app/demo/gallery/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/docs/contact",
+        "file": "app/docs/contact/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/e/:token",
+        "file": "app/e/[token]/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/edu",
+        "file": "app/edu/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/edu/assignment/:id",
+        "file": "app/edu/assignment/[id]/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/edu/class/:code/gallery",
+        "file": "app/edu/class/[code]/gallery/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/edu/coach",
+        "file": "app/edu/coach/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/edu/gallery",
+        "file": "app/edu/gallery/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/edu/lesson",
+        "file": "app/edu/lesson/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/edu/lesson/:lessonId",
+        "file": "app/edu/lesson/[lessonId]/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/edu/lessons",
+        "file": "app/edu/lessons/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/edu/me",
+        "file": "app/edu/me/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/edu/selfcheck",
+        "file": "app/edu/selfcheck/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/edu/teacher/publish-status",
+        "file": "app/edu/teacher/publish-status/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/edu/teacher/student",
+        "file": "app/edu/teacher/student/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/edu/view/:slug",
+        "file": "app/edu/view/[slug]/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/invite/:token",
+        "file": "app/invite/[token]/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/join",
+        "file": "app/(marketing)/join/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/k/:code",
+        "file": "app/k/[code]/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/labs/webllm",
+        "file": "app/(labs)/labs/webllm/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/offline",
+        "file": "app/offline/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/offline/boards/:boardId",
+        "file": "app/offline/boards/[boardId]/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/operator",
+        "file": "app/(marketing)/operator/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/pricing",
+        "file": "app/(marketing)/pricing/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/r/:token",
+        "file": "app/r/[token]/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/s",
+        "file": "app/s/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/s/:code",
+        "file": "app/s/[code]/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/s/:code/grid",
+        "file": "app/s/[code]/grid/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/s/:code/present",
+        "file": "app/s/[code]/present/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/s/:code/recap",
+        "file": "app/s/[code]/recap/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/s/:code/recap/:sessionId",
+        "file": "app/s/[code]/recap/[sessionId]/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/s/:code/show",
+        "file": "app/s/[code]/show/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/s/:code/slides",
+        "file": "app/s/[code]/slides/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/s/:code/wall",
+        "file": "app/s/[code]/wall/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/s/:code/wall-v2",
+        "file": "app/s/[code]/wall-v2/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/s/:code/walls",
+        "file": "app/s/[code]/walls/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/s/:code/walls/:wallId",
+        "file": "app/s/[code]/walls/[wallId]/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/s/:code/walls/:wallId/present",
+        "file": "app/s/[code]/walls/[wallId]/present/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/s/:code/walls/:wallId/present/slides",
+        "file": "app/s/[code]/walls/[wallId]/present/slides/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/teacher/:shareCode",
+        "file": "app/teacher/[shareCode]/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/templates",
+        "file": "app/(marketing)/templates/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/templates/:id",
+        "file": "app/(marketing)/templates/[id]/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/templates/collections/:slug",
+        "file": "app/(marketing)/templates/collections/[slug]/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/world",
+        "file": "app/(marketing)/world/page.tsx"
+      },
+      {
+        "kind": "page",
+        "path": "/x/:token",
+        "file": "app/x/[token]/page.tsx"
+      }
+    ],
+    "unsafe_api_path": [],
+    "hardcoded_api_v1": []
+  }
+}

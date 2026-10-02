@@ -1,0 +1,10 @@
+{
+  "missingInSsot": [],
+  "missingRouteFile": [],
+  "pageLinkIgnore": ["/downloads/gomdory-privacy-policy.pdf"],
+  "pageLinkIgnorePrefixes": [],
+  "hardcodedApiV1": {
+    "includePatterns": ["app/**", "lib/**"],
+    "excludePatterns": ["lib/standards/**", "scripts/**", "docs/**"]
+  }
+}

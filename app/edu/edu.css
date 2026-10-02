@@ -1,0 +1,31 @@
+@layer utilities {
+  .edu-bg {
+    color: var(--theme-text);
+    background-color: var(--theme-bg);
+    background-image:
+      radial-gradient(circle at 8% 0%, color-mix(in srgb, var(--theme-accent) 13%, transparent), transparent 30rem),
+      radial-gradient(circle at 92% 6%, rgba(20, 184, 166, 0.09), transparent 27rem),
+      linear-gradient(180deg, color-mix(in srgb, var(--theme-bg) 88%, white), var(--theme-bg));
+    background-attachment: fixed;
+  }
+
+  .edu-surface {
+    color: var(--theme-text);
+    background: var(--theme-card);
+    border: 1px solid var(--theme-border);
+    border-radius: 20px;
+    box-shadow: var(--theme-shadow);
+  }
+
+  .edu-panel {
+    color: var(--theme-text);
+    background: var(--theme-surface);
+    border: 1px solid var(--theme-border);
+    border-radius: 18px;
+    box-shadow: 0 18px 54px -46px rgba(28, 45, 89, 0.3);
+  }
+
+  .edu-muted {
+    color: var(--theme-text-muted);
+  }
+}

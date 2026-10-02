@@ -1,0 +1,461 @@
+.workbench {
+  --billing-ink: var(--theme-text);
+  --billing-paper: var(--theme-card);
+  --billing-rule: var(--theme-border-strong);
+  display: grid;
+  gap: 1.5rem;
+  color: var(--theme-text);
+}
+
+.passHeader {
+  position: relative;
+  display: grid;
+  overflow: hidden;
+  border: 2px solid var(--billing-ink);
+  background: var(--billing-paper);
+  box-shadow: 6px 6px 0 var(--billing-ink);
+}
+
+.passHeader::before,
+.passHeader::after {
+  position: absolute;
+  display: none;
+  left: calc(100% - 14.5rem - 8px);
+  z-index: 2;
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--billing-ink);
+  border-radius: 50%;
+  background: var(--theme-bg);
+  content: "";
+}
+
+.passHeader::before { top: -9px; }
+.passHeader::after { bottom: -9px; }
+
+.passCopy { padding: clamp(1.5rem, 4vw, 3.75rem); }
+.eyebrow,
+.sectionHeading p,
+.routeHeading > div > p,
+.modalHeader > div > p {
+  margin: 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  color: var(--theme-accent);
+}
+
+.passCopy h1 {
+  margin: 0.65rem 0 0;
+  font-size: clamp(2.65rem, 8vw, 5.75rem);
+  font-weight: 950;
+  line-height: 0.92;
+  letter-spacing: -0.07em;
+}
+
+.lede {
+  max-width: 34rem;
+  margin: 1.25rem 0 0;
+  font-size: clamp(0.95rem, 2vw, 1.15rem);
+  font-weight: 650;
+  line-height: 1.65;
+  color: var(--theme-text-muted);
+}
+
+.quietNotice {
+  display: inline-block;
+  margin: 1rem 0 0;
+  border-bottom: 2px solid var(--theme-warning);
+  font-size: 0.78rem;
+  font-weight: 750;
+  line-height: 1.6;
+  color: var(--theme-text-muted);
+}
+
+.passStub {
+  display: flex;
+  min-height: 13rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-top: 2px dashed var(--billing-ink);
+  background: var(--gom-yellow, var(--theme-surface-muted));
+  padding: 1.5rem;
+  color: var(--gom-ink, var(--theme-text));
+  text-align: center;
+}
+
+.passStub span,
+.passStub small { font-size: 0.72rem; font-weight: 850; letter-spacing: 0.08em; }
+.passStub strong { margin: 0.6rem 0; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 2.75rem; line-height: 1; letter-spacing: -0.08em; }
+.passStub small { border-top: 1px solid currentColor; padding-top: 0.55rem; }
+
+.instrumentGrid { display: grid; gap: 1.5rem; }
+.panel { border: 2px solid var(--billing-ink); background: var(--billing-paper); box-shadow: 4px 4px 0 var(--billing-ink); }
+.capacityPanel,
+.ledgerPanel { padding: clamp(1.25rem, 3vw, 2rem); }
+
+.sectionHeading { display: flex; align-items: center; gap: 0.85rem; border-bottom: 2px solid var(--billing-ink); padding-bottom: 0.9rem; }
+.sectionHeading > span { display: grid; width: 2.6rem; height: 2.6rem; place-items: center; flex: 0 0 auto; border: 2px solid var(--billing-ink); background: var(--theme-accent); color: var(--theme-accent-text); font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 0.78rem; font-weight: 900; box-shadow: 2px 2px 0 var(--billing-ink); }
+.sectionHeading h2 { margin: 0.18rem 0 0; font-size: clamp(1.4rem, 4vw, 1.85rem); font-weight: 900; letter-spacing: -0.04em; }
+
+.gaugeReadout { display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; padding: 1.65rem 0 0.75rem; }
+.gaugeReadout strong { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: clamp(3.75rem, 10vw, 6rem); font-weight: 950; line-height: 0.85; letter-spacing: -0.1em; }
+.gaugeReadout strong span { margin-left: 0.1em; font-size: 0.3em; letter-spacing: -0.04em; }
+.gaugeReadout p { margin: 0; border: 1px solid var(--billing-rule); background: var(--theme-surface-muted); padding: 0.45rem 0.65rem; font-size: 0.72rem; font-weight: 850; }
+
+.meterShell { position: relative; padding-bottom: 1.3rem; }
+.meter { display: block; width: 100%; height: 2.25rem; border: 2px solid var(--billing-ink); border-radius: 0; background: var(--theme-surface-muted); }
+.meter::-webkit-meter-bar { border: 0; border-radius: 0; background: var(--theme-surface-muted); box-shadow: none; }
+.meter::-webkit-meter-optimum-value,
+.meter::-webkit-meter-suboptimum-value,
+.meter::-webkit-meter-even-less-good-value { background: var(--theme-accent); }
+.meter::-moz-meter-bar { background: var(--theme-accent); }
+.meterTicks { position: absolute; inset: 2.35rem 0 auto; display: flex; justify-content: space-between; }
+.meterTicks i { display: block; width: 1px; height: 0.55rem; background: var(--billing-rule); }
+
+.capacityLedger { display: grid; margin: 1rem 0 0; border: 1px solid var(--billing-rule); }
+.capacityLedger > div { display: flex; min-width: 0; align-items: baseline; justify-content: space-between; gap: 1rem; padding: 0.7rem 0.8rem; }
+.capacityLedger > div + div { border-top: 1px dashed var(--theme-border); }
+.capacityLedger dt { font-size: 0.72rem; font-weight: 800; color: var(--theme-text-muted); }
+.capacityLedger dd { min-width: 0; margin: 0; overflow-wrap: anywhere; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-weight: 900; }
+.capacityHint { margin: 1rem 0 0; border-left: 5px solid var(--theme-warning); padding: 0.75rem 0.9rem; background: var(--theme-surface-muted); font-size: 0.8rem; font-weight: 700; line-height: 1.65; color: var(--theme-text-muted); }
+
+.ledgerRows { display: grid; }
+.ledgerRows article { display: grid; grid-template-columns: 2.75rem minmax(0, 1fr); gap: 1rem; padding: 1.1rem 0; }
+.ledgerRows article + article { border-top: 1px dashed var(--theme-border); }
+.ledgerRows article > span { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 0.72rem; font-weight: 900; color: var(--theme-accent); }
+.ledgerRows h3 { margin: 0; font-size: 1rem; font-weight: 900; letter-spacing: -0.02em; }
+.ledgerRows p { margin: 0.35rem 0 0; font-size: 0.82rem; font-weight: 600; line-height: 1.65; color: var(--theme-text-muted); }
+.keepNote { display: flex; align-items: center; gap: 0.6rem; margin: 0.2rem 0 0; border: 2px solid var(--billing-ink); padding: 0.8rem; font-size: 0.78rem; font-weight: 850; }
+.keepNote span { display: grid; width: 1.5rem; height: 1.5rem; place-items: center; background: var(--theme-success); color: var(--theme-card); font-size: 0.7rem; }
+
+.routeBoard { border: 2px solid var(--billing-ink); background: var(--billing-paper); box-shadow: 6px 6px 0 var(--theme-accent); }
+.routeHeading { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 1rem; border-bottom: 2px solid var(--billing-ink); padding: clamp(1.25rem, 3vw, 2rem); }
+.routeHeading h2 { margin: 0.35rem 0 0; font-size: clamp(1.65rem, 5vw, 2.5rem); font-weight: 950; letter-spacing: -0.055em; }
+.textLink { display: inline-flex; min-height: 44px; align-items: center; gap: 0.5rem; border-bottom: 2px solid var(--billing-ink); font-size: 0.78rem; font-weight: 850; color: var(--theme-text); text-decoration: none; }
+
+.routeTracks { display: grid; margin: 0; padding: 0; list-style: none; }
+.routeTracks li { position: relative; display: grid; grid-template-columns: 2.6rem minmax(0, 1fr); gap: 0.9rem; padding: 1.25rem; }
+.routeTracks li + li { border-top: 1px solid var(--billing-rule); }
+.routeIndex { display: grid; width: 2.4rem; height: 2.4rem; place-items: center; border: 2px solid var(--billing-ink); background: var(--theme-surface-muted); font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 0.75rem; font-weight: 900; box-shadow: 2px 2px 0 var(--billing-ink); }
+.routeTracks strong { display: block; font-size: 0.95rem; font-weight: 900; }
+.routeTracks p { margin: 0.3rem 0 0; font-size: 0.8rem; font-weight: 600; line-height: 1.6; color: var(--theme-text-muted); }
+
+.processSlip { display: grid; align-items: center; gap: 0.6rem; margin: 0 clamp(1.25rem, 3vw, 2rem); border-block: 1px dashed var(--billing-rule); padding: 1rem 0; text-align: center; }
+.processSlip span { font-size: 0.75rem; font-weight: 850; }
+.processSlip i { display: none; height: 1px; background: var(--billing-rule); }
+.processSlip small { font-size: 0.7rem; font-weight: 650; line-height: 1.5; color: var(--theme-text-muted); }
+
+.actions { display: grid; gap: 0.7rem; padding: clamp(1.25rem, 3vw, 2rem); }
+.primaryButton,
+.secondaryButton,
+.plainButton,
+.closeButton {
+  display: inline-flex;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--billing-ink);
+  border-radius: 0;
+  padding: 0.7rem 1rem;
+  font: inherit;
+  font-size: 0.84rem;
+  font-weight: 900;
+  line-height: 1.25;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+.primaryButton { background: var(--theme-accent); color: var(--theme-accent-text); box-shadow: 3px 3px 0 var(--billing-ink); }
+.secondaryButton { background: var(--gom-yellow, var(--theme-surface-muted)); color: var(--gom-ink, var(--theme-text)); box-shadow: 3px 3px 0 var(--billing-ink); }
+.plainButton { background: var(--billing-paper); color: var(--theme-text); }
+.primaryButton,
+.secondaryButton,
+.plainButton,
+.closeButton { border-width: 2px !important; border-color: var(--billing-ink) !important; }
+.primaryButton { box-shadow: 3px 3px 0 var(--billing-ink) !important; }
+.secondaryButton { box-shadow: 3px 3px 0 var(--billing-ink) !important; }
+.plainButton,
+.closeButton { box-shadow: none !important; }
+.primaryButton:disabled,
+.secondaryButton:disabled,
+.plainButton:disabled { cursor: not-allowed; opacity: 0.55; box-shadow: none; }
+.primaryButton:hover:not(:disabled),
+.secondaryButton:hover:not(:disabled) { transform: translate(-1px, -1px); box-shadow: 4px 4px 0 var(--billing-ink) !important; }
+
+.modalBackdrop { position: fixed; inset: 0; z-index: 70; display: grid; place-items: center; overflow-y: auto; background: color-mix(in srgb, var(--theme-text) 76%, transparent); padding: 1rem; }
+.modal { width: min(100%, 48rem); max-height: calc(100dvh - 2rem); overflow-y: auto; border: 2px solid var(--billing-ink); border-radius: 0; background: var(--billing-paper); color: var(--theme-text); box-shadow: 8px 8px 0 var(--theme-accent); }
+.modalHeader { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; border-bottom: 2px solid var(--billing-ink); padding: 1.25rem; }
+.modalHeader h2 { margin: 0.3rem 0 0; font-size: clamp(1.4rem, 5vw, 2rem); font-weight: 950; letter-spacing: -0.045em; }
+.modalHeader > div > p:last-child { max-width: 34rem; margin: 0.6rem 0 0; font-size: 0.8rem; font-weight: 600; line-height: 1.6; color: var(--theme-text-muted); }
+.closeButton { width: 44px; flex: 0 0 44px; padding: 0; background: var(--theme-surface-muted); color: var(--theme-text); font-size: 1.6rem; line-height: 1; }
+
+.formGrid { display: grid; gap: 1rem; padding: 1.25rem; }
+.formGrid label { display: grid; min-width: 0; gap: 0.4rem; }
+.formGrid label > span { font-size: 0.75rem; font-weight: 850; color: var(--theme-text-muted); }
+.input { width: 100%; min-height: 44px; border: 1px solid var(--billing-rule); border-radius: 0; background: var(--theme-bg-elevated); padding: 0.65rem 0.75rem; color: var(--theme-text); font: inherit; font-size: 0.88rem; font-weight: 650; box-shadow: none; }
+.textLink { border-bottom-width: 2px !important; }
+.input::placeholder { color: var(--theme-text-subtle); opacity: 1; }
+.input:hover:not(:disabled) { border-color: var(--theme-accent) !important; }
+.textarea { min-height: 7rem; resize: vertical; line-height: 1.6; }
+.replyNote,
+.errorMessage,
+.successMessage { margin: 0 1.25rem 1rem; border-left: 5px solid var(--theme-border-strong); background: var(--theme-surface-muted); padding: 0.75rem 0.9rem; font-size: 0.78rem; font-weight: 700; line-height: 1.6; color: var(--theme-text-muted); }
+.errorMessage { border-left-color: var(--theme-danger); color: var(--theme-danger); }
+.successMessage { border-left-color: var(--theme-success); color: var(--theme-text); }
+.successMessage span { display: block; margin-top: 0.25rem; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 0.68rem; overflow-wrap: anywhere; color: var(--theme-text-muted); }
+.modalActions { display: grid; gap: 0.7rem; border-top: 2px solid var(--billing-ink); padding: 1.25rem; }
+
+.workbench :is(a, button, input, select, textarea):focus-visible,
+.modal:focus-visible { outline: 3px solid var(--theme-focus); outline-offset: 3px; box-shadow: none !important; }
+
+:global(html[data-theme="hud"]) .workbench {
+  --billing-ink: var(--theme-border-strong);
+  --billing-paper: var(--theme-panel);
+  --billing-rule: var(--theme-border);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+:global(html[data-theme="hud"]) .passHeader,
+:global(html[data-theme="hud"]) .panel,
+:global(html[data-theme="hud"]) .routeBoard,
+:global(html[data-theme="hud"]) .modal { box-shadow: 0 0 0 1px color-mix(in srgb, var(--theme-accent) 24%, transparent), 8px 8px 0 color-mix(in srgb, var(--theme-accent) 42%, transparent); }
+:global(html[data-theme="hud"]) .passStub { background: var(--theme-surface-muted); color: var(--theme-text); }
+:global(html[data-theme="hud"]) .eyebrow,
+:global(html[data-theme="hud"]) .sectionHeading p,
+:global(html[data-theme="hud"]) .routeHeading > div > p,
+:global(html[data-theme="hud"]) .modalHeader > div > p { color: var(--theme-accent); text-shadow: 0 0 14px color-mix(in srgb, var(--theme-accent) 42%, transparent); }
+
+@media (min-width: 640px) {
+  .passHeader { grid-template-columns: minmax(0, 1fr) 14.5rem; }
+  .passHeader::before,
+  .passHeader::after { display: block; }
+  .passStub { border-top: 0; border-left: 2px dashed var(--billing-ink); }
+  .routeTracks { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .routeTracks li + li { border-top: 0; border-left: 1px solid var(--billing-rule); }
+  .processSlip { grid-template-columns: auto minmax(1.5rem, 1fr) auto minmax(1.5rem, 1fr) auto; }
+  .processSlip i { display: block; }
+  .processSlip small { grid-column: 1 / -1; }
+  .actions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .actions .plainButton { grid-column: 1 / -1; }
+  .formGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .fullField { grid-column: 1 / -1; }
+  .modalActions { grid-template-columns: auto minmax(12rem, 1fr); justify-content: end; }
+}
+
+@media (min-width: 900px) {
+  .instrumentGrid { grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr); }
+  .actions { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .actions .plainButton { grid-column: auto; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .workbench *,
+  .modal * { scroll-behavior: auto !important; transition-duration: 0.01ms !important; }
+}
+
+
+/* Studio billing: a calm use pass, not another wall of pricing cards. */
+:global(html[data-gom-theme="gomdory-studio"]) .workbench {
+  --billing-ink: #19243a;
+  --billing-paper: rgba(255, 253, 247, 0.94);
+  --billing-rule: rgba(25, 36, 58, 0.18);
+  gap: 1.35rem;
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .passHeader,
+:global(html[data-gom-theme="gomdory-studio"]) .panel,
+:global(html[data-gom-theme="gomdory-studio"]) .routeBoard,
+:global(html[data-gom-theme="gomdory-studio"]) .modal {
+  border: 1px solid rgba(25, 36, 58, 0.18);
+  border-radius: 1.6rem;
+  box-shadow: 0 24px 56px -50px rgba(25, 36, 58, 0.52);
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .passHeader {
+  background:
+    radial-gradient(circle at 76% 12%, rgba(104, 128, 218, 0.16), transparent 19rem),
+    linear-gradient(110deg, rgba(255, 254, 250, 0.98), rgba(247, 242, 229, 0.88));
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .passHeader::before,
+:global(html[data-gom-theme="gomdory-studio"]) .passHeader::after {
+  border-color: rgba(25, 36, 58, 0.2);
+  background: #f9f3e8;
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .passCopy {
+  padding: clamp(1.75rem, 4vw, 3.65rem);
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .eyebrow,
+:global(html[data-gom-theme="gomdory-studio"]) .sectionHeading p,
+:global(html[data-gom-theme="gomdory-studio"]) .routeHeading > div > p,
+:global(html[data-gom-theme="gomdory-studio"]) .modalHeader > div > p {
+  color: #3155b8;
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .passStub {
+  border-color: rgba(25, 36, 58, 0.16);
+  background:
+    linear-gradient(180deg, rgba(243, 235, 115, 0.93), rgba(232, 240, 174, 0.84));
+  color: #19243a;
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .passStub strong {
+  color: #243f9e;
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .panel {
+  background: rgba(255, 253, 247, 0.9);
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .sectionHeading {
+  border-bottom-color: rgba(25, 36, 58, 0.16);
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .sectionHeading > span {
+  border: 1px solid rgba(25, 36, 58, 0.22);
+  border-radius: 999px;
+  background: #294db3;
+  box-shadow: 0 3px 0 rgba(25, 36, 58, 0.2);
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .gaugeReadout p {
+  border-color: rgba(25, 36, 58, 0.2);
+  border-radius: 999px;
+  background: rgba(238, 231, 217, 0.7);
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .meter {
+  border: 1px solid rgba(25, 36, 58, 0.22);
+  border-radius: 999px;
+  background: rgba(231, 226, 216, 0.76);
+  overflow: hidden;
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .meter::-webkit-meter-bar {
+  border-radius: 999px;
+  background: rgba(231, 226, 216, 0.76);
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .meter::-webkit-meter-optimum-value,
+:global(html[data-gom-theme="gomdory-studio"]) .meter::-webkit-meter-suboptimum-value,
+:global(html[data-gom-theme="gomdory-studio"]) .meter::-webkit-meter-even-less-good-value {
+  background: linear-gradient(90deg, #315ed6, #6f86df);
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .capacityLedger {
+  border-color: rgba(25, 36, 58, 0.16);
+  border-radius: 0.9rem;
+  background: rgba(255, 254, 250, 0.72);
+  overflow: hidden;
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .capacityLedger > div + div,
+:global(html[data-gom-theme="gomdory-studio"]) .ledgerRows article + article {
+  border-color: rgba(25, 36, 58, 0.16);
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .capacityHint {
+  border-left-color: #e58448;
+  border-radius: 0 0.8rem 0.8rem 0;
+  background: rgba(246, 237, 218, 0.7);
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .keepNote {
+  border: 1px solid rgba(25, 36, 58, 0.16);
+  border-radius: 0.9rem;
+  background: rgba(238, 245, 213, 0.64);
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .keepNote span {
+  border-radius: 999px;
+  background: #559b74;
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .routeBoard {
+  background:
+    radial-gradient(circle at 94% 4%, rgba(234, 116, 64, 0.11), transparent 15rem),
+    rgba(255, 253, 247, 0.93);
+  box-shadow: 0 26px 62px -54px rgba(25, 36, 58, 0.54);
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .routeHeading,
+:global(html[data-gom-theme="gomdory-studio"]) .modalHeader,
+:global(html[data-gom-theme="gomdory-studio"]) .modalActions {
+  border-color: rgba(25, 36, 58, 0.16);
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .routeTracks li + li {
+  border-color: rgba(25, 36, 58, 0.14);
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .routeIndex {
+  border: 1px solid rgba(25, 36, 58, 0.2);
+  border-radius: 999px;
+  background: #fffdf7;
+  box-shadow: 0 3px 0 rgba(25, 36, 58, 0.16);
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .processSlip {
+  border-color: rgba(25, 36, 58, 0.2);
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .primaryButton,
+:global(html[data-gom-theme="gomdory-studio"]) .secondaryButton,
+:global(html[data-gom-theme="gomdory-studio"]) .plainButton,
+:global(html[data-gom-theme="gomdory-studio"]) .closeButton {
+  border-width: 1px !important;
+  border-radius: 0.82rem;
+  border-color: rgba(25, 36, 58, 0.22) !important;
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .primaryButton {
+  background: #294db3;
+  color: #ffffff;
+  box-shadow: 0 5px 0 #1d3579, 0 14px 26px -20px rgba(41, 77, 179, 0.75) !important;
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .secondaryButton {
+  background: #f2e76a;
+  color: #19243a;
+  box-shadow: 0 5px 0 #b9aa38, 0 14px 26px -20px rgba(132, 111, 28, 0.34) !important;
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .plainButton,
+:global(html[data-gom-theme="gomdory-studio"]) .closeButton {
+  background: rgba(255, 254, 250, 0.82);
+  color: #19243a;
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .primaryButton:hover:not(:disabled),
+:global(html[data-gom-theme="gomdory-studio"]) .secondaryButton:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .modalBackdrop {
+  background: rgba(25, 36, 58, 0.62);
+  backdrop-filter: blur(7px);
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .modal {
+  background: #fffdf8;
+  box-shadow: 0 28px 76px -34px rgba(12, 20, 38, 0.62);
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .input {
+  border-color: rgba(25, 36, 58, 0.22);
+  border-radius: 0.75rem;
+  background: #fffefb;
+}
+
+@media (max-width: 639px) {
+  :global(html[data-gom-theme="gomdory-studio"]) .passHeader,
+  :global(html[data-gom-theme="gomdory-studio"]) .panel,
+  :global(html[data-gom-theme="gomdory-studio"]) .routeBoard,
+  :global(html[data-gom-theme="gomdory-studio"]) .modal {
+    border-radius: 1.25rem;
+  }
+}

@@ -1,0 +1,538 @@
+:global(html[data-gom-theme="gomdory-studio"]) .workspace {
+  --teacher-paper: #f3efe6;
+  --teacher-sheet: #fffdf8;
+  --teacher-ink: #1d2940;
+  --teacher-blue: #365b9d;
+  --teacher-orange: #c97a55;
+  --teacher-mint: #93bda9;
+  --teacher-yellow: #e9dd91;
+  background-color: var(--teacher-paper);
+  background-image:
+    linear-gradient(rgba(29, 41, 64, 0.032) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(29, 41, 64, 0.032) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .boardHeader {
+  --theme-text: var(--teacher-ink);
+  --theme-text-muted: #4d5868;
+  --theme-text-subtle: #667080;
+  --theme-surface: var(--teacher-sheet);
+  --theme-surface-muted: #eee7d9;
+  --theme-border: #aaa294;
+  --theme-border-strong: var(--teacher-ink);
+  --theme-accent: var(--teacher-blue);
+  --theme-action-text: #fff;
+  border: 1px solid #b9b1a2;
+  border-top: 4px solid var(--teacher-blue);
+  border-radius: 4px;
+  background: var(--teacher-sheet);
+  color: var(--teacher-ink);
+  box-shadow: 0 1px 0 rgba(29, 41, 64, 0.14);
+  backdrop-filter: none;
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .boardHeader::after {
+  content: none;
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .headerKicker {
+  display: inline-block;
+  color: var(--teacher-blue);
+  font-weight: 900;
+  letter-spacing: 0.12em;
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .headerTitle {
+  color: var(--teacher-ink);
+  font-weight: 900;
+  letter-spacing: -0.045em;
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .headerSummary {
+  border-left: 1px solid rgba(29, 41, 64, 0.2);
+  padding-left: 1rem;
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .headerSummary [data-teacher-board-summary] {
+  gap: 0;
+  overflow: hidden;
+  border: 1px solid #b9b1a2;
+  border-radius: 3px;
+  background: #f3f1df;
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .headerSummary [data-teacher-board-summary] > div {
+  min-width: 4.5rem;
+  padding: 0.48rem 0.68rem 0.42rem;
+  border-left: 1px solid #c9c1b3;
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .headerSummary [data-teacher-board-summary] > div:first-child {
+  border-left: 0;
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .headerSummary [data-teacher-board-summary] dt {
+  color: #4d5868;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .headerSummary [data-teacher-board-summary] dd {
+  margin-top: 0.08rem;
+  color: var(--teacher-ink);
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .mobileLessonButton,
+:global(html[data-gom-theme="gomdory-studio"]) .headerAction,
+:global(html[data-gom-theme="gomdory-studio"]) .courseAction {
+  border: 1px solid #9d9588;
+  border-radius: 4px;
+  background: var(--teacher-sheet);
+  color: var(--teacher-ink);
+  box-shadow: none;
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .mobileLessonButton,
+:global(html[data-gom-theme="gomdory-studio"]) .headerActionPrimary {
+  background: var(--teacher-blue);
+  color: #fff;
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .courseAction {
+  background: var(--teacher-blue);
+  color: #fff;
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .mobileLessonButton:active,
+:global(html[data-gom-theme="gomdory-studio"]) .headerAction:active,
+:global(html[data-gom-theme="gomdory-studio"]) .courseAction:active {
+  transform: translateY(1px);
+  box-shadow: none;
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .boardHeaderPanel {
+  border: 1px solid #b9b1a2;
+  border-top: 0;
+  border-radius: 0 0 4px 4px;
+  background: var(--teacher-sheet);
+  color: var(--teacher-ink);
+  box-shadow: 0 12px 24px rgba(29, 41, 64, 0.12);
+  backdrop-filter: none;
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .boardHeaderPanel p {
+  color: #4d5868;
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .entryTicket {
+  border: 1px solid #b9b1a2;
+  border-radius: 3px;
+  background: #f3f1df;
+  color: var(--teacher-ink);
+  box-shadow: none;
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .entryTicketLabel {
+  color: var(--teacher-blue);
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .entryTicketCode {
+  color: var(--teacher-ink);
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .submissionStrip {
+  position: relative;
+  z-index: 1;
+  border-left: 6px solid var(--teacher-mint);
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .submissionStrip [data-teacher-submission-panel] {
+  border: 1px solid #b9b1a2;
+  border-left: 6px solid var(--teacher-mint);
+  border-radius: 4px;
+  background: var(--teacher-sheet);
+  color: var(--teacher-ink);
+  box-shadow: 0 2px 0 rgba(29, 41, 64, 0.08);
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .submissionStrip [data-teacher-submission-panel] :is(h2, strong) {
+  color: var(--teacher-ink);
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .submissionStrip [data-teacher-submission-panel] :is(p, span) {
+  color: #4d5868;
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .submissionStrip [data-teacher-submission-panel] button {
+  border-color: #aaa294;
+  border-radius: 3px;
+  background: var(--teacher-sheet);
+  color: var(--teacher-ink);
+  box-shadow: none;
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .submissionStrip [data-teacher-submission-panel] button:hover:not(:disabled) {
+  border-color: var(--teacher-blue);
+  background: #eee7d9;
+  color: var(--teacher-ink);
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .submissionStrip [data-teacher-submission-panel] button:disabled {
+  border-color: #d6cfc2;
+  background: #f3eee5;
+  color: #8a8378;
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .submissionStrip [data-teacher-submission-panel] > p {
+  border-color: #d6cfc2;
+  border-radius: 3px;
+  background: #f7f2e8;
+  color: #4d5868;
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .submissionStrip [data-teacher-submission-panel] [id="student-submission-status-content"] {
+  border-color: #d6cfc2;
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .wallScroller {
+  scrollbar-color: var(--teacher-blue) rgba(25, 36, 58, 0.08);
+  scrollbar-width: thin;
+  scroll-snap-type: x proximity;
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .wallTrack {
+  gap: 1rem;
+  padding: 0.35rem 0.8rem 1.2rem 0.2rem;
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .workspace .wallColumn {
+  overflow: hidden;
+  scroll-snap-align: start;
+  border: 1px solid #b9b1a2;
+  border-top: 3px solid var(--teacher-blue);
+  border-radius: 4px;
+  background: var(--theme-panel);
+  color: var(--theme-text);
+  box-shadow: 0 2px 0 rgba(29, 41, 64, 0.08);
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .wallColumn:nth-child(3n + 2) {
+  border-top-color: var(--teacher-orange);
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .wallColumn:nth-child(3n + 3) {
+  border-top-color: var(--teacher-mint);
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .workspace .wallHeader {
+  border-bottom: 1px solid #c9c1b3;
+  background: #f3f1df;
+  color: var(--teacher-ink);
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .workspace .wallHeader :where(h2, p) {
+  color: inherit;
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .wallIndex {
+  color: var(--teacher-blue);
+  font-weight: 900;
+  letter-spacing: 0.13em;
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .cardCount {
+  border: 1px solid #8e8679;
+  border-radius: 3px;
+  background: var(--teacher-yellow);
+  color: var(--teacher-ink);
+  box-shadow: none;
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .composer {
+  border-bottom: 1px dashed #b9b1a2;
+  background: #f5f1e8;
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .workspace .composer textarea {
+  border: 1.5px solid var(--teacher-ink);
+  border-radius: 4px;
+  background: rgba(255, 253, 247, 0.96);
+  color: var(--teacher-ink);
+  box-shadow: inset 3px 3px 0 rgba(25, 36, 58, 0.06);
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .workspace .composer textarea::placeholder {
+  color: #667080;
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .workspace [data-teacher-card-composer-actions] {
+  padding-top: 0.55rem;
+  border-top: 1px solid #d6cfc2;
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .workspace [data-teacher-card-create-action] {
+  border-color: var(--teacher-blue);
+  border-radius: 3px;
+  background: var(--teacher-blue);
+  color: #fff;
+  box-shadow: none;
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .workspace [data-teacher-card-create-action]:hover {
+  border-color: var(--teacher-ink);
+  background: #29477c;
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .workspace .emptyWallHint {
+  border-color: #b9b1a2;
+  border-left: 3px solid var(--teacher-blue);
+  border-radius: 3px;
+  background: #f7f2e8;
+  color: #4d5868;
+  box-shadow: none;
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .workspace .emptyWallHint p:first-child {
+  color: var(--teacher-ink);
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .wallColumn:nth-child(3n + 2) .emptyWallHint {
+  border-left-color: var(--teacher-orange);
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .wallColumn:nth-child(3n + 3) .emptyWallHint {
+  border-left-color: var(--teacher-mint);
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .workspace .cardSheet {
+  border: 1px solid #c9c1b3;
+  border-radius: 4px;
+  background: var(--theme-card);
+  color: var(--theme-text);
+  box-shadow: none;
+  --tw-ring-color: transparent;
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .cardSheet:hover {
+  border-color: var(--teacher-blue);
+  box-shadow: 0 3px 10px rgba(54, 91, 157, 0.12);
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .workspace .cardSheet [data-teacher-card-order-controls] {
+  gap: 0;
+  padding: 2px;
+  border: 1px solid #aaa294;
+  border-radius: 3px;
+  background: #f3f1df;
+  box-shadow: none;
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .workspace .cardSheet [data-teacher-card-order-controls] button {
+  border: 0;
+  border-left: 1px solid #c9c1b3;
+  border-radius: 0;
+  background: transparent;
+  color: var(--teacher-ink);
+  box-shadow: none;
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .workspace .cardSheet [data-teacher-card-order-controls] button:first-child {
+  border-left: 0;
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .workspace .cardSheet [data-teacher-card-order-controls] button:hover:not(:disabled) {
+  background: #e7e0cf;
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .workspace .cardSheet [data-teacher-card-order-controls] button:disabled {
+  background: #f3eee5;
+  color: #8a8378;
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .statusBadge {
+  border: 1px solid var(--teacher-ink);
+  border-radius: 3px;
+  background: var(--teacher-yellow);
+  color: var(--teacher-ink);
+  box-shadow: none;
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .finalBadge {
+  background: var(--teacher-mint);
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .addSectionSheet {
+  border: 1px dashed #8e8679;
+  border-radius: 4px;
+  background: var(--teacher-sheet);
+  box-shadow: none;
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .paperMenu {
+  --teacher-sheet: #fffdf7;
+  border: 1px solid #b9b1a2 !important;
+  border-radius: 4px !important;
+  background: var(--teacher-sheet) !important;
+  color: var(--teacher-ink) !important;
+  box-shadow: 0 10px 22px rgba(29, 41, 64, 0.14) !important;
+  backdrop-filter: none !important;
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .paperMenu :global(.teacher-board-menu-item) {
+  border-radius: 3px;
+  color: var(--teacher-ink) !important;
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .paperMenu :global(.teacher-board-menu-item):hover,
+:global(html[data-gom-theme="gomdory-studio"]) .paperMenu :global(.teacher-board-menu-item):focus {
+  background: #eef4d0 !important;
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .paperMenu :global(.teacher-board-menu-danger) {
+  border-radius: 3px;
+  color: #a32f18 !important;
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .paperMenu :global(.teacher-board-menu-danger):hover,
+:global(html[data-gom-theme="gomdory-studio"]) .paperMenu :global(.teacher-board-menu-danger):focus {
+  background: #fde5dc !important;
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .paperMenu :global(.teacher-board-menu-heading) {
+  color: #4d5868 !important;
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .paperMenu :global(.teacher-board-menu-rule) {
+  background: rgba(25, 36, 58, 0.18) !important;
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .toolRailTrigger {
+  border: 1px solid var(--teacher-blue);
+  border-radius: 4px;
+  background: var(--teacher-blue);
+  color: #fff;
+  box-shadow: none;
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .toolPanel,
+:global(html[data-gom-theme="gomdory-studio"]) .modalSheet {
+  --theme-text: var(--teacher-ink);
+  --theme-text-muted: #4d5868;
+  --theme-text-subtle: #667080;
+  --theme-surface: var(--teacher-sheet);
+  --theme-surface-muted: #eee7d9;
+  --theme-card: var(--teacher-sheet);
+  --theme-panel-strong: var(--teacher-sheet);
+  --theme-border: #aaa294;
+  --theme-border-strong: var(--teacher-ink);
+  --theme-accent: var(--teacher-blue);
+  --theme-action-text: #fff;
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .toolPanel {
+  border: 1px solid #b9b1a2;
+  border-radius: 4px;
+  background: var(--teacher-paper);
+  color: var(--teacher-ink);
+  box-shadow: 0 12px 28px rgba(29, 41, 64, 0.14);
+  backdrop-filter: none;
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .toolPanel :global(.hud-right-rail-inner) {
+  border: 1px solid #b9b1a2;
+  border-radius: 4px;
+  background: var(--teacher-sheet);
+  color: var(--teacher-ink);
+  box-shadow: 0 1px 0 rgba(29, 41, 64, 0.1);
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .toolTabs {
+  border: 1px solid #b9b1a2;
+  border-radius: 3px;
+  background: var(--teacher-sheet);
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .toolTabActive {
+  border: 1px solid #8e8679;
+  border-radius: 3px;
+  background: var(--teacher-yellow);
+  color: var(--teacher-ink);
+  box-shadow: none;
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .mobileBackdrop {
+  background: rgba(25, 36, 58, 0.54);
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .modalSheet {
+  border: 1px solid #b9b1a2 !important;
+  border-radius: 4px !important;
+  background: var(--teacher-sheet) !important;
+  color: var(--teacher-ink) !important;
+  box-shadow: 0 14px 32px rgba(29, 41, 64, 0.16) !important;
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .modalSheet :where(h2, h3, p, label) {
+  color: var(--theme-text);
+}
+
+:global(html[data-gom-theme="gomdory-studio"]) .modalSheet :where(input, textarea) {
+  border-color: var(--teacher-ink);
+  background: var(--teacher-sheet);
+  color: var(--teacher-ink);
+}
+
+@media (max-width: 1023px) {
+  :global(html[data-gom-theme="gomdory-studio"]) .toolPanel {
+    border-radius: 4px;
+    box-shadow: 0 12px 28px rgba(29, 41, 64, 0.14);
+  }
+}
+
+@media (max-width: 639px) {
+  :global(html[data-gom-theme="gomdory-studio"]) .workspace {
+    padding-right: 0.75rem;
+    padding-left: 0.75rem;
+  }
+
+  :global(html[data-gom-theme="gomdory-studio"]) .boardHeader {
+    border-left-width: 1px;
+    border-top-width: 4px;
+    box-shadow: 0 1px 0 rgba(29, 41, 64, 0.14);
+  }
+
+  :global(html[data-gom-theme="gomdory-studio"]) .boardHeader::after {
+    right: 0.65rem;
+  }
+
+  :global(html[data-gom-theme="gomdory-studio"]) .headerSummary {
+    border-top: 1px dashed rgba(25, 36, 58, 0.42);
+    border-left: 0;
+    padding-top: 0.65rem;
+    padding-left: 0;
+  }
+
+  :global(html[data-gom-theme="gomdory-studio"]) .wallTrack {
+    padding-right: 0.35rem;
+  }
+
+  :global(html[data-gom-theme="gomdory-studio"]) .wallColumn {
+    width: min(88vw, 22rem);
+  }
+
+  :global(html[data-gom-theme="gomdory-studio"]) .wallColumn:nth-child(3n + 2) {
+    margin-top: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :global(html[data-gom-theme="gomdory-studio"]) .mobileLessonButton,
+  :global(html[data-gom-theme="gomdory-studio"]) .headerAction,
+  :global(html[data-gom-theme="gomdory-studio"]) .courseAction {
+    transform: none;
+  }
+}

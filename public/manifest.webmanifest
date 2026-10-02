@@ -1,0 +1,21 @@
+{
+  "name": "GOM Board",
+  "short_name": "GOM",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "theme_color": "#b35605",
+  "background_color": "#ffffff",
+  "icons": [
+    {
+      "src": "/logo/gom.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon.svg",
+      "sizes": "512x512",
+      "type": "image/svg"
+    }
+  ]
+}

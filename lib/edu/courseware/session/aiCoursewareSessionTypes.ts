@@ -1,0 +1,3 @@
+export type CoursewareClassSessionStatus = "active" | "closed" | "expired";
+export interface CoursewareClassSessionRecord { id: string; joinCode: string; title: string | null; dayNumber: number; lessonNumbers: number[]; status: CoursewareClassSessionStatus; createdAt: string; updatedAt: string; closedAt: string | null; expiresAt: string | null; }
+export interface CoursewareClassSessionSubmissionRecord { id: string; sessionId: string; shareId: string | null; publicUrl: string; displayLabel: string | null; lessonNumber: number | null; titleKo: string | null; noteKo: string | null; status: "submitted" | "revoked"; createdAt: string; updatedAt: string; }

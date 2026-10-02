@@ -1,0 +1,6 @@
+{
+  "name": "@react-three/fiber",
+  "version": "9.6.0",
+  "main": "index.js",
+  "types": "index.d.ts"
+}

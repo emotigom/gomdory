@@ -1,0 +1,65 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "gomdory-public-ci",
+  "main": "./custom-worker.ts",
+  "compatibility_date": "2025-12-01",
+  "compatibility_flags": [
+    "nodejs_compat",
+    "global_fetch_strictly_public"
+  ],
+  "assets": {
+    "binding": "ASSETS",
+    "directory": ".open-next/assets"
+  },
+  "images": {
+    "binding": "IMAGES"
+  },
+  "services": [
+    {
+      "binding": "WORKER_SELF_REFERENCE",
+      "service": "gomdory-public-ci"
+    }
+  ],
+  "r2_buckets": [
+    {
+      "binding": "EDU_BUCKET",
+      "bucket_name": "gomdory-public-ci-placeholder"
+    }
+  ],
+  "kv_namespaces": [
+    {
+      "binding": "EDU_VISIBILITY_KV",
+      "id": "00000000000000000000000000000000"
+    },
+    {
+      "binding": "gom_clean_edu_visibility",
+      "id": "00000000000000000000000000000000"
+    }
+  ],
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "REALTIME_ROOM",
+        "class_name": "RealtimeRoomV2"
+      },
+      {
+        "name": "EDU_P2P_ROOM",
+        "class_name": "EduP2PRoom"
+      }
+    ]
+  },
+  "migrations": [
+    {
+      "tag": "public-ci-realtime-room-sqlite",
+      "new_sqlite_classes": [
+        "RealtimeRoomV2"
+      ]
+    },
+    {
+      "tag": "public-ci-edu-p2p-room",
+      "new_sqlite_classes": [
+        "EduP2PRoom"
+      ]
+    }
+  ]
+}

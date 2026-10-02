@@ -1,0 +1,42 @@
+{
+  "apiV1Hardcoded": [],
+  "snakeCaseKeys": [
+    "app/api/status/summary/route.ts::created_at",
+    "app/api/status/summary/route.ts::major_outage",
+    "app/api/status/summary/route.ts::partial_outage",
+    "app/api/status/summary/route.ts::updated_at"
+  ],
+  "snakeCaseResponseKeys": [
+    "app/api/v1/share/[code]/cards/[cardId]/files/initiate/route.ts::author_client_id",
+    "app/api/v1/share/[code]/cards/[cardId]/files/initiate/route.ts::r_type",
+    "app/api/v1/share/[code]/cards/[cardId]/route.ts::deleted_at",
+    "app/api/v1/share/[code]/cards/[cardId]/route.ts::is_hidden",
+    "app/api/v1/share/[code]/cards/[cardId]/route.ts::hidden_at",
+    "app/api/v1/share/[code]/cards/[cardId]/route.ts::delete_reason",
+    "app/api/v1/share/[code]/files/[fileId]/delete/route.ts::deleted_at",
+    "app/api/v1/share/[code]/files/[fileId]/delete/route.ts::author_type",
+    "app/api/v1/share/[code]/files/[fileId]/delete/route.ts::author_client_id",
+    "app/api/v1/share/[code]/files/[fileId]/delete/route.ts::board_id",
+    "app/api/v1/share/[code]/files/[fileId]/finalize/route.ts::author_client_id"
+  ],
+  "hardcodedApiPaths": [],
+  "fieldVariantKeys": [
+    "boardId::app/dashboard/boards/[boardId]/board/page.tsx",
+    "shareCode::app/dashboard/boards/[boardId]/board/page.tsx",
+    "wallId::app/dashboard/boards/[boardId]/board/page.tsx",
+    "requestId::app/api/v1/share/[code]/cards/[cardId]/route.ts",
+    "cardId::app/api/v1/share/[code]/cards/[cardId]/route.ts",
+    "board_id::app/api/v1/share/[code]/cards/[cardId]/route.ts",
+    "requestId::app/api/v1/share/[code]/files/[fileId]/delete/route.ts",
+    "fileId::app/api/v1/share/[code]/files/[fileId]/delete/route.ts",
+    "board_id::app/api/v1/share/[code]/files/[fileId]/delete/route.ts",
+    "boardId::app/api/v1/edu/presentation/settings/route.ts",
+    "requestId::app/api/v1/edu/presentation/settings/route.ts",
+    "userId::app/api/v1/edu/presentation/settings/route.ts",
+    "boardId::app/api/v1/edu/projects/featured/reorder/route.ts",
+    "requestId::app/api/v1/edu/projects/featured/reorder/route.ts",
+    "userId::app/api/v1/edu/projects/featured/reorder/route.ts",
+    "boardId::app/dashboard/boards/[boardId]/class/EduPresentationQueuePanel.tsx",
+    "boardId::app/dashboard/boards/[boardId]/class/EduPresentationSettingsPanel.tsx"
+  ]
+}

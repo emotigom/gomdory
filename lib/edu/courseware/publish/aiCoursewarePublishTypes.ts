@@ -1,0 +1,5 @@
+import type { CoursewarePageBlock, CoursewarePageDraft } from "@/lib/edu/courseware/pageBuilder/aiCoursewarePageTypes";
+import type { CoursewarePublishReadiness } from "@/lib/edu/courseware/pageBuilder/aiCoursewarePublishReadiness";
+import type { CoursewareSafetyAcknowledgement } from "@/lib/edu/courseware/safety/aiCoursewareSafetyTypes";
+export type CoursewarePublishedSnapshot = { shareId: string; version: 1; titleKo: string; descriptionKo?: string; lessonNumber?: number; artifactLabelKo?: string; sourcePageId?: string; safeBlocks: CoursewarePageBlock[]; readiness: { status: CoursewarePublishReadiness["status"]; checkSummary: string[] }; safety: { checkedIds: string[]; completedAt: string | null; disclosureSummaryKo: string }; createdAt: string; updatedAt: string; visibility: "link-public"; noindex: true; rendererVersion: "safe-blocks-v1" };
+export type ValidatePublishInput = { pageDraft: CoursewarePageDraft | null; readiness: CoursewarePublishReadiness; safetyAcknowledgement: CoursewareSafetyAcknowledgement | null };

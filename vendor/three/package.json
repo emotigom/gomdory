@@ -1,0 +1,6 @@
+{
+  "name": "three",
+  "version": "0.181.2",
+  "main": "index.js",
+  "types": "index.d.ts"
+}

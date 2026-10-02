@@ -1,0 +1,6 @@
+{
+  "name": "simple-peer",
+  "version": "9.99.0",
+  "main": "index.js",
+  "types": "index.d.ts"
+}

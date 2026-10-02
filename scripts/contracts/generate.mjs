@@ -1,0 +1,273 @@
+import { promises as fs, readFileSync } from "fs";
+import path from "path";
+import { fileURLToPath } from "url";
+import { createRequire } from "module";
+
+const require = createRequire(import.meta.url);
+const esbuild = require("esbuild");
+
+require.extensions[".ts"] = (loadedModule, filename) => {
+  const source = readFileSync(filename, "utf8");
+  const { code } = esbuild.transformSync(source, {
+    loader: "ts",
+    format: "cjs",
+    target: "es2020",
+  });
+  loadedModule._compile(code, filename);
+};
+
+const { api } = require("../../lib/contracts/api.ts");
+
+const SCRIPT_DIR = path.dirname(fileURLToPath(import.meta.url));
+const REPO_ROOT = path.resolve(SCRIPT_DIR, "../..");
+const DOCS_DIR = path.join(REPO_ROOT, "docs", "security");
+const CLIENT_PATH = path.join(REPO_ROOT, "lib", "api", "client.generated.ts");
+
+const ensureDir = async (dir) => {
+  await fs.mkdir(dir, { recursive: true });
+};
+
+const isRoute = (value) => Boolean(value && typeof value === "object" && value.kind === "route");
+
+const collectRoutes = (node, prefix = []) => {
+  const routes = [];
+  for (const [key, value] of Object.entries(node ?? {})) {
+    if (isRoute(value)) {
+      routes.push({ id: [...prefix, key].join("."), ...value });
+    } else if (value && typeof value === "object") {
+      routes.push(...collectRoutes(value, [...prefix, key]));
+    }
+  }
+  return routes;
+};
+
+const normalizeSchema = (schema) => {
+  if (!schema || typeof schema !== "object") return schema;
+  if (schema._def?.typeName === "ZodEffects") {
+    return normalizeSchema(schema._def.schema);
+  }
+  return schema;
+};
+
+const isOptional = (schema) => {
+  const typeName = schema?._def?.typeName;
+  return typeName === "ZodOptional" || typeName === "ZodDefault";
+};
+
+const unwrapOptional = (schema) => {
+  if (schema?._def?.typeName === "ZodOptional") return schema._def.innerType;
+  if (schema?._def?.typeName === "ZodDefault") return schema._def.innerType;
+  return schema;
+};
+
+const schemaToJson = (schema) => {
+  const normalized = normalizeSchema(schema);
+  const typeName = normalized?._def?.typeName;
+
+  if (!typeName) {
+    return { type: "unknown" };
+  }
+
+  if (typeName === "ZodString") return { type: "string" };
+  if (typeName === "ZodNumber") return { type: "number" };
+  if (typeName === "ZodBoolean") return { type: "boolean" };
+  if (typeName === "ZodNull") return { type: "null" };
+  if (typeName === "ZodAny" || typeName === "ZodUnknown") return { type: "unknown" };
+
+  if (typeName === "ZodLiteral") {
+    return { const: normalized._def.value };
+  }
+
+  if (typeName === "ZodEnum") {
+    return { enum: normalized._def.values };
+  }
+
+  if (typeName === "ZodArray") {
+    return { type: "array", items: schemaToJson(normalized._def.type) };
+  }
+
+  if (typeName === "ZodRecord") {
+    return { type: "object", additionalProperties: schemaToJson(normalized._def.valueType) };
+  }
+
+  if (typeName === "ZodUnion") {
+    return { anyOf: normalized._def.options.map(schemaToJson) };
+  }
+
+  if (typeName === "ZodOptional") {
+    return { ...schemaToJson(normalized._def.innerType), optional: true };
+  }
+
+  if (typeName === "ZodNullable") {
+    return { anyOf: [schemaToJson(normalized._def.innerType), { type: "null" }] };
+  }
+
+  if (typeName === "ZodObject") {
+    const shape = typeof normalized.shape === "function" ? normalized.shape() : normalized.shape ?? normalized._def.shape();
+    const properties = {};
+    const required = [];
+    for (const [key, value] of Object.entries(shape)) {
+      const optional = isOptional(value);
+      const inner = optional ? unwrapOptional(value) : value;
+      properties[key] = schemaToJson(inner);
+      if (!optional) required.push(key);
+    }
+    const schemaJson = { type: "object", properties };
+    if (required.length) schemaJson.required = required;
+    return schemaJson;
+  }
+
+  return { type: "unknown" };
+};
+
+const buildMarkdown = (routes) => {
+  const lines = [
+    "# API Contract Registry",
+    "",
+    `Generated: ${new Date().toISOString()}`,
+    "",
+  ];
+
+  for (const route of routes) {
+    lines.push(`## ${route.id}`);
+    lines.push("");
+    lines.push(`- Method: \`${route.method}\``);
+    lines.push(`- Path: \`${route.pathTemplate ?? route.path}\``);
+    lines.push(`- Response Type: \`${route.responseType}\``);
+    lines.push(`- Errors: ${route.errors.length ? route.errors.join(", ") : "none"}`);
+    lines.push("");
+    lines.push("**Request Schema**");
+    lines.push("```json");
+    lines.push(JSON.stringify(schemaToJson(route.request), null, 2));
+    lines.push("```");
+    lines.push("");
+    lines.push("**Response Schema**");
+    lines.push("```json");
+    lines.push(JSON.stringify(schemaToJson(route.response), null, 2));
+    lines.push("```");
+    lines.push("");
+  }
+
+  return lines.join("\n");
+};
+
+const buildClient = () => {
+  const lines = [
+    "// This file is auto-generated by scripts/contracts/generate.mjs. Do not edit.",
+    "",
+    'import { api } from "@/lib/contracts/api";',
+    'import type { ContractRoute } from "@/lib/contracts/defineRoute";',
+    'import { apiFetch } from "@/lib/http/apiFetch";',
+    'import { apiPath, type ApiPath } from "@/lib/standards/pathTypes";',
+    'import { z } from "zod";',
+    "",
+    "type CallOptions = RequestInit & { validate?: boolean };",
+    "",
+    "type ResponseOf<T extends ContractRoute> = T[\"responseType\"] extends \"response\" ? Response : z.infer<T[\"response\"]>;",
+    "",
+    "const shouldValidate = (options?: CallOptions) =>",
+    "  options?.validate ?? (process.env.NODE_ENV !== \"production\" || Boolean(process.env.CI));",
+    "",
+    "const buildPath = (route: ContractRoute, params?: Record<string, unknown>) => {",
+    "  const args = (route.params ?? []).map((name) => params?.[name]);",
+    "  if ((route.params ?? []).some((_, index) => typeof args[index] === \"undefined\")) {",
+    "    throw new Error(`Missing params for route ${route.pathTemplate ?? route.path}`);",
+    "  }",
+    "  return route.buildPath(...args);",
+    "};",
+    "",
+    "const appendQuery = (path: ApiPath, query?: Record<string, unknown>) => {",
+    "  if (!query) return path;",
+    "  const search = new URLSearchParams();",
+    "  for (const [key, value] of Object.entries(query)) {",
+    "    if (value === undefined || value === null) continue;",
+    "    if (Array.isArray(value)) {",
+    "      value.forEach((item) => search.append(key, String(item)));",
+    "    } else {",
+    "      search.append(key, String(value));",
+    "    }",
+    "  }",
+    "  const suffix = search.toString();",
+    "  return apiPath(suffix ? `${path}?${suffix}` : path);",
+    "};",
+    "",
+    "const normalizeBody = (body: unknown, headers: Headers) => {",
+    "  if (body === undefined) return undefined;",
+    "  if (body instanceof FormData || body instanceof Blob || typeof body === \"string\") return body;",
+    "  headers.set(\"content-type\", \"application/json\");",
+    "  return JSON.stringify(body);",
+    "};",
+    "",
+    "const callRoute = async <T extends ContractRoute>(route: T, input?: z.input<T[\"request\"]>, options?: CallOptions) => {",
+    "  if (shouldValidate(options)) {",
+    "    route.request.parse(input);",
+    "  }",
+    "",
+    "  const payload = (input ?? {}) as { params?: Record<string, unknown>; query?: Record<string, unknown>; body?: unknown };",
+    "  const path = appendQuery(buildPath(route, payload.params), payload.query);",
+    "  const headers = new Headers(options?.headers ?? {});",
+    "  const body = normalizeBody(payload.body, headers);",
+    "  const response = await apiFetch(path, {",
+    "    ...options,",
+    "    method: route.method,",
+    "    headers,",
+    "    body,",
+    "  });",
+    "  if (route.responseType === \"response\") {",
+    "    return response as ResponseOf<T>;",
+    "  }",
+    "  const data = await response.json().catch(() => null);",
+    "  if (shouldValidate(options)) {",
+    "    route.response.parse(data);",
+    "  }",
+    "  return data as ResponseOf<T>;",
+    "};",
+    "",
+  ];
+
+  const renderNode = (node, prefix = []) => {
+    const entries = Object.entries(node).map(([key, value]) => {
+      if (isRoute(value)) {
+        const routePath = [...prefix, key].join(".");
+        return `  ${key}: { call: (input?: z.input<typeof api.${routePath}.request>, options?: CallOptions) => callRoute(api.${routePath}, input, options) },`;
+      }
+      if (value && typeof value === "object") {
+        return `  ${key}: {\n${renderNode(value, [...prefix, key])}\n  },`;
+      }
+      return null;
+    });
+    return entries.filter(Boolean).join("\n");
+  };
+
+  lines.push("export const client = {");
+  lines.push(renderNode(api));
+  lines.push("} as const;");
+
+  return lines.join("\n");
+};
+
+const routes = collectRoutes(api).sort((a, b) => a.id.localeCompare(b.id));
+
+const payload = {
+  generatedAt: new Date().toISOString(),
+  routes: routes.map((route) => ({
+    id: route.id,
+    method: route.method,
+    path: route.pathTemplate ?? route.path,
+    responseType: route.responseType,
+    errors: route.errors,
+    requestSchema: schemaToJson(route.request),
+    responseSchema: schemaToJson(route.response),
+  })),
+};
+
+await ensureDir(DOCS_DIR);
+await ensureDir(path.dirname(CLIENT_PATH));
+
+await fs.writeFile(path.join(DOCS_DIR, "api-contract.json"), JSON.stringify(payload, null, 2));
+const reportDir = path.join(REPO_ROOT, ".cache", "audit");
+await ensureDir(reportDir);
+await fs.writeFile(path.join(reportDir, "api-contract.md"), buildMarkdown(routes));
+await fs.writeFile(CLIENT_PATH, buildClient());
+
+console.log(`[contracts] Generated ${routes.length} routes.`);

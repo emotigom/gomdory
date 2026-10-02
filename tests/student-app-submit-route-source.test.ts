@@ -1,0 +1,38 @@
+import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
+import test from "node:test";
+
+test("student submit route source guard", () => {
+  const source = readFileSync("app/api/v1/student-apps/submit/route.ts", "utf8");
+  assert.match(source, /access_required/);
+  assert.match(source, /guestToken|studentSessionToken/);
+  assert.match(source, /shareCode|accessCode/);
+  assert.match(source, /submissions_disabled/);
+  assert.match(source, /classRow\?\.lockedAt/);
+  assert.match(source, /toCamelKeys\(classRes\.data/);
+  assert.doesNotMatch(source, /classRes\.error\s*\|\|\s*!classRes\.data/);
+  assert.match(source, /select\("id, share_code, share_enabled"\)/);
+  assert.match(source, /normalizeShareCode\(board\.shareCode \?\? ""\) === shareCode/);
+  assert.match(source, /board\.shareEnabled === true/);
+  assert.match(source, /if \(!boardShareMatches\) \{/);
+  assert.match(source, /from\("edu_join_codes"\)/);
+  assert.match(source, /invalid_board_access/);
+  assert.match(source, /checkRateLimit/);
+  assert.match(source, /from\("student_app_class_sessions"\)/);
+  assert.match(source, /isStudentAppSubmissionOpen/);
+  assert.match(source, /session_closed/);
+  assert.match(source, /지금은 학생 앱 제출이 닫혀 있어요/);
+  assert.match(source, /authorClientId\?: string \| null/);
+  assert.match(source, /invalid_author_id/);
+  assert.match(source, /classSessionId = activeSession\.id/);
+  assert.match(source, /authorClientId,/);
+  assert.match(source, /getTrustedParticipantOwnershipContext/);
+  assert.doesNotMatch(source, /statusCapability/);
+  assert.match(source, /ownership: trustedOwnership/);
+  assert.ok(source.indexOf("invalid_board_access") < source.indexOf("student_app_class_sessions"));
+  assert.match(source, /autoPublishStudentAppSubmission/);
+  assert.ok(source.indexOf("createStudentAppSubmission") < source.lastIndexOf("autoPublishStudentAppSubmission"));
+  assert.doesNotMatch(source, /r2Prefix|r2Key/i);
+  assert.doesNotMatch(source, /router\.refresh/);
+  assert.doesNotMatch(source, /jszip|fflate|adm-zip|yauzl/i);
+});

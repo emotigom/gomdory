@@ -1,0 +1,16 @@
+export const eduCopy = {
+  courseMapTitle: "오늘의 코스 맵",
+  completionSaved: "완료 기록이 저장되었어요!",
+  completionRequireProfile: "공유코드를 먼저 저장해야 완료로 기록돼요.",
+  completionServerFail: "완료 기록을 서버에 저장하지 못했어요. 다시 시도해주세요.",
+  completionModalTitle: "대단해요! ⭐️",
+  completionModalBody: "한 단계 더 성장했어요. 다음 교시로 이동하거나 코스맵으로 돌아가 볼까요?",
+  completionNextLesson: "다음 교시",
+  completionBackToMap: "코스맵으로",
+  settingsTitle: "설정",
+  settingsSoundOn: "소리 켜기",
+  settingsSoundOff: "소리 끄기",
+  settingsReduceMotion: "애니메이션 줄이기",
+  settingsOpenLabel: "학습 설정 열기",
+  settingsCloseLabel: "설정 닫기",
+};

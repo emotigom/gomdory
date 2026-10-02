@@ -1,0 +1,12 @@
+{
+  "baseUrl": "https://assets.gomdory.com/r2",
+  "assets": [
+    { "key": "day01.hero", "group": "scenes", "day": 1, "sceneType": "intro", "path": "courseware/day01-hero.webp" },
+    { "key": "day05.fairness", "group": "scenes", "day": 5, "sceneType": "theory", "path": "courseware/day05-fairness.webp" },
+    { "key": "day10.notebook", "group": "scenes", "day": 10, "sceneType": "notebook", "path": "courseware/day10-notebook.webp" },
+    { "key": "day16.showcase", "group": "completion", "day": 16, "sceneType": "completion", "path": "courseware/day16-showcase.webp" },
+    { "key": "global.stage", "group": "extras", "path": "courseware/stage-panel.jpg" },
+    { "key": "global.notebook", "group": "extras", "path": "courseware/notebook-lab.jpg" },
+    { "key": "global.completion", "group": "completion", "path": "courseware/completion.jpg" }
+  ]
+}

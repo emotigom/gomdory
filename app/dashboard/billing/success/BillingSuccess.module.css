@@ -1,0 +1,312 @@
+.page {
+  --receipt-ink: var(--theme-text);
+  --receipt-paper: var(--theme-card);
+  display: grid;
+  min-height: calc(100vh - 72px);
+  place-items: start center;
+  background: var(--theme-bg);
+  padding: clamp(1.25rem, 5vw, 4rem) 1rem 5rem;
+  color: var(--theme-text);
+}
+
+.receipt {
+  width: min(100%, 58rem);
+  border: 2px solid var(--receipt-ink);
+  border-radius: 0;
+  background: var(--receipt-paper);
+  box-shadow: 8px 8px 0 var(--receipt-ink);
+}
+
+.receiptHeader {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 2px dashed var(--receipt-ink);
+  padding: 1rem clamp(1rem, 4vw, 1.75rem);
+}
+
+.receiptHeader div {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.receiptHeader p,
+.receiptHeader span,
+.kicker,
+.liveCheck small {
+  margin: 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.65rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+}
+
+.receiptHeader p,
+.kicker {
+  color: var(--theme-accent);
+}
+
+.receiptHeader span {
+  color: var(--theme-text-muted);
+}
+
+.receiptHeader strong {
+  border: 2px solid currentColor;
+  padding: 0.4rem 0.65rem;
+  font-size: 0.72rem;
+  font-weight: 950;
+  letter-spacing: 0.08em;
+  transform: rotate(-2deg);
+}
+
+.receiptVerified .receiptHeader strong {
+  color: var(--theme-success);
+}
+
+.receiptPending .receiptHeader strong {
+  color: var(--theme-warning);
+}
+
+.receiptBody {
+  display: grid;
+  gap: clamp(1.25rem, 4vw, 2rem);
+  padding: clamp(1.4rem, 5vw, 3.25rem);
+}
+
+.copy h1 {
+  max-width: 46rem;
+  margin: 0.65rem 0 0;
+  color: var(--theme-text);
+  font-size: clamp(2.35rem, 8vw, 5.2rem);
+  font-weight: 950;
+  letter-spacing: -0.075em;
+  line-height: 0.98;
+  text-wrap: balance;
+}
+
+.copy > p {
+  max-width: 38rem;
+  margin: 1.1rem 0 0;
+  color: var(--theme-text-muted);
+  font-size: clamp(0.9rem, 2.2vw, 1.05rem);
+  font-weight: 650;
+  line-height: 1.7;
+}
+
+.checkBoard {
+  display: grid;
+  overflow: hidden;
+  border: 2px solid var(--receipt-ink);
+  background: var(--theme-surface-muted);
+}
+
+.statusMark {
+  display: grid;
+  min-height: 9rem;
+  place-items: center;
+  align-content: center;
+  gap: 0.35rem;
+  border-bottom: 2px solid var(--receipt-ink);
+  background: var(--theme-accent);
+  color: var(--theme-accent-text);
+}
+
+.receiptVerified .statusMark {
+  background: var(--theme-success);
+}
+
+.receiptPending .statusMark {
+  background: var(--theme-warning);
+  color: var(--theme-text);
+}
+
+.statusMark span {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 3.2rem;
+  font-weight: 950;
+  line-height: 1;
+}
+
+.statusMark small {
+  border-top: 1px solid currentColor;
+  padding-top: 0.35rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.62rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+}
+
+.checkBoard dl {
+  margin: 0;
+}
+
+.checkBoard dl > div {
+  display: grid;
+  grid-template-columns: 5rem minmax(0, 1fr);
+}
+
+.checkBoard dl > div + div {
+  border-top: 1px dashed var(--theme-border);
+}
+
+.checkBoard dt,
+.checkBoard dd {
+  margin: 0;
+  padding: 0.8rem 0.9rem;
+  font-size: 0.78rem;
+}
+
+.checkBoard dt {
+  border-right: 1px solid var(--theme-border);
+  color: var(--theme-text-muted);
+  font-weight: 800;
+}
+
+.checkBoard dd {
+  color: var(--theme-text);
+  font-weight: 900;
+}
+
+.liveCheck {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 0.75rem;
+  border-block: 1px dashed var(--theme-border-strong);
+  padding: 0.85rem 0;
+}
+
+.liveCheck p {
+  margin: 0;
+  color: var(--theme-text);
+  font-size: 0.82rem;
+  font-weight: 800;
+  line-height: 1.55;
+}
+
+.liveCheck small {
+  grid-column: 2;
+  color: var(--theme-text-muted);
+}
+
+.liveDot {
+  width: 0.85rem;
+  height: 0.85rem;
+  grid-row: 1 / span 2;
+  border: 2px solid var(--receipt-ink);
+  border-radius: 50%;
+  background: var(--theme-warning);
+  box-shadow: 2px 2px 0 var(--receipt-ink);
+  animation: receipt-pulse 1.4s steps(2, end) infinite;
+}
+
+.liveCheck[data-verified="true"] .liveDot {
+  background: var(--theme-success);
+  animation: none;
+}
+
+.receiptFooter {
+  display: grid;
+  gap: 1rem;
+  border-top: 2px solid var(--receipt-ink);
+  background: var(--theme-surface-muted);
+  padding: clamp(1rem, 4vw, 1.75rem);
+}
+
+.receiptFooter > p {
+  margin: 0;
+  color: var(--theme-text-muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1.6;
+}
+
+.actions {
+  display: grid;
+  gap: 0.7rem;
+}
+
+.primaryAction,
+.secondaryAction {
+  display: inline-flex;
+  min-height: 3rem;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--receipt-ink);
+  border-radius: 0;
+  padding: 0.7rem 1rem;
+  color: var(--theme-text);
+  font-size: 0.84rem;
+  font-weight: 900;
+  text-align: center;
+  text-decoration: none;
+}
+
+.primaryAction {
+  background: var(--theme-accent);
+  color: var(--theme-accent-text);
+  box-shadow: 3px 3px 0 var(--receipt-ink);
+}
+
+.secondaryAction {
+  background: var(--receipt-paper);
+}
+
+.primaryAction:hover,
+.secondaryAction:hover {
+  transform: translate(-1px, -1px);
+}
+
+.primaryAction:focus-visible,
+.secondaryAction:focus-visible {
+  outline: 3px solid var(--theme-focus);
+  outline-offset: 3px;
+}
+
+:global(html[data-theme="hud"]) .receipt,
+:global(html[data-gom-theme="minimal-hud"]) .receipt {
+  --receipt-ink: var(--theme-border-strong);
+  --receipt-paper: var(--theme-panel);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--theme-accent) 24%, transparent),
+    8px 8px 0 color-mix(in srgb, var(--theme-accent) 42%, transparent);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+@media (min-width: 40rem) {
+  .checkBoard {
+    grid-template-columns: 10rem minmax(0, 1fr);
+    align-items: stretch;
+  }
+
+  .statusMark {
+    border-right: 2px solid var(--receipt-ink);
+    border-bottom: 0;
+  }
+
+  .receiptFooter {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+  }
+
+  .actions {
+    grid-template-columns: repeat(2, auto);
+  }
+}
+
+@keyframes receipt-pulse {
+  50% { opacity: 0.38; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .liveDot {
+    animation: none;
+  }
+
+  .primaryAction,
+  .secondaryAction {
+    transition: none;
+  }
+}

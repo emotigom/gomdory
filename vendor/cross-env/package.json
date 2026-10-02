@@ -1,0 +1,8 @@
+{
+  "name": "cross-env",
+  "version": "0.0.0-local",
+  "private": true,
+  "bin": {
+    "cross-env": "bin/cross-env.js"
+  }
+}

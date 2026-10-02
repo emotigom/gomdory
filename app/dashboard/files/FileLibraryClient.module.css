@@ -1,0 +1,452 @@
+.workshop {
+  color: var(--theme-text);
+}
+
+.workshop :global(.dashboard-files-card),
+.workshop :global(.dashboard-files-row),
+.workshop :global(.dashboard-files-control),
+.workshop :global(.dashboard-files-menu-item),
+.workshop :global(.dashboard-files-input),
+.workshop :global(.dashboard-files-empty-state) {
+  border-radius: 2px !important;
+}
+
+.workshop :global(.dashboard-files-control:focus-visible),
+.workshop :global(.dashboard-files-menu-item:focus-visible),
+.workshop :global(.dashboard-files-input:focus-visible),
+.workshop :global(.dashboard-files-input:focus-within) {
+  outline: 3px solid var(--theme-focus) !important;
+  outline-offset: 2px;
+  box-shadow: none !important;
+}
+
+.workshop :global(.text-slate-900),
+.workshop :global(.text-slate-800),
+.workshop :global(.text-slate-700),
+.workshop :global(.text-gray-900) {
+  color: var(--theme-text) !important;
+}
+
+.workshop :global(.text-slate-600),
+.workshop :global(.text-slate-500),
+.workshop :global(.text-gray-600) {
+  color: var(--theme-text-muted) !important;
+}
+
+.workshop :global(.text-slate-400) {
+  color: var(--theme-text-subtle) !important;
+}
+
+.workshop :global(.text-indigo-900),
+.workshop :global(.text-indigo-700),
+.workshop :global(.text-indigo-500) {
+  color: var(--theme-accent) !important;
+}
+
+.workshop :global(.text-rose-700),
+.workshop :global(.text-rose-600) {
+  color: var(--theme-danger) !important;
+}
+
+.workshop :global(.text-emerald-700) {
+  color: var(--theme-success) !important;
+}
+
+.workshop :global(.text-amber-600) {
+  color: var(--theme-warning) !important;
+}
+
+.workshop :global(.bg-white),
+.workshop :global(.bg-white\/80),
+.workshop :global(.bg-white\/90) {
+  background-color: var(--theme-surface) !important;
+}
+
+.workshop :global(.bg-slate-50),
+.workshop :global(.bg-slate-50\/60),
+.workshop :global(.bg-slate-50\/70),
+.workshop :global(.bg-slate-100) {
+  background-color: var(--theme-surface-muted) !important;
+}
+
+.workshop :global(.bg-indigo-50\/70),
+.workshop :global(.bg-indigo-50\/90) {
+  background-color: color-mix(in srgb, var(--theme-accent) 9%, var(--theme-surface)) !important;
+}
+
+.workshop :global(.bg-indigo-50) {
+  background-color: color-mix(in srgb, var(--theme-accent) 12%, var(--theme-surface)) !important;
+}
+
+.workshop :global(.bg-indigo-600),
+.workshop :global(.bg-slate-900) {
+  background-color: var(--theme-accent) !important;
+}
+
+.workshop :global(.bg-rose-500) {
+  background-color: var(--theme-danger) !important;
+}
+
+.workshop :global(.bg-rose-50) {
+  background-color: color-mix(in srgb, var(--theme-danger) 9%, var(--theme-surface)) !important;
+}
+
+.workshop :global(.bg-emerald-50) {
+  background-color: color-mix(in srgb, var(--theme-success) 10%, var(--theme-surface)) !important;
+}
+
+.workshop :global(.border-slate-100),
+.workshop :global(.border-slate-200),
+.workshop :global(.border-slate-300),
+.workshop :global(.border-indigo-100),
+.workshop :global(.border-indigo-200) {
+  border-color: var(--theme-border) !important;
+}
+
+.workshop :global(.border-slate-900),
+.workshop :global(.border-indigo-500),
+.workshop :global(.border-indigo-600) {
+  border-color: var(--theme-border-strong) !important;
+}
+
+.workshop :global(.border-rose-200),
+.workshop :global(.border-rose-300),
+.workshop :global(.border-rose-500) {
+  border-color: var(--theme-danger) !important;
+}
+
+.workshop :global(.border-emerald-200),
+.workshop :global(.border-emerald-600) {
+  border-color: var(--theme-success) !important;
+}
+
+.workshop :global(.accent-indigo-600) {
+  accent-color: var(--theme-accent);
+}
+
+.workshop :global(input),
+.workshop :global(select) {
+  color: var(--theme-text);
+  background-color: var(--theme-surface);
+}
+
+.workshop :global(input::placeholder) {
+  color: var(--theme-text-subtle);
+}
+
+.toast {
+  width: min(22rem, calc(100vw - 3rem));
+  border: 2px solid var(--theme-border-strong) !important;
+  background: var(--theme-surface) !important;
+  box-shadow: 4px 4px 0 var(--theme-accent) !important;
+}
+
+.toolShelf,
+.filterRack,
+.queueSheet,
+.libraryCabinet {
+  border: 2px solid var(--theme-border-strong) !important;
+  background: var(--theme-surface) !important;
+  box-shadow: 5px 5px 0 var(--theme-border) !important;
+}
+
+.toolShelf {
+  position: relative;
+  padding-top: 1.35rem;
+}
+
+.toolShelf::before {
+  position: absolute;
+  top: 0;
+  left: 1.5rem;
+  content: "TOOL SHELF";
+  padding: 0.2rem 0.55rem;
+  background: var(--theme-warning);
+  color: var(--theme-accent-text);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.62rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  transform: translateY(-50%) rotate(-1deg);
+}
+
+.uploadTray {
+  border: 2px dashed var(--theme-border-strong) !important;
+  background: color-mix(in srgb, var(--theme-accent) 10%, var(--theme-surface)) !important;
+  box-shadow: 5px 5px 0 var(--theme-accent) !important;
+}
+
+.boardPicker {
+  min-width: 0;
+  border-left: 4px solid var(--theme-accent);
+  padding-left: 0.8rem;
+}
+
+.filterRack {
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 31px,
+    color-mix(in srgb, var(--theme-border) 16%, transparent) 32px
+  ) !important;
+}
+
+.queueSheet {
+  border-left: 8px solid var(--theme-accent) !important;
+  box-shadow: 4px 4px 0 var(--theme-border) !important;
+}
+
+.queueRow,
+.fileRow {
+  border: 1px dashed var(--theme-border) !important;
+  background: var(--theme-surface) !important;
+}
+
+.errorSheet {
+  border: 2px solid var(--theme-danger) !important;
+  background: color-mix(in srgb, var(--theme-danger) 8%, var(--theme-surface)) !important;
+  box-shadow: 4px 4px 0 var(--theme-danger) !important;
+}
+
+.libraryCabinet {
+  padding: 0 !important;
+  overflow: hidden;
+}
+
+.libraryCabinet::before {
+  display: block;
+  content: "MATERIAL INDEX / 자료 색인";
+  padding: 0.7rem 1rem;
+  border-bottom: 2px solid var(--theme-border-strong);
+  background: var(--theme-surface-muted);
+  color: var(--theme-text-muted);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.65rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+}
+
+.libraryBody {
+  padding: 1rem;
+}
+
+.emptySheet {
+  min-height: 15rem;
+  border: 2px dashed var(--theme-border-strong) !important;
+  background: var(--theme-card-muted);
+}
+
+.indexDrawer,
+.drawerSection {
+  border: 2px solid var(--theme-border-strong) !important;
+  background: var(--theme-surface) !important;
+  box-shadow: 3px 3px 0 var(--theme-border) !important;
+}
+
+.indexDrawer:first-child {
+  background: var(--theme-surface-muted) !important;
+}
+
+.fileCard {
+  border: 2px solid var(--theme-border-strong) !important;
+  background: var(--theme-surface) !important;
+  box-shadow: 4px 4px 0 var(--theme-border) !important;
+}
+
+.fileCard::before {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  z-index: 2;
+  width: 3.25rem;
+  height: 0.45rem;
+  content: "";
+  background: color-mix(in srgb, var(--theme-warning) 68%, transparent);
+  transform: translate(-50%, -1px);
+}
+
+.fileCard:hover,
+.fileRow:hover {
+  border-color: var(--theme-accent) !important;
+  box-shadow: 5px 5px 0 var(--theme-accent) !important;
+}
+
+.previewWell {
+  border-bottom: 2px dashed var(--theme-border);
+  background: var(--theme-surface-muted) !important;
+}
+
+.primaryButton,
+.secondaryButton,
+.dangerButton,
+.chip,
+.chipActive {
+  min-height: 2.5rem;
+  border: 2px solid var(--theme-border-strong) !important;
+  padding-inline: 0.8rem;
+  font-weight: 800 !important;
+}
+
+.workshop .primaryButton,
+.workshop .chipActive {
+  background: var(--theme-accent) !important;
+  color: var(--theme-accent-text) !important;
+  box-shadow: 3px 3px 0 var(--theme-border-strong) !important;
+}
+
+.workshop .chipActive :global(.text-slate-400) {
+  color: color-mix(in srgb, var(--theme-accent-text) 76%, transparent) !important;
+}
+
+.secondaryButton,
+.chip {
+  background: var(--theme-surface) !important;
+  color: var(--theme-text-muted) !important;
+}
+
+.dangerButton {
+  border-color: var(--theme-danger) !important;
+  background: var(--theme-danger) !important;
+  color: var(--theme-accent-text) !important;
+}
+
+.primaryButton:hover,
+.secondaryButton:hover,
+.dangerButton:hover,
+.chip:hover,
+.chipActive:hover {
+  transform: translateY(-1px);
+}
+
+.inputShelf {
+  min-height: 2.75rem;
+  border: 2px solid var(--theme-border-strong) !important;
+  background: var(--theme-surface) !important;
+}
+
+.menu {
+  border: 2px solid var(--theme-border-strong) !important;
+  background: var(--theme-surface) !important;
+  box-shadow: 4px 4px 0 var(--theme-border-strong) !important;
+}
+
+.dialogBackdrop {
+  background: color-mix(in srgb, var(--theme-text) 52%, transparent);
+}
+
+.confirmDialog {
+  border: 2px solid var(--theme-border-strong) !important;
+  background: var(--theme-surface) !important;
+  box-shadow: 7px 7px 0 var(--theme-danger) !important;
+}
+
+.confirmDialog::before {
+  position: absolute;
+  top: 0;
+  left: 1.25rem;
+  width: 4.5rem;
+  height: 0.5rem;
+  content: "";
+  background: var(--theme-danger);
+  transform: translateY(-50%) rotate(-1deg);
+}
+
+.deleteFileList {
+  border: 1px dashed var(--theme-border-strong);
+  background: var(--theme-surface-muted);
+}
+
+.deleteFileList li + li {
+  margin-top: 0.35rem;
+}
+
+.drawerBackdrop {
+  background: color-mix(in srgb, var(--theme-text) 46%, transparent) !important;
+}
+
+.drawer {
+  border-left: 2px solid var(--theme-border-strong) !important;
+  background: var(--theme-bg-elevated) !important;
+  color: var(--theme-text);
+  box-shadow: -8px 0 0 color-mix(in srgb, var(--theme-accent) 74%, transparent) !important;
+}
+
+.drawerHeader {
+  border-bottom: 2px solid var(--theme-border-strong) !important;
+  background: var(--theme-text);
+  color: var(--theme-bg);
+}
+
+.drawerHeader :global(.text-indigo-500),
+.drawerHeader :global(.text-slate-900) {
+  color: var(--theme-bg) !important;
+}
+
+.previewFrame {
+  border: 1px dashed var(--theme-border);
+  background: var(--theme-surface-muted) !important;
+}
+
+.successSheet {
+  border: 2px solid var(--theme-success) !important;
+  background: color-mix(in srgb, var(--theme-success) 10%, var(--theme-surface)) !important;
+  color: var(--theme-success) !important;
+  box-shadow: 3px 3px 0 var(--theme-success) !important;
+}
+
+@media (max-width: 639px) {
+  .toolShelf,
+  .filterRack,
+  .queueSheet,
+  .uploadTray {
+    box-shadow: 3px 3px 0 var(--theme-border) !important;
+  }
+
+  .uploadTray,
+  .filterRack {
+    position: static !important;
+  }
+
+  .mobileFinePrint {
+    display: none;
+  }
+
+  .boardPicker {
+    width: 100%;
+  }
+
+  .uploadTray > button {
+    width: 100%;
+  }
+
+  .toolShelf :global(label.dashboard-files-card) {
+    width: 100%;
+  }
+
+  .toolShelf .primaryButton,
+  .toolShelf .secondaryButton {
+    flex: 1 1 9rem;
+  }
+
+  .filterRack :global(select) {
+    flex: 1 1 8rem;
+  }
+
+  .confirmDialog {
+    box-shadow: 4px 4px 0 var(--theme-danger) !important;
+  }
+
+  .drawer {
+    max-width: calc(100% - 0.75rem) !important;
+    box-shadow: -4px 0 0 var(--theme-accent) !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .workshop *,
+  .workshop *::before,
+  .workshop *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
