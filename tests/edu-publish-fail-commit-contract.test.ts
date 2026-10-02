@@ -26,7 +26,7 @@ const DIGEST = "a".repeat(64);
 const SLUG = "abc123-123456-p1";
 const ATTEMPTS_MIGRATION_PATH = resolve(
   process.cwd(),
-  "supabase/migrations/20261224100000_create_edu_publish_attempts.sql",
+  "supabase/migrations/20260929093150_successor_baseline.sql",
 );
 const attemptsMigrationSql = readFileSync(ATTEMPTS_MIGRATION_PATH, "utf8")
   .replace(/\/\*[\s\S]*?\*\//g, " ")
@@ -345,11 +345,11 @@ test("ATTEMPT_EXPIRED is stored terminal state only", () => {
 test("migration state shapes and fail request tuple stay aligned", () => {
   assert.match(
     attemptsMigrationSql,
-    /state = 'failed_restart_required' and [^)]*failure_code in \( [^)]*'attempt_expired'/,
+    /state = 'failed_restart_required'::text[^;]*failure_code = any \(array\[[^\]]*'attempt_expired'::text/,
   );
   assert.match(
     attemptsMigrationSql,
-    /state = 'abandoned' and [^)]*failure_code = 'attempt_expired'/,
+    /state = 'abandoned'::text[^;]*failure_code = 'attempt_expired'::text/,
   );
   assert.equal(
     EDU_PUBLISH_FAIL_COMMIT_FAILURE_CODES.includes("ATTEMPT_EXPIRED" as never),
