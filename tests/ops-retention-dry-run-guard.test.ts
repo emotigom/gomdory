@@ -2,15 +2,13 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { readFileSync } from "node:fs";
 
-// Historical migration contract; the active successor inventory is checked separately.
-const migrationPath = "supabase/history/migrations-pre-successor-20260929/20260218133000_ops_retention_dry_run_guardrails.sql";
+const baselinePath = "supabase/migrations/20260929093150_successor_baseline.sql";
+const baselineSql = readFileSync(baselinePath, "utf8");
 
-const migrationSql = readFileSync(migrationPath, "utf8");
+test("successor baseline: run_ops_data_retention dry-run guards destructive deletes", () => {
+  assert.match(baselineSql, /if not p_dry_run then/i);
 
-test("archived migration: run_ops_data_retention dry-run guards destructive deletes", () => {
-  assert.match(migrationSql, /if not p_dry_run then/i);
-
-  const guardBlockMatch = migrationSql.match(/if not p_dry_run then([\s\S]*?)end if;/i);
+  const guardBlockMatch = baselineSql.match(/if not p_dry_run then([\s\S]*?)end if;/i);
   assert.ok(guardBlockMatch, "expected guarded mutation block");
 
   const guardedBlock = guardBlockMatch?.[1] ?? "";
