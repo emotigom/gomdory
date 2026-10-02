@@ -54,12 +54,15 @@ test("student page uses its route code as the redirect fallback when x-url is ab
   const hostGuard = source.indexOf("await redirectToHostIfNeeded({");
 
   assert.ok(codeResolution >= 0 && codeResolution < hostGuard);
-  assert.match(source, /requestUrl: new URL\(`\/s\/\$\{encodeURIComponent\(code\)\}`/);
+  assert.match(source, /requestUrl: new URL\(`\/s\/${encodeURIComponent\(code\)}`/);
   assert.doesNotMatch(source, /requestHeaders\.get\("x-url"\)/);
 });
 
-test("student share URL builders continue to use the production short host", () => {
+test("student share URL builders use the configured short base URL", () => {
   assert.equal(getStudentUrl("XR52Z4"), `${SHORT_BASE_URL}/XR52Z4`);
   assert.equal(buildShareUrl("XR52Z4"), `${SHORT_BASE_URL}/XR52Z4`);
-  assert.equal(new URL(buildShareUrl("XR52Z4")).host, STUDENT_HOST);
+  assert.equal(
+    new URL(buildShareUrl("XR52Z4")).host,
+    new URL(SHORT_BASE_URL).host,
+  );
 });
