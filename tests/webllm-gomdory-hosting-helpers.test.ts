@@ -1,5 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
+import { CANONICAL_BASE_URL } from "@/lib/http/siteConfig";
 import { classifyContentType, deriveModelArtifactUrls, hasAllowedCors, isAllowedGomdoryOrigin, missingRequiredFields } from "@/lib/webllm/gomdoryHostingCheckHelpers";
 
 test("origin validation accepts only https models.gomdory.com", () => {
@@ -24,7 +25,7 @@ test("content-type classification", () => {
 
 test("cors header validation", () => {
   assert.equal(hasAllowedCors("*"), true);
-  assert.equal(hasAllowedCors("https://www.gomdory.com"), true);
+  assert.equal(hasAllowedCors(CANONICAL_BASE_URL), true);
   assert.equal(hasAllowedCors("https://evil.com"), false);
 });
 
