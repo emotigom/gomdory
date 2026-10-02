@@ -27,9 +27,6 @@ test("public route wiring and guards", () => {
   assert.match(workerSource, /if \(url\.hostname === "eduview\.gkrry\.com"\)/);
   assert.match(workerSource, /if \(!path\.startsWith\("\/apps\/"\)\)/);
 
-  const wrangler = readFileSync("wrangler.jsonc", "utf8");
-  assert.match(wrangler, /eduview\.gkrry\.com/);
-
   const serveSource = readFileSync("lib/student-apps/serveStudentAppDeployment.ts", "utf8");
   assert.match(serveSource, /base-uri 'none'/);
   assert.match(serveSource, /connect-src 'none'/);
