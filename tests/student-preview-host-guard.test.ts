@@ -54,7 +54,7 @@ test("student page uses its route code as the redirect fallback when x-url is ab
   const hostGuard = source.indexOf("await redirectToHostIfNeeded({");
 
   assert.ok(codeResolution >= 0 && codeResolution < hostGuard);
-  assert.match(source, /requestUrl: new URL\(`\/s\/${encodeURIComponent\(code\)}`/);
+  assert.equal(source.includes('requestUrl: new URL(`/s/${encodeURIComponent(code)}`'), true);
   assert.doesNotMatch(source, /requestHeaders\.get\("x-url"\)/);
 });
 
