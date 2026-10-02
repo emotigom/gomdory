@@ -167,12 +167,17 @@ test("student activity panel stays inert without active lesson and renders place
   assert.match(placeholders, /웹 코딩 실습 — 준비 중/);
 });
 
-test("lesson activity progress migration was added deliberately", () => {
-  const migrationFiles = fs.readdirSync(
-    path.join(root, "supabase", "migrations"),
+test("successor baseline includes lesson activity progress schema", () => {
+  const baseline = read(
+    "supabase",
+    "migrations",
+    "20260929093150_successor_baseline.sql",
   );
-  assert.equal(
-    migrationFiles.some((file) => /lesson_activity_progress/i.test(file)),
-    true,
+
+  assert.match(baseline, /create table public\.lesson_activity_runs/i);
+  assert.match(baseline, /create table public\.student_activity_states/i);
+  assert.match(
+    baseline,
+    /student_activity_states_activity_run_id_fkey[\s\S]*references lesson_activity_runs\(id\)/i,
   );
 });
