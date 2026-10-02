@@ -64,7 +64,7 @@ const COMPLETE_BOARD_ID = "00000000-0000-4000-8000-000000000004";
 const COMPLETE_PUBLISHED_AT = "2026-12-24T01:03:00.123456+00:00";
 const COMPLETE_EXPIRES_AT = "2026-12-24T01:45:00.123456+00:00";
 const COMPLETE_MIGRATION_PATH =
-  "supabase/migrations/20261224114000_add_complete_edu_publish_commit_v1.sql";
+  "supabase/migrations/20260929093150_successor_baseline.sql";
 
 const legacyReservationRow = {
   slug: SLUG,
