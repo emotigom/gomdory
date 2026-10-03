@@ -23,4 +23,3 @@ test("starter-template 4-lesson labels remain present", () => {
   assert.match(lessons, /4교시/);
   assert.match(lessons, /자유모드/);
 });
-
