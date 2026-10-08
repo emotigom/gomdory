@@ -856,6 +856,12 @@ html:not([data-theme]) .theme-skeleton-shimmer {
     box-shadow: 0 14px 32px -26px rgba(34, 211, 238, 0.42);
   }
 
+  [data-legal-interaction-scope] .legal-control-theme:not(:disabled):not([aria-disabled="true"]):not([data-disabled="true"]):hover {
+    border-color: var(--theme-border-strong);
+    background-color: var(--theme-card);
+    color: var(--theme-text);
+  }
+
   [data-legal-interaction-scope] .legal-control-light:not(:disabled):not([aria-disabled="true"]):not([data-disabled="true"]):hover {
     border-color: #cbd5e1;
     background-color: #f8fafc;
@@ -864,7 +870,6 @@ html:not([data-theme]) .theme-skeleton-shimmer {
   }
 
   [data-legal-interaction-scope] .legal-text-link:hover {
-    color: #ffffff;
     text-decoration-line: underline;
   }
 }
@@ -1127,7 +1132,7 @@ html[data-gom-theme="gomdory-studio"] {
   --theme-card-muted: #f8f2e7;
   --theme-text: #19243a;
   --theme-text-muted: #4d5868;
-  --theme-text-subtle: #667080;
+  --theme-text-subtle: #596270;
   --theme-border: #b9b3a7;
   --theme-border-strong: #19243a;
   --theme-panel: #fffdf7;
@@ -1182,7 +1187,7 @@ html[data-gom-theme="classroom-ivory"] {
   --theme-card-muted: #f8f3ea;
   --theme-text: #111827;
   --theme-text-muted: #475569;
-  --theme-text-subtle: #64748b;
+  --theme-text-subtle: #59677c;
   --theme-border: #cbd5e1;
   --theme-border-strong: #64748b;
   --theme-panel: #ffffff;
@@ -5344,10 +5349,10 @@ html[data-gom-theme="gomdory-studio"] [data-public-guest-board="modern-hud"]
 
 html[data-gom-theme="gomdory-studio"] [data-public-guest-board="modern-hud"]
   [data-testid="student-topbar-collapsed"] span[title] {
-  border: 1px solid color-mix(in srgb, var(--student-wall-ink) 34%, var(--theme-border));
+  border: 1px solid var(--theme-topbar-border);
   border-radius: 3px;
-  background: var(--student-wall-paper);
-  color: var(--student-wall-ink);
+  background: var(--theme-topbar-pill-bg);
+  color: var(--theme-topbar-pill-text);
   box-shadow: none;
 }
 
@@ -5358,10 +5363,10 @@ html[data-gom-theme="gomdory-studio"] [data-public-guest-board="modern-hud"]
 
 html[data-gom-theme="gomdory-studio"] [data-public-guest-board="modern-hud"]
   [data-testid="student-topbar-expanded"] > div > div {
-  border: 1px solid color-mix(in srgb, var(--student-wall-ink) 28%, var(--theme-border));
+  border: 1px solid var(--theme-topbar-border);
   border-radius: 4px;
-  background: var(--student-wall-paper);
-  color: var(--student-wall-ink);
+  background: var(--theme-topbar-bg);
+  color: var(--theme-topbar-text);
   box-shadow: 0 12px 24px rgba(29, 41, 64, 0.12);
   backdrop-filter: none;
 }
@@ -5394,9 +5399,9 @@ html[data-gom-theme="gomdory-studio"] [data-public-guest-board="modern-hud"]
 
 html[data-gom-theme="gomdory-studio"] [data-public-guest-board="modern-hud"]
   [data-testid="student-topbar-expanded"] select {
-  border: 1px solid color-mix(in srgb, var(--student-wall-ink) 34%, var(--theme-border));
-  background: var(--student-wall-paper);
-  color: var(--student-wall-ink);
+  border: 1px solid var(--theme-topbar-border);
+  background: var(--theme-topbar-pill-bg);
+  color: var(--theme-topbar-pill-text);
   box-shadow: none;
 }
 
@@ -5584,7 +5589,7 @@ html[data-gom-theme="gomdory-studio"] [data-public-guest-board="modern-hud"]
 
 html[data-gom-theme="gomdory-studio"] [data-public-guest-board="modern-hud"]
   [data-testid="guest-card-compose-hint"] p:first-child {
-  color: var(--student-wall-ink);
+  color: var(--theme-section-text);
 }
 
 html[data-gom-theme="gomdory-studio"] [data-public-guest-board="modern-hud"]
@@ -5627,7 +5632,7 @@ html[data-gom-theme="gomdory-studio"] [data-public-guest-board="modern-hud"]
   border-radius: 0;
   background: transparent !important;
   box-shadow: none;
-  color: color-mix(in srgb, var(--student-wall-ink) 68%, var(--theme-text-muted)) !important;
+  color: var(--theme-card-muted-text) !important;
   -webkit-text-fill-color: currentColor;
 }
 
@@ -5643,7 +5648,7 @@ html[data-gom-theme="gomdory-studio"] [data-public-guest-board="modern-hud"]
 html[data-gom-theme="gomdory-studio"] [data-public-guest-board="modern-hud"]
   [data-testid="student-board-section"] [data-card-id][data-student-card]
   [data-public-attachment-row="true"] [data-attachment-download="true"]:hover {
-  background: color-mix(in srgb, var(--student-wall-paper) 72%, transparent);
+  background: var(--theme-card-muted);
 }
 
 html[data-gom-theme="gomdory-studio"] [data-public-guest-board="modern-hud"]
@@ -5653,14 +5658,14 @@ html[data-gom-theme="gomdory-studio"] [data-public-guest-board="modern-hud"]
   border-radius: 2px;
   background: transparent;
   box-shadow: none;
-  color: color-mix(in srgb, var(--student-wall-ink) 72%, var(--theme-text-muted));
+  color: var(--theme-card-link-text);
 }
 
 html[data-gom-theme="gomdory-studio"] [data-public-guest-board="modern-hud"]
   [data-testid="student-board-section"] [data-card-id][data-student-card]
   [data-testid="card-read-more-button"]:hover {
-  background: color-mix(in srgb, var(--student-wall-paper) 72%, transparent);
-  color: var(--student-wall-ink);
+  background: var(--theme-card-muted);
+  color: var(--theme-card-text);
 }
 
 html[data-gom-theme="gomdory-studio"] [data-public-guest-board="modern-hud"]
@@ -5674,22 +5679,22 @@ html[data-gom-theme="gomdory-studio"] [data-public-guest-board="modern-hud"]
   margin-top: 0.7rem;
   padding-top: 0.55rem;
   border-top: 1px solid color-mix(in srgb, var(--student-wall-ink) 20%, var(--theme-border));
-  color: color-mix(in srgb, var(--student-wall-ink) 72%, var(--theme-text-muted));
+  color: var(--theme-card-muted-text);
 }
 
 html[data-gom-theme="gomdory-studio"] [data-public-guest-board="modern-hud"]
   [data-testid="student-board-section"] [data-card-id][data-student-card="own"]
   [data-student-card-menu-trigger="true"] {
-  border-color: transparent !important;
-  background: transparent !important;
+  border-color: var(--theme-more-button-border) !important;
+  background: var(--theme-more-button-bg) !important;
   box-shadow: none;
 }
 
 html[data-gom-theme="gomdory-studio"] [data-public-guest-board="modern-hud"]
   [data-testid="student-board-section"] [data-card-id][data-student-card="own"]
   [data-student-card-menu-trigger="true"]:is(:hover, :focus-visible) {
-  border-color: color-mix(in srgb, var(--student-wall-ink) 20%, transparent) !important;
-  background: color-mix(in srgb, var(--student-wall-paper) 76%, transparent) !important;
+  border-color: var(--theme-more-button-border) !important;
+  background: var(--theme-more-button-hover-bg) !important;
 }
 
 html[data-gom-theme="gomdory-studio"] .student-owned-card-menu-surface {
@@ -5708,10 +5713,10 @@ html[data-gom-theme="gomdory-studio"] [data-public-guest-board="modern-hud"]
 
 html[data-gom-theme="gomdory-studio"] [data-public-guest-board="modern-hud"]
   [data-testid="student-board-section"] [data-testid="student-owned-card-badge"] {
-  border-color: color-mix(in srgb, var(--student-wall-blue) 58%, var(--theme-border));
+  border-color: var(--theme-owner-badge-border);
   border-radius: 2px;
-  background: color-mix(in srgb, var(--student-wall-paper) 88%, var(--student-wall-blue));
-  color: var(--student-wall-ink);
+  background: var(--theme-owner-badge-bg);
+  color: var(--theme-owner-badge-text);
   box-shadow: none;
 }
 
@@ -5737,7 +5742,7 @@ html[data-gom-theme="gomdory-studio"] [data-public-guest-board="modern-hud"]
 
 html[data-gom-theme="gomdory-studio"] [data-public-guest-board="modern-hud"]
   [data-testid="student-board-section"] [data-testid="student-owned-card-badge"] {
-  border: 1px solid var(--student-wall-ink);
+  border: 1px solid var(--theme-owner-badge-border);
   border-radius: 3px;
   box-shadow: none;
 }
@@ -5823,9 +5828,10 @@ html[data-gom-theme="gomdory-studio"] [data-public-guest-board="modern-hud"]
 
 html[data-gom-theme="gomdory-studio"] [data-public-guest-board="modern-hud"]
   [data-student-context-menu] {
-  border-color: color-mix(in srgb, var(--student-wall-ink) 24%, var(--theme-border));
+  border-color: var(--theme-menu-border);
   border-radius: 4px;
-  background: color-mix(in srgb, var(--theme-card) 96%, var(--student-wall-paper));
+  background: var(--theme-menu-bg);
+  color: var(--theme-menu-text);
   box-shadow: 0 5px 14px color-mix(in srgb, var(--student-wall-ink) 13%, transparent);
 }
 

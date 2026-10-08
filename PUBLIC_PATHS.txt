@@ -619,7 +619,7 @@ dcd289c12e48c07f1f0f310467c32e0986f57926ae9d541779888cc177bc03ec  19235  app/das
 ba541efa58d18092cd6f2cc6d2436ceebac1f1a1eea5af85a6c06c3368eaf255  9408  app/dashboard/boards/[boardId]/class/EduRosterPanel.tsx
 9842209f5b00d8433325a636172c44bf706c6d74868507bbb06536423f54b252  7922  app/dashboard/boards/[boardId]/class/EduScenarioPanel.tsx
 802ed56fc56f6ec5fc66e368740012280d55acf5e49d2d18c08eea2737a1084e  1712  app/dashboard/boards/[boardId]/class/error.tsx
-6b1c750d9d61497da2e35470c785fedb4dbf169ff4f3a8d1555c009c3aeab79d  2591  app/dashboard/boards/[boardId]/class/KeyboardShortcutsOverlay.tsx
+73b34d01c70d6b92bb98599c4a3e96c5428a91082ec593ac5212f19a5ff46925  100  app/dashboard/boards/[boardId]/class/KeyboardShortcutsOverlay.tsx
 e2250f01eae4dd36c5562c972fd604ff669f841da335744d9f3fc435042d9334  4539  app/dashboard/boards/[boardId]/class/keymap.ts
 66c04d07a52d8a2b1f3f3016ddf1e545535ea6a645550f912949d858d57db29f  4429  app/dashboard/boards/[boardId]/class/keymapUtils.ts
 15dfcf2b496ce9608432c80ee1eec6d52d7064feac5f107d7300ea4c3e18b9a3  1077  app/dashboard/boards/[boardId]/class/LinkCopyButton.tsx
@@ -638,7 +638,7 @@ d2c73004e73b3fc76db9c0069c4059af14192e936ac29e4f7672f26332480159  17135  app/das
 7b50b742e2b6d4d4488d8184015a5f5013c00bb0b539ac393b388bb02142ab58  12599  app/dashboard/boards/[boardId]/class/UiPrefsPopover.tsx
 25dc60ec5c042c9349404c70f1c67da14bb1ac6126933a669648feee3732f6c7  4650  app/dashboard/boards/[boardId]/class/useCardListDerived.ts
 cf720e489f1ddbd286bad3d49be9f67ac5960552080a5003a12bfccee8fd5ff9  1376  app/dashboard/boards/[boardId]/class/useClassMode.ts
-0dcf2be9d0620ca7cd84095942d6788a9b5ab8ea6e82ce876eea2bc0e6f2f97b  3146  app/dashboard/boards/[boardId]/class/useCommandPalette.ts
+180aedeca4c47537f63e14aa9a0573aa1efc5ce90a987233c88680eb22b8b78f  133  app/dashboard/boards/[boardId]/class/useCommandPalette.ts
 bc7e3c8a821dc868e142de10990cea89d4f260434bf06913adf4acadf5332a32  4095  app/dashboard/boards/[boardId]/class/useHistoryState.ts
 854074f239688d6b6d2299a73129e35094275f33a3c276f89cf93d3d1f75cba0  8967  app/dashboard/boards/[boardId]/class/useReorderList.ts
 adc0d8dc34ddf99f3d0c41083ffee21c2472d7e4a354525cde6e7ac0b4a1b8ce  17932  app/dashboard/boards/[boardId]/class/useSavedViews.ts
@@ -668,8 +668,8 @@ b200ac17e58eb8f6e505582710fd854648994517e301562dbe085d22cd78377c  382  app/dashb
 6ef835d5c87378ab46203e8fd6935cc834010b9b19cd27241e9c5012663d249b  1846  app/dashboard/boards/[boardId]/loading.tsx
 4254f35df9e9d2c92cdfcf611458b6a31030708e0de8260bb84a344e5766f3fa  3912  app/dashboard/boards/[boardId]/moderation/ActionButtons.tsx
 a454388f85dbcb8929e8c9ec55c6492c30195cc3ea5a1ab50015c1d24cb951bf  248  app/dashboard/boards/[boardId]/moderation/page.tsx
-6793f0e68e4d78c049a0b117d979d8ddb4f83364dd1f1accb42417fc8e8e4c78  2497  app/dashboard/boards/[boardId]/not-found.tsx
-671a986f0d75f38064a72e29aa35a8b0c00dfc75c228f79c22be85c163fd8412  1275  app/dashboard/boards/[boardId]/page.tsx
+469a36761622d6b715746a28a4637b34096cf82c08fd67932d9cacffdc851857  2821  app/dashboard/boards/[boardId]/not-found.tsx
+aaf663c37d10898ddd004112b220264df12740a028c1b615aa5c37d54fa61134  1184  app/dashboard/boards/[boardId]/page.tsx
 a484ab04c072f8f8a4693802a801702ba4a3fa1754ebd26b958dee49ad6ee771  401  app/dashboard/boards/[boardId]/present/page.tsx
 b21bed7e38754ad1837a27453681f6a3473ef71a13bb177648afd47feadaf92c  9398  app/dashboard/boards/[boardId]/PublishTemplateModal.tsx
 a6b00ac5a16f29661ff10b564c77bd9dac3592d0eec0fd65dc7e4836af2c1446  837  app/dashboard/boards/[boardId]/RecapLinkCopyButton.tsx
@@ -1012,7 +1012,7 @@ cb8a6063a3ba8ec0fa6d57c5a30b5f3ea261c669df67185839731330fc65a515  5008  app/edu/
 4af2c981297f7cae7cd8bf5eb8c474df58d7140add200d1075b98f215b94081c  776  app/events/teacher-day/award-vr-lab/page.tsx
 5290e28c0a45544d1d9920f8adceefdb103304fca7d430f77bea1979e33b6f02  91275  app/events/teacher-day/award-vr/AwardVrClient.tsx
 5c574f028bf2122e9d419948363b929b8eee88f54a3413496d69e16b792dbc7d  685  app/events/teacher-day/award-vr/page.tsx
-00e39695677b9ce4fffa99f7f0d89eea64cbc7c5dc0bc11ab96c506ebb558b05  221016  app/globals.css
+281cd8bcf0d253511a93e5a584ce4f028462480e4142f0fde1e103c93997301e  220776  app/globals.css
 b210cd4f5c0cd0d7a1045fb6dfaa8ad34a6aac77d40a245a5e618e17b5534569  2239  app/invite/[token]/AcceptClient.tsx
 2ef856e83f3b21989c7698abde053a898d03fa0e82d269bf1b07f44e3928b4fb  1687  app/invite/[token]/page.tsx
 e8fc203bc8b990954f3a17f6db9640c9ac90e16455b913a89d21cf451279fd4d  1405  app/k/[code]/page.tsx
