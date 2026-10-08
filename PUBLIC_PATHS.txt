@@ -2419,7 +2419,7 @@ b3ed020f15091555df084c254d84d175e5a3b76ea9c6c2b66fe11f8bf6eb04c3  7646  tests/br
 1cc8960643f3c531f1a263f56195fc4405f079359b3563921f0bea0c18d998b9  677  tests/card-attachments-detach-route-no-snakecase.guard.test.ts
 c1f089b30224630677624b57eb08683d74ecfe0a5f3a7897575dd0ca40824052  4131  tests/card-attachments-detach.route.test.ts
 8e0472cbc3c678916fb7ad4dd7384f422af31690aebd49de5b294621be8d3449  13379  tests/card-attachments-readability.test.ts
-97bb35d39d8b9fb1a61d0f3fb6d115e96e72d501f4f90ddc513b519e7b564c59  3336  tests/card-colors.test.ts
+cfbfc2ef6a897a7932838ac278dd7c940c94ae6c1973ec16dfda4d4fbb4a0b3b  3194  tests/card-colors.test.ts
 e770cb8b158230b4173499284242bfef0f33b6d623cde68abc175684c3abfd0e  649  tests/card-detail-focus-restore.test.ts
 b442464ae502861a524b5bbb93ac6c2fae17cb0bb3c4f9be37db0db1502e7e9b  391  tests/card-detail-safe-errors.guard.test.ts
 648a2326dd78b111bcdf7bbbdfe41e87e9e1d58e6a525ae8c4897f1a409aa068  754  tests/card-detail-unified-panel.guard.test.ts
@@ -3068,9 +3068,10 @@ f8074d0308ed91b74659a4e93529efe3cff9bb5ac2ce8a6d3c04517f148dbc95  2712  tests/su
 3ed65782c32ec69874c1cb8c296810c29b0615eacab3a06b2eab7db04ec29e47  488  tests/supabase-migrations-no-future-timestamps.guard.test.ts
 0e99908c30d20c533fbe90e143ad881c5937df08be34ba5c39700877bafed401  1105  tests/supabase-server-client.test.ts
 22b646051aa9b1504ca00d4539fc25105fb74b11b7b6c3cfa0505da76ccefd9d  1703  tests/system-diag-edu-publish-fields.test.ts
+da39988aba6b47763d310cd7dd2dd9adb75d63cbe60d3eace0c549fe6aa51f4c  3495  tests/teacher-board-live-convergence.test.ts
 5d047374a18ad003e749c180a77eef743151690d14fe5a7a0b00d0370768356e  2143  tests/teacher-board-mutation-state.test.ts
 cbd5fe3fdd85b6e9e9f702db3651b7bdd41b35f2894902ea99f023e708317642  6895  tests/teacher-board-workshop-surface-guard.test.mjs
-afbcb1e786dd4cbefc968fa325a01dc086dac708d47f85ed3ebee3b892f6b668  3886  tests/teacher-card-attachment-management.guard.test.ts
+8779abe2ac46606a69dc313351dfe38592ba6dafcce57178557450ef67f39bc4  3968  tests/teacher-card-attachment-management.guard.test.ts
 201d3a2ec06d81c9fa5fb54ac776a6b5ca6388ea8eebca75481d4e35c8e0dcf5  5042  tests/teacher-card-drag-canonical-source.guard.test.ts
 f9b8faec98a6515a20521c039b040ab56e98634a310a605bdb272dc22f2bebb9  6844  tests/teacher-card-drag-helpers.test.ts
 7d9a7ebc6ef4c2a2e4f4abd52a0f0780d1a4992aa9c551954d1d6af9d9e01cf3  2458  tests/teacher-card-menu-announcement.test.ts
@@ -3095,6 +3096,7 @@ f1407a9bd4d55755bb889d85f8635895c530d7d560f0c3df88690cd06e5651fb  11882  tests/t
 a5036f8cb5ea38ba604ac429e0d2076b09c53a8e8c10d37da33b5ce84e072318  4062  tests/templates.test.ts
 84b1757bd0b2faf92f6aacd19f11c5812f29f24848f2b74bb93d9bb6edccca7e  3721  tests/theme-system.guard.test.ts
 d3d12e020b22bb04a1c9ab051d6032ff106c1f8f4761590ccddf96e9f7242a36  8047  tests/theme-system.test.ts
+d8eaa85ba096bd2d02e258390ce3ba269646923e4b62a120d0287dc5e8d10747  6409  tests/theme-text-contrast.test.ts
 a2e55cbe6715b7a9764bcaaade9890125bc34e74fb609092fdfbf2f5beb8e48c  342  tests/trash-purge-compute.test.ts
 1d80f67704b63b69dc79e435c35b647c499ea5786cf56fb010c21d346087d597  1611  tests/trash-purge-dryrun.test.ts
 ed9fed917edd4a9f58620825d85a064a04f65f4a5665b3031cf7aaff82be8670  749  tests/trash-purge-purgeone.test.ts
@@ -3271,7 +3273,7 @@ d997fd9d93cab1180f713d3dc49356570b5afbab24e0197f1872a3e796299b7b  1685  tests/wo
 43d38efcffabe420ef17b08c55cf5193c7c868ec169fcb6765b410526cae8ee2  4433  tests/world-hub/world-hub-movement-controller.test.ts
 f896391979231fdb8532c58c0bae326b1021bc32b1521cdb3c667fa8debf1a70  4637  tests/world-hub/worldHubHudModel.test.ts
 0a8e9fce4f40990f6f4981267c4593b5ba10c28fcb1c5af591fe6ee59d78342f  5216  tests/world-hub/zone-cue-timing.test.ts
-1505a508c8d8cc31fc68cb664f16ba05474cb696e453b3a23a7f554129a32b16  1064  tsconfig.json
+57656251aab138b8054d6fc6409de711611ddacca97e9777cb99abcbbd738168  1119  tsconfig.json
 6b1c575023124bbd63df091904a532ddd750e6bd2d5a7819a0fe24f00b548428  99  types/env.d.ts
 3b037b5509e051d5dbc237c3a7aac3d9c96836ae1776c981d90569da0be3e9a6  186  types/open-next-worker.d.ts
 26f364b38244ff68aaedced61b66d5b10a42eb2ab7eef3b5a3a9cbd82344b990  203  types/qrcode-browser.d.ts
