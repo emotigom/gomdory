@@ -7,6 +7,9 @@ f14b4987904bcb5814e4459a057ed4d20f58a633152288a761214dcd28780b56  3  .node-versi
 d6377d2f9bf4fd24dca5d7c453dfdfdf48c5ca15d1fadf4d8e9c927e2f99f57d  175  .npmrc
 a23bae266f4f5ff2ce7f1b04144087b997484a0cd6d19eeba53a8e736ceedd4a  1231  AGENTS.md
 562373a10bff55afc94b5c416dcfe5ec1899ad8aac9d092e34babe104bd534ba  4202  app/_components/AnchoredMenu.tsx
+002a79863ad60a26cd8464d08ec51ce09aaec4081196e9fcf5fb55a897991289  4491  app/_components/board/commands/CommandPalette.tsx
+6b1c750d9d61497da2e35470c785fedb4dbf169ff4f3a8d1555c009c3aeab79d  2591  app/_components/board/commands/KeyboardShortcutsOverlay.tsx
+0dcf2be9d0620ca7cd84095942d6788a9b5ab8ea6e82ce876eea2bc0e6f2f97b  3146  app/_components/board/commands/useCommandPalette.ts
 468bbde2a2dadb2496cdcf535e25db084d20e724ddfe98333044fbb29471b143  17382  app/_components/BoardMiniMap.tsx
 d22d97faad0c57e5ad989f125280ae7c36c3aaf2bc7d2168e8775adb8826b27b  4231  app/_components/BoardSettingsDrawer.tsx
 fad0b8e473ce2437f1661f7d3cb35c8abf6b52505fa086cd2403dc91cbbe8de5  13157  app/_components/CardAttachments.tsx
@@ -130,10 +133,12 @@ cf0bb8a41d525a5c5a930dec039d66b6a59aba73401cd29e3d16b01cfaf98f7c  402  app/api/h
 094a007b5f002493695c17bbaaa5bb7fe1b3e19b49cdf7f0c179a47e94da2810  400  app/api/health/auth/route.ts
 8c6159b752a6a053a484387d481a740e03d948ccdb58b693df27aa7499506efa  408  app/api/health/db/route.ts
 b2aa647d91fed89e528610cf36acb5e3f1dcb773f1f1a34d231148772c1c2890  204  app/api/health/route.ts
+81696be261bb3b53749a595c462e121b86446b44c5bbdb6bdfed3e7e71452f70  665  app/api/q2/browser/b11-design-accessibility-fixture/reset/route.ts
 af7db9bc1ec9fec6c2a0964d93bc6aa6588ba3d8d0c3095411c85b7101ed0ee5  569  app/api/q2/browser/google-drive-fixture/reset/route.ts
 4a0f4689ad54f364c31983fda987f593d9fec7d5b65ff9ec59ef6b6b2b1b90cd  913  app/api/q2/browser/llm-integration-fixture/reset/route.ts
 f9290a1660ba2c1a2a03837951f0fec5905014a5b1f84558f872cef69f59b698  523  app/api/q2/browser/multi-user-polling-fixture/reset/route.ts
 11e386e2ec339fc2c0e7022649eab37d557970beb9fa72393c255536b0660638  459  app/api/q2/browser/multi-user-polling-fixture/snapshot/route.ts
+93b91e111975261ea3968bd3ae115d4ff0699260089e30ba3d8bc6b4747ce30a  884  app/api/q2/browser/multi-user-polling-fixture/state/route.ts
 7833efc820f2432655cc3a7638fa6f88aff0cf612cf8a48dde29d64f47dca420  2322  app/api/q2/browser/r2-integration-fixture/route.ts
 6f8bf1305e85d7d005642d4ce801ce1fc8283f6e8df78ec122cc2e9b37c1cb6e  519  app/api/q2/browser/result-download-fixture/reset/route.ts
 c75a3621d0dae82b81b81ac17d901626b5b5ed6fdb8ef610728d4bb323a6bfc8  1089  app/api/q2/browser/student-card-fixture/reset/route.ts
