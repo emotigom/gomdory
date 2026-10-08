@@ -169,15 +169,28 @@ test("canonical client renders image\/file\/url attachments without filtering at
     "board",
     "TeacherBoardCanonicalClient.tsx",
   );
+
+  const snapshot = read(
+    "lib",
+    "board",
+    "teacherBoardSnapshot.ts",
+  );
+
+  assert.match(
+    client,
+    /type TeacherBoardAttachment as BoardAttachment/,
+  );
+
+  assert.match(
+    snapshot,
+    /kind:\s*"image"\s*\|\s*"file"\s*\|\s*"url"\s*\|\s*"audio"\s*\|\s*"video"\s*\|\s*"document"/,
+  );
+
   assert.match(client, /attachment\.kind === "image"/);
   assert.match(client, /return "file";/);
   assert.match(client, /contentType\.startsWith\("audio\/"\)/);
   assert.match(client, /contentType\.startsWith\("video\/"\)/);
   assert.match(client, /contentType\.includes\("pdf"\)/);
-  assert.match(
-    client,
-    /kind: "image" \| "file" \| "url" \| "audio" \| "video" \| "document"/,
-  );
   assert.match(client, /return \(/);
   assert.match(client, /AttachmentViewer/);
   assert.match(client, /selectedAttachment[\s\S]*<AttachmentViewer/);

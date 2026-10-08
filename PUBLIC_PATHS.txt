@@ -2376,11 +2376,12 @@ ba8eb9083918fcd441671d8d062a53e44dbe01ef76fa6bdccf94eff5163f9b3d  960  tests/boa
 1005144bbda82e3545173269fa84a3930c0d450983638db95d283ffb29a70d17  570  tests/board-file-sanitizer.test.ts
 9a593096bc5f43a7d78ef0d3d6e858362c99c540bf8627186668a731921c7839  678  tests/board-files-soft-delete-fallback.test.ts
 937f6ec9502de23b10d336646b7b05b6a167150d2f0fdddbc1459dd91a9db9d1  1214  tests/board-files-soft-delete-schema-columns.guard.test.ts
-c8b63d219d19b5f25616e3c6361a20d8013cf03c1ca3e4221566dcabd91f1d2f  22073  tests/board-interactions-smoke.test.ts
+5a0de8f5c814678458dc55f2530fdb7bbf29c24ffe6a47df85f1c878f895ace3  22273  tests/board-interactions-smoke.test.ts
 90e31588b2063e8945a8a2ffdc43552d14360c3a305f6b5b3036d087d7289179  5053  tests/board-menu-single-owner.guard.test.ts
 194b25c84b2c05f13a3085dcae7043ab1f01092f9faec45bad090ac388562f4c  1115  tests/board-minimap-layout.test.ts
 5322232cb47cc0423d02b920da3cf7ddd315d52f3185b4161b3bec8d4b60650e  2372  tests/board-minimap-palette-perf.test.ts
 ee735b315a7574fa9508d875c1a1584ea1f1dc514ba06eadc0a0d54762518417  1373  tests/board-minimap-regression.test.ts
+a6f88ee05d6211c336bc4d42201150127e86f29de77dec189fac7ec98b234806  738  tests/board-not-found-boundary.guard.test.mjs
 80b826c16149e4da27fb4df2d5e862b448ddddc53d9232b039612d6731050de5  648  tests/board-scroll-to-card.test.ts
 5b6920ece51d81390c972aff1ce88fbef45dfefa43e984125d91fd476ce29df5  783  tests/board-scroll-to-section.test.ts
 85526b32d105b0b1c2aa2a1e6779b563364e9ce9d93e85ae94cf559834b65d29  745  tests/board-section-menu-regression.test.ts
@@ -2395,9 +2396,10 @@ fc194084f6384050756f8e1735526481dd09e809ed76f1a9114c08b56616005c  17656  tests/b
 b8530db0a6cd777652d383b99685b9a34c5d15f6541aaff3cc7ca63384e4b774  3760  tests/boards-live.route.test.ts
 ca10a667a59f7205ee17df92f57d6f031b4f4adf4819f43d4caf9eacd92d0aa3  1167  tests/boards-soft-delete-schema-columns.guard.test.ts
 a38f1eb693c7ad02d61e8532963eabe41f23ae7f343540a5fcd5aed699465460  683  tests/bookmarks.test.ts
-81c6daafa26b8726a45621fbc58f60d67a32121a7d06a4ffb2d81d3df5b11c1f  6658  tests/browser/b10-multi-user-polling.spec.mjs
-bb8e0a5d9d849de4e7b9c4b3dbe27be4f533dd75a4153b69cb30d19998ffe6ea  10760  tests/browser/b11-design-accessibility.spec.mjs
+6259adb9f01c43d3ed99ed03ed6cd04d4acafdea81a961e0a7577e7c97454a93  7096  tests/browser/b10-multi-user-polling.spec.mjs
+ef52377ac0604d9969d0aa77d50ca9899bcfbd5eaa5e083a89c40ab98389d2ed  21150  tests/browser/b11-design-accessibility.spec.mjs
 3fa2eb38c7a54a0ac1e7248d567f6ff435345d2b91dbf5b6418c5d89200953c6  7519  tests/browser/b9-google-drive-live.spec.mjs
+98ed800b45bd7c0d9385a03405cb09864ba243822f22923d6e714b7e02808ab0  18766  tests/browser/classroom-operation-e2e.spec.mjs
 d1dd6f40d5be8ba99ba5e04101f52ffd3454d38356353547f49a98a6b27c6c88  1529  tests/browser/fixtures/foundation-server.mjs
 61072075d8e9a0922c634ceb33e280691565f421ecc657eb236582c900b2ff59  390  tests/browser/foundation-failure.spec.mjs
 84beb41fc767761ccb02d193e59e74ce48dd15cf8928912eb2ec8eb8bbf60d10  1801  tests/browser/foundation.spec.mjs
