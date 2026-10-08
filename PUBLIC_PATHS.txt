@@ -2772,7 +2772,8 @@ e2298709593e7ecdfa52b9ec7075c966565ca3178b6457ab1f83600db0b00626  903  tests/gue
 10514c54ca64bee57ec416222a7f46b037ecffc9cd1007adbf54afd4150c89f3  2668  tests/helpers/eduPublishGalleryFixtures.ts
 ce26dbcea87fbd5345f243baf7201a753ada311f5582b80eaadae63ede0d6c7f  2664  tests/helpers/markdown-unverified-claims.mjs
 25ae7dde9695d7c836353ca72e2f42282d7da4509c61e2b91003fa4de3a0e45f  372  tests/helpers/mockUser.ts
-4e7384fdc3ed3a36fe543036573c317eb86131d9989bd0493d7e675c2da13f38  6332  tests/helpers/q5-frozen-source.mjs
+9e2a56d4fea0c6a28fbd1f6d15258238549325c8d8651586cf84620dbe341e05  6449  tests/helpers/q5-frozen-source.mjs
+8f823ffa313a769cc39e6f06122cd7308fe7e47d2f0bd40da97e6853dc40e66e  4173  tests/helpers/textContrast.ts
 765c81e3b975c4a61630c765c9790cc1e73af8ea040fa6b97880bda609ff549b  168  tests/helpers/timeFixtures.ts
 8acf1a568f189df3b8371a7bdbc3c1e1eae6ce393e3f75ffd6837005895f6627  1806  tests/highlights.test.ts
 2d6a64124cab54704a22e2783a4ae9c160ebcd6372688b72683d5184b5bd31a4  2427  tests/home-hub-model.test.ts
@@ -2819,7 +2820,7 @@ dfb4d1d67eddfa8b1c8d42e4e7c4f5d5d6c02cfd655187e1be4052e62c71ebd8  1218  tests/mi
 76075557221261f7a7bcd6d715c066d6f44d31e72bb81d721c969a3a135dd97b  3691  tests/middleware.student-route.test.ts
 e933a78f292c3e1f65f10b401bba4aa8b6c0314f112748c25dcf120b598d5f26  5257  tests/mobile-drag-activation.guard.test.ts
 8c25e3b0110cb485750b0ebac353c7a4bab8aea02b004a5120d014dc7d575f75  2075  tests/modal-scroll-lock-source.test.ts
-5da38a6bffc63b953961266285e9c1973365c47ebc7cd78d7d3af25b5c51be26  2060  tests/more-menu-keyboard-guard.test.mjs
+0abf081c34576b831dbc8e4dd718837fa370c51291c12a7e401e07b99d7a8c7b  2475  tests/more-menu-keyboard-guard.test.mjs
 12263fa4b21a9a2f5f4c8d4799f14da27cc4b6f8502e300f43b0a7cd969e8943  1425  tests/nav-config.test.ts
 1f56950274d55c7db12bb6bc4028a4bdd5758e91eafaabdc1e079940c249e818  1032  tests/netsaver-config.test.ts
 2fa79f658a05de9e059af8a3299c7e777c0d75a002a6c9de7d6fcedf12048d92  544  tests/network-guard.sanity.test.ts
@@ -2864,6 +2865,8 @@ f37364e5fa48ba38191c0cb2f4651b1bb225edb16128e3b2579ff8d1fbc2e922  10166  tests/p
 302bb673c0d2c1c2bc6b906f15d46742399f69ce0436e04aa0948ddfc937a947  1471  tests/pricing-page-links.test.ts
 8974d6a51e073981ce7f0f7b761f8f50ca85cd7490ae953579dfd01c28a61c2f  4330  tests/pro-template-import-gate.test.ts
 0b50aabc29b992a54f63be7af016d7d39a361b6409fea33dbdb0d5583ff2ec73  2863  tests/pro-template-lock.test.ts
+4d33de73f3be6d0fc3881286f9e9caacfcca0e5d72222073d8bb3d90f5eb7d1c  6389  tests/provider-impact-refinement.test.mjs
+5e45749645a14bdfc9b6535e360b612fdfc48709bd028154f29d2232e8e5c515  7706  tests/provider-impact-selector.test.mjs
 fa98f335c73a64945af454b05cf97883e7faa638646c6901ca5369dc7669e6e7  476  tests/public-report-page-marker.test.ts
 747d41d65b0d93428f6ad2fe8648fd6b1d4c4cad4ef9eadfcf1e562798b55c61  3336  tests/public-report.route.test.ts
 8c865768b22a4282289dc75e45ee207b070de43249fb7fcb474c28e19c1aef60  1174  tests/public-share-access.test.ts
