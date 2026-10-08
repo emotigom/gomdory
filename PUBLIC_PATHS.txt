@@ -2,7 +2,7 @@
 1d66749d1ffae745779df1a44bd2404240ff260608514a29a39c4f07c41ec412  80  .gitattributes
 7f61189b38c979bccad532e77a1a76d0e068f85283bdd53209bd768fb8245dae  850  .github/workflows/ci.yml
 b8f97f4ab35a2d2798fcca7a3a82095b8a2e192397bca6553f5e486284760663  734  .github/workflows/security.yml
-07f16200e97f777566ece920ed3c48c99449ac8283d0d9d30eee688c2c85bf6f  671  .gitignore
+75ad0b3bfdefe094ddbfe76a950993fad4db90f680229897795456469bacd29c  741  .gitignore
 f14b4987904bcb5814e4459a057ed4d20f58a633152288a761214dcd28780b56  3  .node-version
 d6377d2f9bf4fd24dca5d7c453dfdfdf48c5ca15d1fadf4d8e9c927e2f99f57d  175  .npmrc
 a23bae266f4f5ff2ce7f1b04144087b997484a0cd6d19eeba53a8e736ceedd4a  1231  AGENTS.md
@@ -36,7 +36,7 @@ d6a5c5b33a163090034cef2ee601af0897f49294a6927a9ca891e1a54176ee14  9549  app/_com
 c48a756e5045536b0577f6e77e3da611646225d7deebaa49e80e34a02fe6cb7f  15162  app/_components/JoinByCode.tsx
 a1ec89c5dd2416bacec6c02c9467dc9b74f5839973b4fae2490b05f67c1eac2b  2056  app/_components/LinkifiedText.tsx
 de735f01aa1d8ede0452cac7975500d3a58cc9d8dae198f5d798f8cd6707ba1a  10463  app/_components/LiveStageBanner.tsx
-0e127204ac146eb19ef85ca24be6677c8dadb769769244212a81de550b2edc1f  11400  app/_components/MoreMenu.tsx
+ecc59c30840ab82fc746007cbf7085ffd7b7b3fcb25b67f33e1ef96e7dcc061c  11360  app/_components/MoreMenu.tsx
 750f0c4b89e4c4ac13b73c6c8274a9d1da623ba898ce4c07e1d18dc41e6e9fc3  1082  app/_components/OpsAnnouncementBar.tsx
 6b30cbc7d3d79ee0700f64e521aaa4fa5e31a4a2f7a14e83cd5c84f79b6f240d  1335  app/_components/PageMarker.tsx
 f9bc3baf2bd8aef1bf0389da9df199353ccc29b587f3df9be3e2866d0f3c0ab5  273  app/_components/preventNativeDrag.ts
@@ -56,7 +56,7 @@ b55119accb1b07cb097a99d76960347192e7ae6601f1125d4edc52d7bec33c0b  2921  app/_com
 763953a3f9ef786f552627206f580a1601dfcb5d3ffa106c7cc0e46f01f96806  21802  app/_components/useLiveSync.ts
 6401e97728236a3433f0b326882d9fd0896c2f78d089bcd8a241c23d0004e2f4  6227  app/_components/useWheelDebugTracer.ts
 42f531a10a63aac3c56c467735823359a8c0bf3cd1b50d9a0b538ed08e06f0b9  1565  app/_components/ViewportVars.tsx
-a5e9192f3dcdf8967de72c4893cbfe10f56fccb8b4810264b2946428cf7f2d70  54004  app/_components/WallColumn.tsx
+d73bc1b06073687f448006662d798b07c2243a4edfbdd810c8b7c65e165f5d62  54614  app/_components/WallColumn.tsx
 9c05e7eeb8d6efc85c559b97d1335ef0e35a90d7515e656c29f320352884b032  1619  app/(labs)/labs/page.tsx
 c6a49a086fb680a05add296e445646e9eb6b3033119665fdfac54b25fa60fa4a  1178  app/(labs)/labs/terminal/page.tsx
 6529bd97b52003d7bf5959ae604c694f886454ef4cd5e7f60356ed4177195ff2  9758  app/(labs)/labs/terminal/PracticeWorkspaceClient.tsx
@@ -67,7 +67,7 @@ c1a6523a6ffb76e2d4abbb90e7571517ac8f4a2c4710a00f85fd02f51178a97f  1410  app/(lab
 e39f3c7bdfd83dda1fc80a7a282495249e00f660188baa5940ddaec69d4542bb  7876  app/(labs)/labs/world/WorldClient.tsx
 5a906b5e0af4466c0e1c546b20d3489e3921bace668458acf9515522047324fb  3647  app/(marketing)/_components/LandingInfoBlocks.tsx
 630e0b72d1f6d77cfaaf1363ad1fab9913608a4e864f9cf80e2a96fa90ab3b3c  96  app/(marketing)/_components/landingMarkerContract.ts
-12cb7bc2576cfbd46f663bfd8364f181c65be07f55f0a336e86cb8481a9f626c  2591  app/(marketing)/_components/LegalPageShell.tsx
+59f9d9e357485824acd23cce7cf9d22817e109f42e09a425ec2e45b4ebe99c18  3260  app/(marketing)/_components/LegalPageShell.tsx
 6208e4323dce19ec6428a22f964964c618dea68b7f0107565fc10b6ffee87039  1233  app/(marketing)/_components/marketingAnalytics.tsx
 e755c8662fa7cc69093d7f7676528ee3280bab7b5a488faff80a531d2ff2539a  1745  app/(marketing)/_components/MarketingFaqAccordion.tsx
 36e704c25d6aab3dcd46917ec8d7ed3ebe83c4c84a35057536e875a6928e4e84  4536  app/(marketing)/_components/MarketingFooter.tsx
@@ -96,7 +96,7 @@ ee7ae397181037c6855d7b99b7dd3400eabd1774d5977faea643fd97269b66c3  1264  app/(mar
 acaebc88cf8e41fac5eea97100bcd5fc4d8f14ac9c2f77b5cfdde909b942bd09  2347  app/(marketing)/legal/certification-readiness/page.tsx
 4816d8ec1b9deac6e18e4594bcea473cd470aef8202ac2cf160a14673223e679  1955  app/(marketing)/legal/child-safety/page.tsx
 aa827ef3786ad190aa72e786031bbb1bf43d91725f522e6fc8b2274eaab740bb  3698  app/(marketing)/legal/footer-legal.test.mjs
-814aa9ca697cd3f799120e2fd8e624e4d10c5ba2d389c53b1fd028d1ddbdcdcc  4907  app/(marketing)/legal/legal-contrast-navigation.test.mjs
+561095bc5655197141265c994fe89a769b4bf21a6332f304b0423e53315ce363  6834  app/(marketing)/legal/legal-contrast-navigation.test.mjs
 640f65834efcdcf649412194b4a29110ce41581160422935f454465eba88cb0e  12303  app/(marketing)/legal/privacy/page.tsx
 b5a768433b4c01d022587dc47180832ec8c1e08074e61e945008e57ffbbb7431  1630  app/(marketing)/legal/security/page.tsx
 8a409cb059fec8605ed24da479ab001ee9f808dbd380376f013ae11856599a27  964  app/(marketing)/legal/terms/page.tsx

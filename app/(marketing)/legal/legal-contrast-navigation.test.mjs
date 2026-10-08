@@ -86,3 +86,67 @@ test('legal interaction polish uses legal-only scope', () => {
   assert.ok(!styles.includes('[data-legal-interaction-scope] button {'));
   assert.ok(styles.includes('@media (hover: hover) and (pointer: fine)'));
 });
+
+test('shared legal shell follows semantic theme foreground owners', () => {
+  assert.ok(
+    shell.includes('bg-[var(--theme-bg)] py-14 text-[var(--theme-text)]'),
+    'shared legal shell must bind root foreground to the active theme',
+  );
+
+  [
+    'text-[var(--theme-text)]',
+    'text-[var(--theme-text-muted)]',
+    'text-[var(--theme-text-subtle)]',
+    'bg-[var(--theme-card)]',
+    'bg-[var(--theme-surface-muted)]',
+    'border-[var(--theme-border)]',
+    'legal-control-theme',
+  ].forEach((token) => assert.ok(shell.includes(token), token));
+
+  [
+    'text-white',
+    'text-slate-200',
+    'text-slate-300',
+    'border-white/15',
+    'bg-white/5',
+    'bg-cyan-950/30',
+    'text-cyan-100',
+  ].forEach((legacyClass) => {
+    assert.ok(
+      !shell.includes(legacyClass),
+      `shared legal shell must not retain dark-background-only class: ${legacyClass}`,
+    );
+  });
+
+  const textLinkHover =
+    styles.match(
+      /\[data-legal-interaction-scope\] \.legal-text-link:hover\s*\{([^}]*)\}/,
+    )?.[1] ?? '';
+
+  assert.ok(
+    textLinkHover.includes('text-decoration-line: underline;'),
+    'legal text links should retain the underline hover affordance',
+  );
+  assert.ok(
+    !/\bcolor\s*:/.test(textLinkHover),
+    'legal text-link hover must not replace the semantic foreground color',
+  );
+
+  const themeControlHover =
+    styles.match(
+      /\[data-legal-interaction-scope\] \.legal-control-theme[^{]*:hover\s*\{([^}]*)\}/,
+    )?.[1] ?? '';
+
+  assert.ok(
+    themeControlHover.includes('border-color: var(--theme-border-strong);'),
+    'theme legal controls should own a semantic hover border',
+  );
+  assert.ok(
+    themeControlHover.includes('background-color: var(--theme-card);'),
+    'theme legal controls should own a semantic hover surface',
+  );
+  assert.ok(
+    themeControlHover.includes('color: var(--theme-text);'),
+    'theme legal controls should preserve readable hover text',
+  );
+});

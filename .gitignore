@@ -61,3 +61,5 @@ node_modules
 bun.lockb
 .test-dist
 patch_broken/
+# generated audit snapshots
+/docs/security/duplication-inventory.json

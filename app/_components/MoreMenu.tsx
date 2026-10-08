@@ -247,14 +247,12 @@ export default function MoreMenu({
   }, [closeMenu, isOpen]);
 
   const handleToggle = () => {
-    setIsOpen((prev) => {
-      const next = !prev;
-      if (next) {
-        window.dispatchEvent(new CustomEvent("gomdory:more-menu-open", { detail: { id: menuInstanceId } }));
-      }
-      onOpenChange?.(next);
-      return next;
-    });
+    const next = !isOpen;
+    setIsOpen(next);
+    if (next) {
+      window.dispatchEvent(new CustomEvent("gomdory:more-menu-open", { detail: { id: menuInstanceId } }));
+    }
+    onOpenChange?.(next);
   };
 
   const handleCloseOnSelect = (event: ReactMouseEvent<HTMLDivElement>) => {

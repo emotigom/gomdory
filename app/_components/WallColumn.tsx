@@ -704,7 +704,13 @@ function WallColumn({
       }`}
       style={sectionStyle}
     >
-      <div className={`shrink-0 ${role === "student" ? "px-3 pt-3" : "px-4 pt-4"}`}>
+      <div
+        className={`shrink-0 ${role === "student" ? "px-3 pt-3" : "px-4 pt-4"} ${
+          role === "student" && shouldUseInternalScroll
+            ? "overflow-y-auto [scrollbar-gutter:stable] [scrollbar-width:thin] [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-transparent"
+            : ""
+        }`}
+      >
         <div
           data-column-header="true"
           onClick={handleSpotlightClick}
@@ -1129,7 +1135,13 @@ function WallColumn({
             </>
           )}
         </div>
-        <div className={`shrink-0 ${role === "student" ? "px-3" : "px-4 pr-3"} pb-3 pt-1`}>
+        <div
+          className={`shrink-0 ${role === "student" ? "px-3" : "px-4 pr-3"} pb-3 pt-1 ${
+            role === "student" && shouldUseInternalScroll
+              ? "overflow-y-auto [scrollbar-gutter:stable] [scrollbar-width:thin] [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-transparent"
+              : ""
+          }`}
+        >
           <button
             type="button"
             onClick={() => onAddCard(wall.id)}
