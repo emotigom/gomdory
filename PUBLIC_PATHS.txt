@@ -142,7 +142,7 @@ f9290a1660ba2c1a2a03837951f0fec5905014a5b1f84558f872cef69f59b698  523  app/api/q
 7833efc820f2432655cc3a7638fa6f88aff0cf612cf8a48dde29d64f47dca420  2322  app/api/q2/browser/r2-integration-fixture/route.ts
 6f8bf1305e85d7d005642d4ce801ce1fc8283f6e8df78ec122cc2e9b37c1cb6e  519  app/api/q2/browser/result-download-fixture/reset/route.ts
 c75a3621d0dae82b81b81ac17d901626b5b5ed6fdb8ef610728d4bb323a6bfc8  1089  app/api/q2/browser/student-card-fixture/reset/route.ts
-8f9b8088d1a9c0f912c0189b4bbe396a81751f0b72648fba0d6fe05cc7d327e4  438  app/api/q2/browser/student-card-fixture/upload/[fileId]/route.ts
+87731d9b5875e0ee1a684eaf5f54e406decf012f5042f260b5b9329806088151  541  app/api/q2/browser/student-card-fixture/upload/[fileId]/route.ts
 8fae4ee035c956b2b9baefa0ab3f005e9871cc915902bb88cdb812a70d17b069  842  app/api/q2/browser/teacher-operation-fixture/reset/route.ts
 0832ba90c0df459042e641383056c6aa5507f9cb1be7b6ee80d2ace9692f692c  1128  app/api/q2/browser/teacher-preparation-fixture/reset/route.ts
 2b2819a74783b1e469584499753b5a5ded779157ed9a194a953d8b0b57b064a7  1398  app/api/q2/browser/turnstile-integration-fixture/reset/route.ts
@@ -242,6 +242,7 @@ c0341d2d0cd8d29708a836e300d52ba33b7ac4ea66b3ed14d0064f5a37d4580d  7168  app/api/
 4de048fe4e56afde319ba9d2c9b03bb7ba04e71e344afe192b4b0dffd48fb2e6  2821  app/api/v1/dashboard/boards/[boardId]/export/route.ts
 a09496681e896acd564ca4e1242e102ae8b00c7cb8413362dea244da1fd43a5f  628  app/api/v1/dashboard/boards/[boardId]/files/route.ts
 eb58796cb9cabb98c7e067edba56015008f9f5e8447e1cd4b946776b3b7c4b92  5636  app/api/v1/dashboard/boards/[boardId]/route.ts
+3ff3a0b2ce808553125dba65076bde42959a790e576347ba013c56b8139771e1  2304  app/api/v1/dashboard/boards/[boardId]/sync/route.ts
 03a9d6d2c92df8ea542ef5c0eb7e33c05c37a3186a18c05beea0d880acf08cc4  3525  app/api/v1/dashboard/boards/[boardId]/wall-v2/migrate/route.ts
 39bf49e2d37612bb04b8c64ca1a25331ef3f5d68371491fbe3e3e629e2be77e9  4243  app/api/v1/dashboard/boards/[boardId]/wall-v2/route.ts
 96928c123db3331007176996733032a286e1c89d02920af1297150ca43087b95  2837  app/api/v1/dashboard/boards/[boardId]/walls/reorder/route.ts
@@ -429,14 +430,14 @@ e4f6937beb475aee9e73255d9d3a9c86c4d9e5781af895d1542554f2dbbf17f6  2826  app/api/
 ad3e4f5fe178086823286cf83901af526caebcf336d0962f954c626e6dd2579e  2637  app/api/v1/sessions/[sessionId]/questions/[questionId]/moderate/route.ts
 ebe156af5e0a61aec0e2b2bba731471a88420e267a97800ac1d00710940ae0cf  2563  app/api/v1/sessions/[sessionId]/questions/[questionId]/reply/route.ts
 3c9482ae8f1e265466620fb9374adb6368a8a5f6a16dd29c4982e45c187bd04f  7048  app/api/v1/share/[code]/activity-state/route.ts
-c5420de590b6950110b86b76a3a16b70f48237d5ecc33bac732b550d35a0f03d  7766  app/api/v1/share/[code]/cards/[cardId]/files/initiate/route.ts
+99f67d74d221a0d0a616686b59e1eb9d9c3d508a3a33111bbe6bc500e0d592d5  8671  app/api/v1/share/[code]/cards/[cardId]/files/initiate/route.ts
 66d8b24153a3fe8f82b09aa46f4567ff8f6aaf8bd2b8abbe8733d10aeaeb712d  9589  app/api/v1/share/[code]/cards/[cardId]/move/route.ts
 8d7bb5f19c224f6de0ca5046f06104a3a389e50afb9414c85ef0a5f718f2d90c  9773  app/api/v1/share/[code]/cards/[cardId]/route.ts
 9b12f348f1d942272102d7a097823210bde05e11b05e2f02359f4d213798033d  3747  app/api/v1/share/[code]/feed/route.ts
 40d365938a60c94598c95c280ef5f60933c567b4b407ee4a996f3a4f3bf35329  3544  app/api/v1/share/[code]/feed/walls/[wallId]/route.ts
-184b342efebe35dc4df387550cbb33559764f8672c12caaaea952eb4cdd8a773  3621  app/api/v1/share/[code]/files/[fileId]/delete/route.ts
+14ced7df5214ab3f92459634f28faa37d28ebbe2fa5be950aead38848c311ab0  4377  app/api/v1/share/[code]/files/[fileId]/delete/route.ts
 c48249cfc442654681c17184dc2035e895c36aab37afc1d3a6c8202d63bae3a4  5599  app/api/v1/share/[code]/files/[fileId]/download/route.ts
-67158e6f645f2a4786a1507b00faff53ec2e542c98d6ba3f6f766c9ebd444771  3944  app/api/v1/share/[code]/files/[fileId]/finalize/route.ts
+729c82d36fb07fe21ebc8e60cd78661efce319d55d03d97bf78c7c7c3582e382  4707  app/api/v1/share/[code]/files/[fileId]/finalize/route.ts
 3f795bc93d5106bae1f7fb40fe93089e8a4697bd3d8f2de2a8522c839019bfbe  2722  app/api/v1/share/[code]/ownership/request/route.ts
 ebd0d0e00a558a7b11e39fac70f7000b61534621dd7bffdca249bc2b9362d46b  1450  app/api/v1/share/[code]/present/route.ts
 c29c901f22a0e554f604a3a6713c49447205fee8b173b0df54349c796951e596  10412  app/api/v1/share/[code]/recap/[sessionId]/export/route.ts

@@ -3,7 +3,15 @@ import { finalizeUploadAsAdmin } from "@/lib/data/files";
 import { getOrCreateRequestId } from "@/lib/http/requestId";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 import { getPublicShareWriteGuard, resolvePublicShareBoard } from "@/lib/share/public/access";
-import { finalizeQ4StudentComposeUpload, isQ2B5StudentCardFixtureEnabled, Q2_B5_VALID_CODE } from "@/lib/q2/browser/studentEntryFixture";
+import {
+  finalizeQ2B10Upload,
+  finalizeQ4StudentComposeUpload,
+  isQ2B10FixtureEnabled,
+  isQ2B5StudentCardFixtureEnabled,
+  Q2_B10_SHARE_CODE,
+  Q2_B5_VALID_CODE,
+  q2B10WriteGuard,
+} from "@/lib/q2/browser/studentEntryFixture";
 
 type FinalizeBody = {
   clientId?: string;
@@ -31,6 +39,19 @@ export async function POST(
     if (isQ2B5StudentCardFixtureEnabled(request.headers.get("x-q2-browser-fixture-authorized"))) {
       if (code.toLowerCase() !== Q2_B5_VALID_CODE) return jsonErrorWithRequestId("BOARD_NOT_FOUND", "공유 보드를 찾을 수 없습니다.", requestId, 404);
       return finalizeQ4StudentComposeUpload(fileId) ? jsonOkWithRequestId({}, requestId) : jsonErrorWithRequestId("FINALIZE_FAILED", "첨부 업로드에 실패했어요.", requestId, 400);
+    }
+
+    if (isQ2B10FixtureEnabled(request.headers.get("x-q2-browser-fixture-authorized"))) {
+      if (code.toLowerCase() !== Q2_B10_SHARE_CODE) {
+        return jsonErrorWithRequestId("BOARD_NOT_FOUND", "공유 보드를 찾을 수 없습니다.", requestId, 404);
+      }
+      const writeGuard = q2B10WriteGuard();
+      if (!writeGuard.ok) {
+        return jsonErrorWithRequestId(writeGuard.code, writeGuard.message, requestId, writeGuard.status);
+      }
+      return finalizeQ2B10Upload(fileId, clientId)
+        ? jsonOkWithRequestId({}, requestId)
+        : jsonErrorWithRequestId("FINALIZE_FAILED", "첨부 업로드에 실패했어요.", requestId, 400);
     }
 
     const { board } = await resolvePublicShareBoard(code);
