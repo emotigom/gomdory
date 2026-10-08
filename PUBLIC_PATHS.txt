@@ -1036,9 +1036,9 @@ cf4808fa8527d7c1d477f4bc38aff1d3b6e47e414f858532cf17015e964b6e11  2549  app/s/[c
 2847c3e48e28e91e83ac35af4c243a03c340e0d9bcc75f0dacbe8f2dc2947b89  16366  app/s/[code]/_components/StudentAppGalleryPanel.tsx
 d8bd91cbdb95973e812f1335e9c29e639fad281763cf43ddc1642b1805b9390c  100286  app/s/[code]/_components/StudentAppSubmitPanel.tsx
 58809bc6f1d3de4781bf9665e520f32f220b1ff3b3ccc4046fdd535d560b3eb3  2915  app/s/[code]/_components/studentBoardAnnouncement.ts
-1d1d08dcd874daf3102866dda522f19fd42d2510c9f71016a37c4607bf277f3d  112866  app/s/[code]/_components/StudentBoardMinimal.tsx
-d62e045440ff508c206fabe47894edba5792359dcef6a179710e1d1a0c2b1a67  358  app/s/[code]/_components/StudentComposeContext.tsx
-71f855fc65ae2233c9fa06771f4396eeed4050ba0780c751a961dc0b8feb0b8d  37380  app/s/[code]/_components/StudentGuestBoardSmartLayer.tsx
+208713db9225838f4cfccd2ae5de13e0d1c9383fcc30bd3a7c43cdcf36f6422a  114879  app/s/[code]/_components/StudentBoardMinimal.tsx
+352af20db02048db989e228edfd97a3d0a2d7908d32a0541c39c64b9824031de  1287  app/s/[code]/_components/StudentComposeContext.tsx
+65bbe0a34d7bafb97c9b3a1d4097b6e6f2d63ae993eebb9a1aa813f23296d956  39361  app/s/[code]/_components/StudentGuestBoardSmartLayer.tsx
 979385ed4b0ba55c2cb7be1ffb8d15be2492be1cb4294deafa242ba74f70d33c  3747  app/s/[code]/_components/StudentLessonWorkspace.tsx
 72732cb451e666d8a6c2184dc5a8d0c6e58a4a6771c6537d294e3e50bb379922  2562  app/s/[code]/_components/VibeCodingMissionBanner.tsx
 8c74e0c647ae042ab0f28502d43f326c39d03d353f2eb51bca2caf0448f2d83c  12777  app/s/[code]/_legacy/CardPreviewModal.tsx
@@ -1077,7 +1077,7 @@ b80fca66eb7ed86ef8957cc8d321cfce30bda3c262af848061b9510ba8d06bf1  2465  app/s/[c
 466658d2c717fef63c5ec69f25349b367aac50493f8889c679c7019f3d0f4f2b  16921  app/s/[code]/grid/StudentGridBoard.tsx
 c5a3ae34cf235958623f2c4b1c11bc7674907e352101e75b4a1560798f8729eb  506  app/s/[code]/layout.tsx
 e8755227fa53062b08df6dbb5c552315249552385cb5783e05933583609e7be5  1641  app/s/[code]/loading.tsx
-61d43fa67efb3464f5224e804bf61b9f8bc59f4f83f9767874200229589bde11  16699  app/s/[code]/page.tsx
+09ea30f3e28fd80c8834ec4568f96d4381eedadf71ea6bffab05d91251855e42  16872  app/s/[code]/page.tsx
 33f719698ef5c9f8cbca570783e5a3088b1515ac1cf446bf2fbb8a22a0e4f36d  2139  app/s/[code]/present/_components/DemoOverlay.tsx
 08f08818725470d3f7356e0397e35ff9aadb535c57d2fc7fbafa0fb56e4e4d3e  557  app/s/[code]/present/_components/DemoOverlaySlot.tsx
 d22f7262da694ee765fb633d421d14e14741abb3d1be2e203f082d195d9cf743  1675  app/s/[code]/present/error.tsx
@@ -1110,7 +1110,7 @@ c6ed9cf19071fd60578c9531bd185338ed7732567ef0d585d84f17d6d4cf989d  17288  app/s/[
 5492b6466c7e4eef0c74e7cc0aec98171c5ab2463c7b49ad441be60c34ef4265  2912  app/s/[code]/walls/[wallId]/present/slides/page.tsx
 446ac861225695e083f83d9f832cc91bc7f57ef9784d9258aab3b572f0d47e47  10581  app/s/[code]/walls/[wallId]/present/slides/SlideDeck.tsx
 af4b6ec637e4ce1b0b0e5fd54f7530f2ab76a0cfa2b84a71ea0f18768f6b5531  892  app/s/[code]/walls/[wallId]/present/WallRealtimeRefresh.tsx
-52db2074c1b9f77133d43fab64a4ec2567e3f4e3d6aa56a741f3ff4ad720404a  1434  app/s/[code]/walls/[wallId]/StudentCardComposerButton.tsx
+a08f1a65afadf1de395f5cec17d626a6bf6b01050ae4a87fcc96d070460cd09a  1422  app/s/[code]/walls/[wallId]/StudentCardComposerButton.tsx
 59df638e68bae8783ba2292404dad8fb3800158b1c66d96cb5ebd12dbda8290c  5925  app/s/[code]/walls/[wallId]/StudentCardForm.tsx
 478165a2c36414f19edab25da1055875be4d6c01d85bb3d8b7d2f223eaa17ca2  209  app/s/[code]/walls/page.tsx
 028820fc5cdf00ad2479b72aca1127b204b80c4755865e85bb1f12d08fcc0caa  10087  app/s/enter/route.ts

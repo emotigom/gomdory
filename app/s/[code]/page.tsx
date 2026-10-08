@@ -325,7 +325,11 @@ export default async function SharedBoardPage({
     );
     return null;
   });
-  const wallpaperUrl = fixture ? null : await getBoardWallpaperUrl(board.ui_wallpaper_key ?? null).catch((error) => {
+  const fixtureWallpaperUrl =
+    fixture && "wallpaperUrl" in fixture && typeof fixture.wallpaperUrl === "string"
+      ? fixture.wallpaperUrl
+      : null;
+  const wallpaperUrl = fixture ? fixtureWallpaperUrl : await getBoardWallpaperUrl(board.ui_wallpaper_key ?? null).catch((error) => {
     console.error(
       JSON.stringify({
         level: "error",

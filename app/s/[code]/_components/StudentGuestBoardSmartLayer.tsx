@@ -6,6 +6,10 @@ import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } fr
 import TurnstileWidget from "@/app/_components/TurnstileWidget";
 import { uploadFileToCard } from "@/app/dashboard/boards/[boardId]/walls/[wallId]/uploadClient";
 import type { StudentBoardModel } from "@/lib/student/boardModel";
+import type {
+  StudentRuntimeAuthority,
+  StudentRuntimeClassState,
+} from "@/lib/student/boardSyncContract";
 import { getOrCreateStudentDeviceId } from "@/lib/student/deviceId";
 import { isAllowedCardAttachmentContentType } from "@/lib/data/safeAttachmentTypes";
 import { routes } from "@/lib/standards/routes";
@@ -14,7 +18,12 @@ import {
   type CardAttachmentPolicyRejection,
 } from "@/lib/uploads/cardAttachmentPolicy";
 import { normalizeUploadContentType } from "@/lib/uploads/contentType";
-import { StudentSmartComposeContext } from "./StudentComposeContext";
+import {
+  dispatchStudentRuntimeAuthority,
+  isStudentRuntimeAuthorityEventDetail,
+  STUDENT_RUNTIME_AUTHORITY_EVENT,
+  StudentSmartComposeContext,
+} from "./StudentComposeContext";
 import {
   composerFeedbackMessages,
   composerFeedbackSemantics,
@@ -73,7 +82,7 @@ type StudentGuestBoardSmartLayerProps = {
   shareCode: string;
   viewerName?: string | null;
   shareWriteEnabled: boolean;
-  classState: "idle" | "live" | "ended";
+  classState: StudentRuntimeClassState;
   fixtureCardCreationEnabled?: boolean;
   children: ReactNode;
 };
@@ -470,20 +479,43 @@ export default function StudentGuestBoardSmartLayer({
 }: StudentGuestBoardSmartLayerProps) {
   const clientId = useMemo(() => getOrCreateStudentDeviceId(), []);
   const columns = useMemo(() => model.columns ?? [], [model.columns]);
+  const [runtimeAuthority, setRuntimeAuthority] = useState<StudentRuntimeAuthority>(() => ({
+    shareWriteEnabled,
+    classState,
+  }));
   const [composer, setComposer] = useState<ComposerState | null>(null);
   const [dropTarget, setDropTarget] = useState<DropTarget | null>(null);
   const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
   useEffect(() => { if (fixtureCardCreationEnabled) setTurnstileToken("q2-fixture"); }, [fixtureCardCreationEnabled]);
   const [submitting, setSubmitting] = useState(false);
+  const [composeHandlerReady, setComposeHandlerReady] = useState(false);
   const [feedback, setFeedback] = useState<ComposerFeedback>(IDLE_COMPOSER_FEEDBACK);
   const submitGuardRef = useRef(false);
   const operationRef = useRef(0);
   const openComposerFromBoardRef = useRef<(wallId: string) => void>(() => {});
   const backgroundPointerStartRef = useRef<BackgroundPointerStart | null>(null);
 
-  const writeLockedMessage = classState === "ended"
+  useEffect(() => {
+    setRuntimeAuthority({ shareWriteEnabled, classState });
+  }, [classState, shareWriteEnabled]);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const handleRuntimeAuthority = (event: Event) => {
+      const detail = (event as CustomEvent<unknown>).detail;
+      if (!isStudentRuntimeAuthorityEventDetail(detail) || detail.shareCode !== shareCode) return;
+      setRuntimeAuthority({
+        shareWriteEnabled: detail.shareWriteEnabled,
+        classState: detail.classState,
+      });
+    };
+    window.addEventListener(STUDENT_RUNTIME_AUTHORITY_EVENT, handleRuntimeAuthority);
+    return () => window.removeEventListener(STUDENT_RUNTIME_AUTHORITY_EVENT, handleRuntimeAuthority);
+  }, [shareCode]);
+
+  const writeLockedMessage = runtimeAuthority.classState === "ended"
     ? "오늘 수업은 종료되었어요. 다음에 다시 만나요!"
-    : !shareWriteEnabled
+    : !runtimeAuthority.shareWriteEnabled
       ? "지금은 글쓰기가 잠겨있습니다."
       : null;
 
@@ -671,7 +703,7 @@ export default function StudentGuestBoardSmartLayer({
     return () => window.removeEventListener(SMART_COMPOSE_OPEN_EVENT, handleSmartComposeOpen);
   }, [columnsById, openComposer, writeLockedMessage]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const handleKeyDownCapture = (event: KeyboardEvent) => {
       if (writeLockedMessage) return;
       if (isEditableTarget(event.target)) return;
@@ -689,7 +721,11 @@ export default function StudentGuestBoardSmartLayer({
     };
 
     document.addEventListener("keydown", handleKeyDownCapture, true);
-    return () => document.removeEventListener("keydown", handleKeyDownCapture, true);
+    setComposeHandlerReady(true);
+    return () => {
+      setComposeHandlerReady(false);
+      document.removeEventListener("keydown", handleKeyDownCapture, true);
+    };
   }, [columns, openComposer, writeLockedMessage]);
 
   useEffect(() => {
@@ -796,6 +832,17 @@ export default function StudentGuestBoardSmartLayer({
         throw new Error("잠시만요! 10초 후에 다시 작성할 수 있어요.");
       }
       if (!response.ok || !payload?.cardId) {
+        if (
+          response.status === 403 &&
+          (errorCode === "CLASS_ENDED" || errorMessage === "class_ended")
+        ) {
+          dispatchStudentRuntimeAuthority({
+            shareCode,
+            shareWriteEnabled: runtimeAuthority.shareWriteEnabled,
+            classState: "ended",
+          });
+          throw new Error("오늘 수업은 종료되었어요. 다음에 다시 만나요!");
+        }
         throw new Error(errorMessage ?? "카드 작성에 실패했습니다.");
       }
 
@@ -893,13 +940,22 @@ export default function StudentGuestBoardSmartLayer({
       setSubmitting(false);
       submitGuardRef.current = false;
     }
-  }, [clientId, composer, initialName, shareCode, submitting, turnstileToken, writeLockedMessage]);
+  }, [
+    clientId,
+    composer,
+    initialName,
+    runtimeAuthority.shareWriteEnabled,
+    shareCode,
+    submitting,
+    turnstileToken,
+    writeLockedMessage,
+  ]);
 
   return (
     <>
       <div
         data-testid="student-smart-layer"
-        data-compose-handler-ready="true"
+        data-compose-handler-ready={composeHandlerReady ? "true" : "false"}
         className="contents"
       >
         {fixtureCardCreationEnabled ? <span data-testid="q2-fixture-turnstile" hidden>fixture turnstile complete</span> : null}
@@ -914,7 +970,7 @@ export default function StudentGuestBoardSmartLayer({
           role="status"
           aria-live="polite"
           aria-atomic="true"
-          className="fixed bottom-5 right-5 z-[80] flex max-w-sm items-start gap-3 rounded-xl border border-cyan-300/30 bg-slate-950/95 px-4 py-3 text-sm text-cyan-50 shadow-2xl"
+          className="fixed bottom-[calc(env(safe-area-inset-bottom)+5rem)] left-1/2 z-[80] flex w-fit max-w-[calc(100vw-24px)] -translate-x-1/2 items-start gap-3 rounded-xl border border-cyan-300/30 bg-slate-950/95 px-4 py-3 text-sm text-cyan-50 shadow-2xl sm:bottom-5 sm:left-auto sm:right-5 sm:max-w-sm sm:translate-x-0"
         >
           <span>{feedback.message}</span>
           <button

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-import StudentCardComposerModal from "../../_legacy/StudentCardComposerModal";
+import StudentCardComposerModal from "./StudentCardComposerModal";
 import { cn } from "@/app/_components/uiTokens";
 
 type StudentCardComposerButtonProps = {
