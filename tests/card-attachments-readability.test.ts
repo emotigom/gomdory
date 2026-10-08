@@ -270,7 +270,7 @@ test("teacher and guest attachment renderers share filename and download attribu
   assert.match(source, /data-testid="attachment-download"[\s\S]*?data-attachment-download="true"/);
 });
 
-test("public share and student renderers use the shared readable attachment component", () => {
+test("canonical public share renderer uses the shared readable attachment component", () => {
   const minimal = read(
     "app",
     "s",
@@ -278,29 +278,38 @@ test("public share and student renderers use the shared readable attachment comp
     "_components",
     "StudentBoardMinimal.tsx",
   );
-  const shareCard = read(
+
+  const wallColumn = read(
     "app",
-    "s",
-    "[code]",
-    "grid",
     "_components",
-    "ShareCard.tsx",
-  );
-  const studentTile = read("components", "student", "BoardCardTile.tsx");
-  const studentCard = read(
-    "components",
-    "student",
-    "board",
-    "StudentBoardCard.tsx",
+    "WallColumn.tsx",
   );
 
-  for (const renderer of [minimal, shareCard, studentTile, studentCard]) {
-    assert.match(renderer, /<CardAttachments/);
-  }
-  assert.match(minimal, /mode="share"/);
-  assert.match(shareCard, /mode="share"/);
-  assert.match(studentTile, /mode="student"/);
-  assert.match(studentCard, /mode="student"/);
+  assert.match(
+    minimal,
+    /import WallColumn from "@\/app\/_components\/WallColumn"/,
+  );
+
+  assert.match(
+    wallColumn,
+    /import CardAttachments from "@\/app\/_components\/CardAttachments"/,
+  );
+
+  assert.match(
+    wallColumn,
+    /<CardAttachments[\s\S]*?mode="student"/,
+  );
+
+  assert.match(
+    wallColumn,
+    /disabledReason="학생 화면에서는 첨부를 제거할 수 없어요\."/,
+  );
+
+  assert.match(
+    source,
+    /data-card-attachments-runtime="CardAttachments-v3"/,
+  );
+
   assert.match(
     source,
     /학생 화면에서는 첨부를 제거할 수 없어요|disabledReason/,

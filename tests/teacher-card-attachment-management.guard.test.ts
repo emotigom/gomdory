@@ -14,6 +14,7 @@ const teacherBoard = read(
   "board",
   "TeacherBoardCanonicalClient.tsx",
 );
+const teacherSnapshot = read("lib", "board", "teacherBoardSnapshot.ts");
 const attachmentItemBlock =
   teacherBoard.match(/function AttachmentItem\([\s\S]*?\nfunction BoardQuickActions/)?.[0] ??
   "";
@@ -70,9 +71,9 @@ test("teacher attachment delete separates optimistic attachment identity from fi
   );
   assert.match(deleteAttachmentBlock, /\[attachmentId\]:\s*\{\s*deleting:\s*false,/s);
   assert.match(deleteAttachmentBlock, /delete next\[attachmentId\]/);
-  assert.match(teacherBoard, /attachmentId\?:\s*string\s*\|\s*null/);
-  assert.match(teacherBoard, /fileId\?:\s*string\s*\|\s*null/);
-  assert.match(teacherBoard, /boardFileId\?:\s*string\s*\|\s*null/);
+  assert.match(teacherSnapshot, /attachmentId\?:\s*string\s*\|\s*null/);
+  assert.match(teacherSnapshot, /fileId\?:\s*string\s*\|\s*null/);
+  assert.match(teacherSnapshot, /boardFileId\?:\s*string\s*\|\s*null/);
 });
 
 test("teacher attachment management UI does not expose storage internals", () => {

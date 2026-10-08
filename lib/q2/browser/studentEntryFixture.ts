@@ -2,7 +2,22 @@ import type { SharedBoardViewModel } from "@/lib/boards/toSharedViewModel";
 import type { ShareBoard } from "@/lib/data/share";
 import { api } from "@/lib/standards/routes";
 import { normalizeShareCode } from "@/lib/student/shareCode";
-import { Q2_B10_FIXTURE_MODE, Q2_B10_RESET_PATH, Q2_B10_SHARE_CODE, Q2_B10_SNAPSHOT_PATH, Q2_B10_WALL_A_ID, createQ2B10Card, q2B10StudentFixture } from "@/lib/q2/browser/multiUserPollingFixture";
+import {
+  Q2_B10_BOARD_ID,
+  Q2_B10_FIXTURE_MODE,
+  Q2_B10_RESET_PATH,
+  Q2_B10_SHARE_CODE,
+  Q2_B10_SNAPSHOT_PATH,
+  Q2_B10_STATE_PATH,
+  Q2_B10_WALL_A_ID,
+  Q2_B11_VISUAL_RESET_PATH,
+  createQ2B10Card,
+  createQ2B10UploadIntent,
+  deleteQ2B10Upload,
+  finalizeQ2B10Upload,
+  q2B10StudentFixture,
+  q2B10WriteGuard,
+} from "@/lib/q2/browser/multiUserPollingFixture";
 
 export const Q2_B4_FIXTURE_MODE = "student-entry-v1";
 export const Q2_B4_FIXTURE_TOKEN_HEADER = "x-q2-browser-fixture-token";
@@ -62,7 +77,19 @@ export function isQ2BrowserFixturePath(pathname: string, mode: string | undefine
   if (mode === Q2_B9_E_FIXTURE_MODE) {
     return pathname === api.v1("tools", "student-records", "generate-guest") || pathname === Q2_B9_E_RESET_PATH;
   }
-  if (mode === Q2_B10_FIXTURE_MODE) return pathname === `/s/${Q2_B10_SHARE_CODE}` || pathname === api.share.wallCards(Q2_B10_SHARE_CODE, Q2_B10_WALL_A_ID) || pathname === api.v1("share", Q2_B10_SHARE_CODE, "sync") || pathname === Q2_B10_RESET_PATH || pathname === Q2_B10_SNAPSHOT_PATH || pathname === "/dashboard/boards/00000000-0000-4000-8000-0000000000ba/board" || /^\/api\/v1\/dashboard\/cards\/[^/]+\/visibility$/.test(pathname);
+  if (mode === Q2_B10_FIXTURE_MODE) return pathname === `/s/${Q2_B10_SHARE_CODE}` ||
+    pathname === api.share.wallCards(Q2_B10_SHARE_CODE, Q2_B10_WALL_A_ID) ||
+    pathname === api.v1("share", Q2_B10_SHARE_CODE, "sync") ||
+    pathname === Q2_B10_RESET_PATH ||
+    pathname === Q2_B10_STATE_PATH ||
+    pathname === Q2_B11_VISUAL_RESET_PATH ||
+    pathname === Q2_B10_SNAPSHOT_PATH ||
+    pathname === "/dashboard/boards/00000000-0000-4000-8000-0000000000ba/board" ||
+    pathname === api.v1("dashboard", "boards", Q2_B10_BOARD_ID, "sync") ||
+    /^\/api\/v1\/dashboard\/cards\/[^/]+\/visibility$/.test(pathname) ||
+    /^\/api\/v1\/share\/q2b10a\/cards\/[^/]+\/files\/initiate$/.test(pathname) ||
+    /^\/api\/v1\/share\/q2b10a\/files\/[^/]+\/(?:finalize|delete|download)$/.test(pathname) ||
+    /^\/api\/q2\/browser\/student-card-fixture\/upload\/q2-b10-file-[^/]+$/.test(pathname);
   return false;
 }
 
@@ -133,7 +160,17 @@ export function isQ2B10FixtureEnabled(authorization: string | null | undefined):
 export function isQ2B10FixtureTarget(code: string, wallId: string): boolean {
   return normalizeShareCode(code) === Q2_B10_SHARE_CODE && wallId === Q2_B10_WALL_A_ID;
 }
-export { Q2_B10_FIXTURE_MODE, Q2_B10_SHARE_CODE, Q2_B10_WALL_A_ID, q2B10StudentFixture, createQ2B10Card };
+export {
+  Q2_B10_FIXTURE_MODE,
+  Q2_B10_SHARE_CODE,
+  Q2_B10_WALL_A_ID,
+  q2B10StudentFixture,
+  createQ2B10Card,
+  createQ2B10UploadIntent,
+  finalizeQ2B10Upload,
+  deleteQ2B10Upload,
+  q2B10WriteGuard,
+};
 
 export function isQ2B9DTurnstileFixtureEnabled(authorization: string | null | undefined): boolean {
   return process.env.NODE_ENV !== "production" &&

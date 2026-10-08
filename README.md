@@ -6,7 +6,7 @@ This repository is the clean public source home for publishable application code
 
 ## Local development
 
-Use Node 20.x and npm.
+Use Node 22.x and npm.
 
 ```sh
 npm ci

@@ -6,33 +6,47 @@ import { createSupabaseAdminClient } from "@/lib/supabase/admin";
 
 import { clearLastOpenedBoardIdIfMatches, restoreDeletedBoardAction } from "./actions";
 
+type BoardNotFoundProps = {
+  params?: Promise<{ boardId?: string }>;
+};
+
 export default async function BoardNotFound({
   params,
-}: {
-  params: Promise<{ boardId: string }>;
-}) {
-  const { boardId } = await params;
-  const { user } = await requireUser(`/dashboard/boards/${boardId}`);
+}: BoardNotFoundProps = {}) {
+  const resolvedParams = params ? await params : null;
+  const boardId = resolvedParams?.boardId?.trim() ?? "";
 
-  const admin = createSupabaseAdminClient();
-  const { data: deletedBoard } = await admin
-    .from("boards")
-    .select("id")
-    .eq("id", boardId)
-    .not("deleted_at", "is", null)
-    .maybeSingle();
+  let isDeletedBoard = false;
+  let canRestore = false;
 
-  const isDeletedBoard = Boolean(deletedBoard);
-  const canRestore = isDeletedBoard && isOpsAdmin(user.email);
+  if (boardId) {
+    const { user } = await requireUser(`/dashboard/boards/${boardId}`);
+
+    const admin = createSupabaseAdminClient();
+    const { data: deletedBoard } = await admin
+      .from("boards")
+      .select("id")
+      .eq("id", boardId)
+      .not("deleted_at", "is", null)
+      .maybeSingle();
+
+    isDeletedBoard = Boolean(deletedBoard);
+    canRestore = isDeletedBoard && isOpsAdmin(user.email);
+  }
 
   async function handleReturnToDashboard() {
     "use server";
-    await clearLastOpenedBoardIdIfMatches(boardId);
+    if (boardId) {
+      await clearLastOpenedBoardIdIfMatches(boardId);
+    }
     redirect("/dashboard");
   }
 
   async function handleRestoreBoard() {
     "use server";
+    if (!boardId) {
+      redirect("/dashboard");
+    }
     await restoreDeletedBoardAction(boardId);
     redirect(`/dashboard/boards/${boardId}/board`);
   }
@@ -44,7 +58,9 @@ export default async function BoardNotFound({
           {isDeletedBoard ? "삭제된 보드입니다" : "보드를 찾을 수 없어요"}
         </h1>
         <p className="text-sm text-gray-600">
-          {isDeletedBoard ? "복구가 필요하면 운영 관리자에게 문의해 주세요." : "삭제되었거나 접근 권한이 없는 보드입니다."}
+          {isDeletedBoard
+            ? "복구가 필요하면 운영 관리자에게 문의해 주세요."
+            : "삭제되었거나 접근 권한이 없는 보드입니다."}
         </p>
       </div>
 

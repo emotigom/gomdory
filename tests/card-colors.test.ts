@@ -43,10 +43,12 @@ test("card color tokens are constrained to the supported tone list", () => {
     "sky",
     "orange",
   ]);
+
   assert.deepEqual(
     CARD_COLOR_OPTIONS.map((option) => option.token),
     CARD_COLOR_TOKENS,
   );
+
   assert.equal(isCardColorToken("#ff00aa"), false);
   assert.equal(isCardColorToken("bg-red-500"), false);
   assert.equal(isCardColorToken("mint"), false);
@@ -55,30 +57,69 @@ test("card color tokens are constrained to the supported tone list", () => {
 
 test("teacher and student card renderers apply card color classes", () => {
   const teacher = fs.readFileSync(
-    path.join(root, "app", "dashboard", "boards", "[boardId]", "board", "TeacherBoardCanonicalClient.tsx"),
+    path.join(
+      root,
+      "app",
+      "dashboard",
+      "boards",
+      "[boardId]",
+      "board",
+      "TeacherBoardCanonicalClient.tsx",
+    ),
     "utf8",
   );
-  const studentBoard = fs.readFileSync(
-    path.join(root, "components", "student", "board", "StudentBoardCard.tsx"),
-    "utf8",
-  );
+
   const studentTile = fs.readFileSync(
-    path.join(root, "components", "student", "BoardCardTile.tsx"),
+    path.join(root, "app", "_components", "CardTile.tsx"),
     "utf8",
   );
-  const normalizer = fs.readFileSync(path.join(root, "lib", "student", "normalizeStudentItems.ts"), "utf8");
-  const globalStyles = fs.readFileSync(path.join(root, "app", "globals.css"), "utf8");
+
+  const wallColumn = fs.readFileSync(
+    path.join(root, "app", "_components", "WallColumn.tsx"),
+    "utf8",
+  );
+
+  const uiTokens = fs.readFileSync(
+    path.join(root, "app", "_components", "uiTokens.ts"),
+    "utf8",
+  );
 
   assert.match(teacher, /getCardColorToneClasses\(token\)/);
   assert.match(teacher, /setBoardWalls\(\(currentWalls\)/);
   assert.match(teacher, /setBoardWalls\(previousWalls\)/);
-  assert.match(teacher, /data-card-color-tone=\{cardColorTone\(card\.card_color_token\)\}/);
-  assert.match(studentBoard, /data-card-color-tone=\{cardColorTone\}/);
-  assert.match(studentTile, /data-card-color-tone=\{cardColorTone\}/);
-  assert.match(studentBoard, /cardColorTone === "default"[\s\S]{0,120}bg-white\/95/);
-  assert.match(studentTile, /cardColorTone === "default"[\s\S]{0,120}theme-card-panel/);
-  assert.match(globalStyles, /\.theme-card-panel[\s\S]{0,240}background: var\(--theme-card\)/);
-  assert.doesNotMatch(studentBoard, /getCardColorToneClasses\(cardColorTone\)[\s\S]{0,120}bg-white\/95/);
-  assert.doesNotMatch(studentTile, /getCardColorToneClasses\(cardColorTone\)[\s\S]{0,120}theme-card-panel/);
-  assert.match(normalizer, /cardColorToken: card\.cardColorToken/);
+  assert.match(
+    teacher,
+    /data-card-color-tone=\{cardColorTone\(card\.card_color_token\)\}/,
+  );
+
+  assert.match(
+    studentTile,
+    /const cardColorTone = normalizeCardColorTone\(colorTone\);/,
+  );
+  assert.match(
+    studentTile,
+    /getCardColorToneClasses\(cardColorTone\)/,
+  );
+  assert.match(
+    studentTile,
+    /data-card-color-tone=\{cardColorTone\}/,
+  );
+  assert.match(
+    studentTile,
+    /: surface\.card/,
+  );
+
+  assert.match(
+    wallColumn,
+    /colorTone=\{card\.card_color_token\}/,
+  );
+  assert.match(
+    wallColumn,
+    /normalizeCardColorTone\(card\.card_color_token\)/,
+  );
+
+  assert.match(
+    uiTokens,
+    /card:\s*cn\([\s\S]*?bg-\[var\(--theme-card\)\]/,
+  );
 });

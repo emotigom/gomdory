@@ -5,7 +5,17 @@ import { useRouter } from "next/navigation";
 import { DndContext, DragOverlay, MouseSensor, TouchSensor, useSensor, useSensors, type DragEndEvent, type DragMoveEvent, type DragStartEvent } from "@dnd-kit/core";
 
 import type { StudentBoardModel } from "@/lib/student/boardModel";
-import { StudentSmartComposeContext } from "./StudentComposeContext";
+import {
+  parseStudentBoardSyncResponse,
+  type StudentRuntimeAuthority,
+  type StudentRuntimeClassState,
+} from "@/lib/student/boardSyncContract";
+import {
+  dispatchStudentRuntimeAuthority,
+  isStudentRuntimeAuthorityEventDetail,
+  STUDENT_RUNTIME_AUTHORITY_EVENT,
+  StudentSmartComposeContext,
+} from "./StudentComposeContext";
 import BoardMiniMap from "@/app/_components/BoardMiniMap";
 import HoverExpandBar from "@/app/_components/HoverExpandBar";
 import ComposeCardPanel from "@/app/_components/ComposeCardPanel";
@@ -23,9 +33,9 @@ import { useGlobalShortcut } from "@/lib/ui/useGlobalShortcut";
 import { useTouchLike } from "@/lib/ui/isTouchLike";
 import { shouldEnableWheelDebugTracer, useWheelDebugTracer } from "@/app/_components/useWheelDebugTracer";
 import { useDashboardChromePrefs } from "@/lib/dashboard/chromePrefs";
-import CommandPalette from "@/app/dashboard/boards/[boardId]/class/CommandPalette";
-import KeyboardShortcutsOverlay from "@/app/dashboard/boards/[boardId]/class/KeyboardShortcutsOverlay";
-import { useCommandPalette, type CommandPaletteItem } from "@/app/dashboard/boards/[boardId]/class/useCommandPalette";
+import CommandPalette from "@/app/_components/board/commands/CommandPalette";
+import KeyboardShortcutsOverlay from "@/app/_components/board/commands/KeyboardShortcutsOverlay";
+import { useCommandPalette, type CommandPaletteItem } from "@/app/_components/board/commands/useCommandPalette";
 import { getCapabilitySet, resolveActions, runActionWithTelemetry } from "@/lib/ui/actions/registry";
 import { getStudentBoardActions } from "@/lib/ui/actions/screenActions";
 import { canReorderShareCard, moveCardAcrossWalls } from "@/lib/board/cardReorder";
@@ -62,7 +72,7 @@ type StudentBoardMinimalProps = {
   shareCode: string;
   viewerName?: string | null;
   shareWriteEnabled: boolean;
-  classState: "idle" | "live" | "ended";
+  classState: StudentRuntimeClassState;
   minimapMode?: "hover" | "toggle" | "always" | "hidden";
   wallpaperUrl?: string | null;
   activeLessonTemplateId?: string | null;
@@ -124,12 +134,6 @@ type StudentContentPatch = {
   cardId: string;
   text: string;
   attachments: StudentCardAttachments;
-};
-
-type StudentBoardSyncPayload = {
-  ok?: boolean;
-  boardId?: string;
-  model?: StudentBoardModel;
 };
 
 const TODAY_LESSON_KIT_ID = "namdong-ai-theory-2026-07";
@@ -812,6 +816,10 @@ export default function StudentBoardMinimal({
   useEffect(() => setStudentComposeReady(true), []);
   const { touchLike } = useTouchLike();
   const [columns, setColumns] = useState(() => model.columns ?? []);
+  const [runtimeAuthority, setRuntimeAuthority] = useState<StudentRuntimeAuthority>(() => ({
+    shareWriteEnabled,
+    classState,
+  }));
   const [boardAnnouncement, setBoardAnnouncement] = useState({ key: "", message: "" });
   const [movePendingCount, setMovePendingCount] = useState(0);
   const [draggingCardId, setDraggingCardId] = useState<string | null>(null);
@@ -826,6 +834,25 @@ export default function StudentBoardMinimal({
   const announcementBaselineRef = useRef<StudentBoardAnnouncementSnapshot | null>(null);
   const announcedChangeKeysRef = useRef(new Set<string>());
   const hiddenAnnouncementCardIdsRef = useRef(new Set<string>());
+
+  useEffect(() => {
+    setRuntimeAuthority({ shareWriteEnabled, classState });
+  }, [classState, shareWriteEnabled]);
+
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const handleRuntimeAuthority = (event: Event) => {
+      const detail = (event as CustomEvent<unknown>).detail;
+      if (!isStudentRuntimeAuthorityEventDetail(detail) || detail.shareCode !== shareCode) return;
+      setRuntimeAuthority({
+        shareWriteEnabled: detail.shareWriteEnabled,
+        classState: detail.classState,
+      });
+    };
+    window.addEventListener(STUDENT_RUNTIME_AUTHORITY_EVENT, handleRuntimeAuthority);
+    return () => window.removeEventListener(STUDENT_RUNTIME_AUTHORITY_EVENT, handleRuntimeAuthority);
+  }, [shareCode]);
+
   const applyServerColumns = useCallback((
     serverColumns: StudentBoardModel["columns"],
     options?: { markModelPropsApplied?: boolean },
@@ -896,9 +923,28 @@ export default function StudentBoardMinimal({
         cache: "no-store",
         signal: controller.signal,
       });
-      const payload = (await response.json().catch(() => null)) as StudentBoardSyncPayload | null;
-      if (!response.ok || !payload?.model?.columns) return;
-      if (payload.boardId && payload.boardId !== boardId) return;
+      const rawPayload = await response.json().catch(() => null);
+      if (!response.ok) return;
+
+      const payload = parseStudentBoardSyncResponse(rawPayload);
+      if (!payload) {
+        dispatchStudentRuntimeAuthority({
+          shareCode,
+          shareWriteEnabled: false,
+          classState: "idle",
+        });
+        console.debug("[student-board-sync] invalid payload; writes locked until valid sync", {
+          reason,
+        });
+        return;
+      }
+      if (payload.boardId !== boardId) return;
+
+      dispatchStudentRuntimeAuthority({
+        shareCode,
+        shareWriteEnabled: payload.shareWriteEnabled,
+        classState: payload.classState,
+      });
       if (
         typeof window !== "undefined" &&
         new URLSearchParams(window.location.search).get("debugStudentModal") === "1" &&
@@ -1049,10 +1095,11 @@ export default function StudentBoardMinimal({
     announcedChangeKeysRef.current.add(change.key);
     setBoardAnnouncement({ key: change.key, message: studentBoardAnnouncementMessage(change) });
   }, [clientId, columns]);
-  const writeLocked = !shareWriteEnabled || classState === "ended";
+  const writeLocked =
+    !runtimeAuthority.shareWriteEnabled || runtimeAuthority.classState === "ended";
   const chromePrefs = useDashboardChromePrefs();
   const writeLockedMessage =
-    classState === "ended"
+    runtimeAuthority.classState === "ended"
       ? "오늘 수업은 종료되었어요. 다음에 다시 만나요!"
       : "지금은 글쓰기가 잠겨있습니다.";
   const normalizedViewerName = useMemo(
@@ -1675,7 +1722,7 @@ export default function StudentBoardMinimal({
   const touchSensor = useSensor(TouchSensor, {
     activationConstraint: CARD_DRAG_TOUCH_ACTIVATION,
   });
-  const sensors = useSensors(mouseSensor, ...(touchLike ? [touchSensor] : []));
+  const sensors = useSensors(mouseSensor, touchSensor);
 
   const stopAutoScrollLoop = useCallback(() => {
     if (autoScrollRafRef.current !== null) {
@@ -2126,9 +2173,14 @@ export default function StudentBoardMinimal({
           panelClassName="rounded-2xl border border-[var(--theme-topbar-menu-border)] bg-[var(--theme-topbar-menu-bg)] text-[var(--theme-topbar-menu-text)] shadow-2xl shadow-[var(--theme-topbar-menu-shadow,rgba(2,6,23,0.35))] ring-1 ring-[var(--theme-topbar-menu-border)]/60 supports-[backdrop-filter]:backdrop-blur"
           collapsedContent={
             <div className="flex w-full items-center justify-between gap-2">
-              <span className="truncate text-[var(--theme-topbar-text)]">{title}</span>
               <span
-                className="max-w-[160px] truncate rounded-full border border-[var(--theme-topbar-border)] bg-[var(--theme-topbar-pill-bg)] px-2.5 py-1 text-sm font-semibold text-[var(--theme-topbar-pill-text)]"
+                data-student-topbar-title-scrim="true"
+                className="min-w-0 max-w-[70%] truncate rounded-md border border-[var(--theme-topbar-border)]/70 bg-[var(--theme-topbar-pill-bg)]/80 px-2.5 py-1 font-semibold text-[var(--theme-topbar-text)] shadow-sm sm:max-w-3xl"
+              >
+                {title}
+              </span>
+              <span
+                className="max-w-[160px] shrink-0 truncate rounded-full border border-[var(--theme-topbar-border)] bg-[var(--theme-topbar-pill-bg)] px-2.5 py-1 text-sm font-semibold text-[var(--theme-topbar-pill-text)]"
                 title={normalizedViewerName}
               >
                 {displayViewerName}
@@ -2397,7 +2449,7 @@ export default function StudentBoardMinimal({
       {columnContextMenu ? (
         <div
           data-student-context-menu="column"
-          className="fixed z-40 min-w-44 rounded-lg border border-[var(--theme-border)] bg-[var(--theme-card)] p-1 text-[var(--theme-text)] shadow-lg"
+          className="fixed z-40 min-w-44 rounded-lg border border-[var(--theme-menu-border)] bg-[var(--theme-menu-bg)] p-1 text-[var(--theme-menu-text)] shadow-lg"
           style={{ top: columnContextMenu.y, left: columnContextMenu.x }}
           role="menu"
           aria-label="컬럼 컨텍스트 메뉴"
@@ -2406,7 +2458,7 @@ export default function StudentBoardMinimal({
             <button
               key={action.id}
               type="button"
-              className="block w-full rounded-md px-3 py-2 text-left text-sm hover:bg-[var(--theme-surface-muted)]"
+              className="block w-full rounded-md px-3 py-2 text-left text-sm hover:bg-[var(--theme-menu-hover-bg)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--theme-focus)]"
               onClick={() => {
                 runActionWithTelemetry({
                   action,
@@ -2426,7 +2478,7 @@ export default function StudentBoardMinimal({
       {cardContextMenu ? (
         <div
           data-student-context-menu="card"
-          className="fixed z-40 min-w-44 rounded-lg border border-[var(--theme-border)] bg-[var(--theme-card)] p-1 text-[var(--theme-text)] shadow-lg"
+          className="fixed z-40 min-w-44 rounded-lg border border-[var(--theme-menu-border)] bg-[var(--theme-menu-bg)] p-1 text-[var(--theme-menu-text)] shadow-lg"
           style={{ top: cardContextMenu.y, left: cardContextMenu.x }}
           role="menu"
           aria-label="카드 컨텍스트 메뉴"
@@ -2435,7 +2487,7 @@ export default function StudentBoardMinimal({
             <button
               key={action.id}
               type="button"
-              className="block w-full rounded-md px-3 py-2 text-left text-sm hover:bg-[var(--theme-surface-muted)]"
+              className="block w-full rounded-md px-3 py-2 text-left text-sm hover:bg-[var(--theme-menu-hover-bg)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--theme-focus)]"
               onClick={() => {
                 runActionWithTelemetry({
                   action,

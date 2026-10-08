@@ -1,7 +1,6 @@
 import { requireUser } from "@/lib/auth/requireUser";
 import {
   boardBoardHref,
-  boardClassHref,
   boardHubHref,
 } from "@/lib/dashboard/boardHrefs";
 import type { Metadata } from "next";
@@ -45,6 +44,5 @@ export default async function BoardHubPage({
     redirect(boardHref);
   }
 
-  const classHref = normalizeHref(boardClassHref(boardId));
-  redirect(boardHref ?? classHref);
+  redirect(boardHref);
 }

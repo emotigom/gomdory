@@ -42,3 +42,10 @@ test("MoreMenu keeps its portal and dismissal contracts", () => {
   assert.match(source, /if \(!closeOnSelect\) return/);
   assert.match(source, /onClick=\{handleCloseOnSelect\}/);
 });
+
+test("MoreMenu keeps cross-menu side effects outside the state updater", () => {
+  assert.match(source, /const next = !isOpen;\s*setIsOpen\(next\);/);
+  assert.match(source, /setIsOpen\(next\);[\s\S]{0,220}window\.dispatchEvent/);
+  assert.doesNotMatch(source, /setIsOpen\(\(prev\) => \{[\s\S]{0,260}window\.dispatchEvent/);
+  assert.doesNotMatch(source, /setIsOpen\(\(prev\) => \{[\s\S]{0,260}onOpenChange/);
+});

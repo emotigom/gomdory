@@ -37,7 +37,7 @@ async function allow(context, label) {
 async function reset(page) { expect((await page.request.post(`${base}/api/q2/browser/multi-user-polling-fixture/reset`, { headers: auth })).status()).toBe(200); }
 async function snapshot(page) { const response = await page.request.get(`${base}/api/q2/browser/multi-user-polling-fixture/snapshot`, { headers: auth }); expect(response.status()).toBe(200); return response.json(); }
 async function open(page) { await page.goto(`${base}/s/q2b10a`); await expect(page.getByTestId("student-smart-layer")).toBeVisible(); }
-async function submit(page, text) { await page.keyboard.press("n"); const field = page.getByTestId("student-card-composer-text"); await expect(field).toBeVisible(); await field.fill(text); await page.getByTestId("student-card-composer-submit").click(); await expect(field).toHaveCount(0); }
+async function submit(page, text) { await page.keyboard.press("n"); const field = page.getByTestId("student-card-composer-text"); await expect(field).toBeVisible(); await field.fill(text); await page.getByTestId("student-card-composer-submit").click(); await expect(field).toHaveCount(0, { timeout: 15_000 }); }
 async function waitForCardCount(page, count) { await expect.poll(async () => page.locator("[data-card-id]").count(), { timeout: 12_000 }).toBe(count); }
 async function waitForCardVisible(page, text) { await expect.poll(async () => page.locator("[data-card-id]").filter({ hasText: text }).count(), { timeout: 12_000 }).toBe(1); }
 async function waitForCardHidden(page, text) { await expect.poll(async () => page.locator("[data-card-id]").filter({ hasText: text }).count(), { timeout: 12_000 }).toBe(0); }
@@ -55,10 +55,20 @@ test("B10 multi-user polling uses independent student and teacher product UIs", 
     await allow(a, "studentA"); await allow(b, "studentB"); await allow(teacher, "teacher");
     const ap = await a.newPage(); const bp = await b.newPage(); const tp = await teacher.newPage();
     recordPage(ap, "studentA"); recordPage(bp, "studentB"); recordPage(tp, "teacher");
-    await reset(ap); await Promise.all([open(ap), open(bp)]);
+    await reset(ap);
+    await tp.goto(`${base}/dashboard/boards/${boardId}/board`);
+    await expect(tp.getByTestId("canonical-board-content")).toBeVisible();
+    const teacherDraft = tp.getByLabel("새 카드 내용").first();
+    await teacherDraft.fill("교사 작성 중 초안");
+    await Promise.all([open(ap), open(bp)]);
 
     await Promise.all([submit(ap, "B10 student A card"), submit(bp, "B10 student B card")]);
     await Promise.all([waitForCardCount(ap, 2), waitForCardCount(bp, 2)]);
+    await Promise.all([
+      waitForCardVisible(tp, "B10 student A card"),
+      waitForCardVisible(tp, "B10 student B card"),
+    ]);
+    await expect(teacherDraft).toHaveValue("교사 작성 중 초안");
     const s1 = await snapshot(ap); expect(s1.createCount).toBe(2); expect(s1.visibleCardCount).toBe(2); expect(new Set(s1.pollCounts ? Object.keys(s1.pollCounts) : []).size).toBeGreaterThanOrEqual(2); telemetry.scenarios.S1 = "PASS";
 
     const ids = await ap.locator("[data-card-id]").evaluateAll((cards) => cards.map((card) => card.getAttribute("data-card-id")));
@@ -75,7 +85,7 @@ test("B10 multi-user polling uses independent student and teacher product UIs", 
     await submit(bp, "B10 student B draft trigger"); await waitForCardCount(ap, 3); await expect(draft).toHaveValue("작성 중인 로컬 초안");
     await ap.getByTestId("student-card-composer-submit").click(); await waitForCardCount(bp, 4); telemetry.scenarios.S3 = "PASS";
 
-    await tp.goto(`${base}/dashboard/boards/${boardId}/board`); const target = tp.locator("[data-card-id]").filter({ hasText: "B10 student A card" }); await expect(target).toBeVisible();
+    const target = tp.locator("[data-card-id]").filter({ hasText: "B10 student A card" }); await expect(target).toBeVisible();
     await target.getByRole("button", { name: "카드 메뉴 열기" }).click(); await tp.getByRole("menuitem", { name: "학생에게 숨기기" }).click(); await waitForCardHidden(ap, "B10 student A card");
     await target.getByRole("button", { name: "카드 메뉴 열기" }).click(); await tp.getByRole("menuitem", { name: "학생에게 공개하기" }).click(); await waitForCardVisible(ap, "B10 student A card");
     const s4 = await snapshot(ap); expect(s4.createCount).toBe(4); expect(s4.hideCount).toBe(1); expect(s4.unhideCount).toBe(1); expect(s4.visibleCardCount).toBe(4); telemetry.scenarios.S4 = "PASS";

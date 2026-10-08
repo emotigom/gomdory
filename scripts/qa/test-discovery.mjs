@@ -19,6 +19,18 @@ export const isGuardTest = (value) => /(?:^|\/)[\w.-]*(?:-guard|\.guard)\.test\.
 export const isSmokeContractTest = (value) => /(?:^|\/)(?:coach-healthcheck-smoke|smoke-[\w.-]+)\.test\.[cm]?[jt]sx?$/i.test(normalizeTestPath(value));
 const isDefaultExcludedSmoke = (value) => path.posix.basename(normalizeTestPath(value)) === "coach-healthcheck-smoke.test.tsx";
 
+const PRIVATE_ROOT_SOURCE_ONLY_TEST_PREFIXES = [
+  "scripts/public-export/template/",
+];
+
+export const isPrivateRootRunnableTestFile = (value) => {
+  const file = normalizeTestPath(value);
+  if (!file) return false;
+  return !PRIVATE_ROOT_SOURCE_ONLY_TEST_PREFIXES.some((prefix) =>
+    file.startsWith(prefix),
+  );
+};
+
 export const listTrackedTestFiles = (repoRoot) => {
   const result = spawnSync("git", ["ls-files", "*.test.ts", "*.test.tsx", "*.test.mjs", "*.test.cjs"], {
     cwd: repoRoot,
@@ -26,7 +38,11 @@ export const listTrackedTestFiles = (repoRoot) => {
     windowsHide: true,
   });
   if (result.status !== 0) throw new Error(`git ls-files failed: ${(result.stderr || "unknown error").trim()}`);
-  return result.stdout.split(/\r?\n/).map(normalizeTestPath).filter(Boolean).sort((a, b) => a.localeCompare(b));
+  return result.stdout
+    .split(/\r?\n/)
+    .map(normalizeTestPath)
+    .filter(isPrivateRootRunnableTestFile)
+    .sort((a, b) => a.localeCompare(b));
 };
 
 const keywordMatch = (file, patterns) => patterns.some((keyword) => file.toLowerCase().includes(keyword.toLowerCase()));

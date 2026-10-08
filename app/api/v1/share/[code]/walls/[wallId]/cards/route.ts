@@ -20,7 +20,7 @@ import {
   getPublicWallWriteGuard,
   resolvePublicShareWall,
 } from "@/lib/share/public/access";
-import { createQ2B5StudentFixtureCard, isQ2B5StudentCardFixtureEnabled, isQ2B5StudentCardFixtureTarget, isQ2B9DTurnstileFixtureEnabled, isQ2B9DTurnstileFixtureTarget, createQ2B10Card, isQ2B10FixtureEnabled, isQ2B10FixtureTarget } from "@/lib/q2/browser/studentEntryFixture";
+import { createQ2B5StudentFixtureCard, isQ2B5StudentCardFixtureEnabled, isQ2B5StudentCardFixtureTarget, isQ2B9DTurnstileFixtureEnabled, isQ2B9DTurnstileFixtureTarget, createQ2B10Card, isQ2B10FixtureEnabled, isQ2B10FixtureTarget, q2B10WriteGuard } from "@/lib/q2/browser/studentEntryFixture";
 import { Q2_B9_D_EXPECTED_ACTION, Q2_B9_D_EXPECTED_CDATA, recordQ2B9DBusinessMutation, verifyQ2B9DTurnstileToken } from "@/lib/q2/browser/turnstileIntegrationFixture";
 
 type StudentCardRequestBody = {
@@ -186,6 +186,10 @@ export async function POST(
   }
   if (isQ2B10FixtureEnabled(request.headers.get("x-q2-browser-fixture-authorized"))) {
     if (!isQ2B10FixtureTarget(code, wallId)) return jsonErrorWithRequestId("BOARD_NOT_FOUND", "공유 보드를 찾을 수 없습니다.", requestId, 404);
+    const writeGuard = q2B10WriteGuard();
+    if (!writeGuard.ok) {
+      return jsonErrorWithRequestId(writeGuard.code, writeGuard.message, requestId, writeGuard.status);
+    }
     const card = createQ2B10Card({ text: normalizedText, authorClientId: typeof body.clientId === "string" ? body.clientId : "q2-b10-guest" });
     return card ? jsonOkWithRequestId({ cardId: card.id }, requestId) : jsonErrorWithRequestId("INVALID_BODY", "요청 본문을 확인해주세요.", requestId, 400);
   }

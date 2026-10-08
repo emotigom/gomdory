@@ -7,7 +7,15 @@ import { getPublicShareWriteGuard, resolvePublicShareBoard } from "@/lib/share/p
 import { shareCardUploadOwnershipSelect } from "@/lib/db/shareQueries";
 import { validateCardAttachmentUploadPolicy } from "@/lib/uploads/cardAttachmentPolicy";
 import { normalizeUploadContentType } from "@/lib/uploads/contentType";
-import { createQ4StudentComposeUpload, isQ2B5StudentCardFixtureEnabled, Q2_B5_VALID_CODE } from "@/lib/q2/browser/studentEntryFixture";
+import {
+  createQ2B10UploadIntent,
+  createQ4StudentComposeUpload,
+  isQ2B10FixtureEnabled,
+  isQ2B5StudentCardFixtureEnabled,
+  Q2_B10_SHARE_CODE,
+  Q2_B5_VALID_CODE,
+  q2B10WriteGuard,
+} from "@/lib/q2/browser/studentEntryFixture";
 
 type InitiateBody = {
   clientId?: string;
@@ -94,6 +102,25 @@ export async function POST(
         requestId,
         policyRejection.status,
       );
+    }
+
+    if (isQ2B10FixtureEnabled(request.headers.get("x-q2-browser-fixture-authorized"))) {
+      if (code.toLowerCase() !== Q2_B10_SHARE_CODE) {
+        return jsonErrorWithRequestId("BOARD_NOT_FOUND", "공유 보드를 찾을 수 없습니다.", requestId, 404);
+      }
+      const writeGuard = q2B10WriteGuard();
+      if (!writeGuard.ok) {
+        return jsonErrorWithRequestId(writeGuard.code, writeGuard.message, requestId, writeGuard.status);
+      }
+      const intent = createQ2B10UploadIntent({
+        cardId,
+        clientId,
+        filename: body.filename,
+        contentType: normalizedContentType,
+      });
+      return intent
+        ? jsonOkWithRequestId(intent, requestId)
+        : jsonErrorWithRequestId("CARD_NOT_FOUND", "카드를 찾을 수 없습니다.", requestId, 404);
     }
 
     const originalBytes =

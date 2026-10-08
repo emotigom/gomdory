@@ -23,6 +23,8 @@ const RENAMES = Object.freeze({
   "20261220090000_create_decorate_plan_cache.sql": "20261220090001_create_decorate_plan_cache.sql",
 });
 const MANIFEST = "config/q5-supabase-clean-project-baseline-derivation.json";
+export const FROZEN_MIGRATION_ARCHIVE =
+  "supabase/history/migrations-pre-successor-20260929";
 const originalBilling = "supabase/migrations/20250214120000_institution_billing.sql";
 const currentBilling = "supabase/migrations/20251215100001_institution_billing.sql";
 
@@ -48,7 +50,9 @@ export function createFrozenQ5Source(sourceRoot = process.cwd()) {
   const nodes = manifest.nodes.map(node => {
     assert.match(node.relativePath, /^supabase\/migrations\/[a-z0-9_]+\.sql$/);
     const basename = path.posix.basename(node.relativePath);
-    const raw = readSource(`supabase/migrations/${RENAMES[basename] ?? basename}`);
+    const raw = readSource(
+      `${FROZEN_MIGRATION_ARCHIVE}/${RENAMES[basename] ?? basename}`,
+    );
     return { relativePath: node.relativePath, ...parseFilename(basename), raw };
   }).sort((a, b) => a.version < b.version ? -1 : a.version > b.version ? 1 : a.relativePath < b.relativePath ? -1 : a.relativePath > b.relativePath ? 1 : 0)
     .map((node, baseOrderIndex) => ({ ...node, baseOrderIndex }));

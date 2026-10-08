@@ -10,39 +10,16 @@ import { normalizeBoardRole } from "@/lib/auth/boardRoles";
 import { requireUser } from "@/lib/auth/requireUser";
 import { getBoard } from "@/lib/data/boards.server";
 import { canSoftDelete, getBoardPolicy } from "@/lib/data/boardPolicies";
-import { listWallCardsPaginated } from "@/lib/data/cards";
-import { listFilesByCardIds, type CardFile } from "@/lib/data/files";
 import { ensureBoardShareCode } from "@/lib/data/share";
-import { listWalls } from "@/lib/data/walls";
 import { getActiveLessonSessionForBoard } from "@/lib/lesson-activities/sessions";
 import { getAiBingoTeacherSummaryForBoard, getAiJudgmentSortTeacherSummaryForBoard, getPythonStudioLiteTeacherSummaryForBoard, getWebCodingLiteTeacherSummaryForBoard } from "@/lib/lesson-activities/progress";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
-import { routes } from "@/lib/standards/routes";
 import { getBoardWallpaperUrl } from "@/lib/boards/wallpaper.server";
+import { loadTeacherBoardWalls } from "@/lib/board/teacherBoardSnapshot.server";
 import { DEFAULT_BOARD_THEME, normalizePersistedBoardTheme, resolveBoardThemeVars } from "@/lib/ui/boardTheme";
 import TeacherBoardCanonicalClient from "./TeacherBoardCanonicalClient";
 
 export const dynamic = "force-dynamic";
-
-const CARD_LIMIT = 60;
-const DOCUMENT_EXTENSIONS = new Set(["txt", "log", "md", "csv", "json", "pdf"]);
-
-function extensionOf(name: string): string {
-  const dot = name.lastIndexOf(".");
-  return dot > 0 ? name.slice(dot + 1).toLowerCase() : "";
-}
-
-type CanonicalAttachment = {
-  id: string;
-  attachmentId?: string | null;
-  fileId?: string | null;
-  boardFileId?: string | null;
-  kind: "image" | "file" | "url" | "audio" | "video" | "document";
-  label: string;
-  url: string;
-  contentType?: string | null;
-  size?: number | null;
-};
 
 export default async function TeacherBoardCanonicalPage({
   params,
@@ -56,7 +33,31 @@ export default async function TeacherBoardCanonicalPage({
   const q2B7 = isQ2B7FixtureAuthorized(requestHeaders.get("x-q2-browser-fixture-authorized"));
   if (q2B7 && boardId === Q2_B7_BOARD_ID) { const role = q2B7Role(requestHeaders); const isOwner = role === "owner"; const fixture = readTeacherOperationSnapshot(); return <TeacherBoardCanonicalClient boardId={boardId} boardTitle="Q2 B7 교사 수업 운영 테스트 보드" boardDescription="로컬 교사 운영 fixture" boardAccessCode="q2b7op" initialBoardTheme={DEFAULT_BOARD_THEME} initialBoardThemeVars={resolveBoardThemeVars(DEFAULT_BOARD_THEME, "teacher")} walls={fixture.walls} fixtureDataVersion={fixture.stateVersion} fixtureMode="q2-b7" collaborationSummary={{ ownerLabel: isOwner ? "보드 소유자" : "읽기 전용", memberCount: 2 }} currentUserId={isOwner ? Q2_B7_OWNER_ID : Q2_B7_VIEWER_ID} canDeleteCards={false} canOperateCards={isOwner} initialActiveLessonSession={null} initialAiBingoSummary={null} initialAiJudgmentSortSummary={null} initialPythonStudioLiteSummary={null} initialWebCodingLiteSummary={null} />; }
   const q2B10 = isQ2B10Authorized(requestHeaders.get("x-q2-browser-fixture-authorized"));
-  if (q2B10 && boardId === Q2_B10_BOARD_ID) { const fixture = q2B10Store(); return <TeacherBoardCanonicalClient boardId={boardId} boardTitle="Q2 B10 다중 사용자 테스트 보드" boardDescription="로컬 다중 사용자 polling fixture" boardAccessCode="q2b10a" initialBoardTheme={DEFAULT_BOARD_THEME} initialBoardThemeVars={resolveBoardThemeVars(DEFAULT_BOARD_THEME, "teacher")} walls={q2B10TeacherWalls()} fixtureDataVersion={fixture.stateVersion} fixtureMode="q2-b10" collaborationSummary={{ ownerLabel: "보드 소유자", memberCount: 3 }} currentUserId={Q2_B10_OWNER_ID} canDeleteCards={false} canOperateCards initialActiveLessonSession={null} initialAiBingoSummary={null} initialAiJudgmentSortSummary={null} initialPythonStudioLiteSummary={null} initialWebCodingLiteSummary={null} />; }
+  if (q2B10 && boardId === Q2_B10_BOARD_ID) {
+    const fixture = q2B10Store();
+    return (
+      <TeacherBoardCanonicalClient
+        boardId={boardId}
+        boardTitle={fixture.visualStress ? "AI 수업 교사 작업대 · 시각 검증" : "Q2 B10 다중 사용자 테스트 보드"}
+        boardDescription={fixture.visualStress ? "실제 수업 밀도를 닮은 Q2-B11 로컬 시각 검증 fixture" : "로컬 다중 사용자 polling fixture"}
+        boardAccessCode="q2b10a"
+        initialBoardTheme={DEFAULT_BOARD_THEME}
+        initialBoardThemeVars={resolveBoardThemeVars(DEFAULT_BOARD_THEME, "teacher")}
+        walls={q2B10TeacherWalls()}
+        fixtureDataVersion={fixture.stateVersion}
+        fixtureMode="q2-b10"
+        collaborationSummary={{ ownerLabel: "보드 소유자", memberCount: 3 }}
+        currentUserId={Q2_B10_OWNER_ID}
+        canDeleteCards={false}
+        canOperateCards
+        initialActiveLessonSession={null}
+        initialAiBingoSummary={null}
+        initialAiJudgmentSortSummary={null}
+        initialPythonStudioLiteSummary={null}
+        initialWebCodingLiteSummary={null}
+      />
+    );
+  }
   const q2B8 = isQ2B8FixtureAuthorized(requestHeaders.get("x-q2-browser-fixture-authorized"));
   if (q2B8 && boardId === Q2_B8_BOARD_ID) { const fixture = readResultDownloadSnapshot(); return <TeacherBoardCanonicalClient boardId={boardId} boardTitle="B8 결과 백업" boardDescription="로컬 다운로드 검증용 fixture" boardAccessCode="q2b8dl" initialBoardTheme={{ ...DEFAULT_BOARD_THEME, id: "calm" }} initialBoardThemeVars={resolveBoardThemeVars(DEFAULT_BOARD_THEME, "teacher")} walls={fixture.walls} fixtureDataVersion={fixture.stateVersion} fixtureMode="q2-b8" collaborationSummary={{ ownerLabel: "보드 소유자", memberCount: 1 }} currentUserId={Q2_B8_OWNER_ID} canDeleteCards={false} initialActiveLessonSession={null} initialAiBingoSummary={null} initialAiJudgmentSortSummary={null} initialPythonStudioLiteSummary={null} initialWebCodingLiteSummary={null} />; }
   const q2B9 = isQ2B9FixtureAuthorized(requestHeaders.get("x-q2-browser-fixture-authorized"));
@@ -180,89 +181,7 @@ export default async function TeacherBoardCanonicalPage({
       })
     : null;
 
-  const walls = await listWalls(board.id).catch((error) => {
-    console.error(
-      JSON.stringify({
-        level: "error",
-        stage: "dashboard_board_minimal_walls_failed",
-        boardId,
-        message: error instanceof Error ? error.message : String(error),
-      }),
-    );
-    return [];
-  });
-
-  const wallCards = await Promise.all(
-    walls.map(async (wall) => {
-      const result = await listWallCardsPaginated({
-        wallId: wall.id,
-        includeHidden: true,
-        limit: CARD_LIMIT,
-        orderByPosition: true,
-      }).catch((error) => {
-        console.error(
-          JSON.stringify({
-            level: "error",
-            stage: "dashboard_board_minimal_cards_failed",
-            boardId,
-            wallId: wall.id,
-            message: error instanceof Error ? error.message : String(error),
-          }),
-        );
-        return { items: [] };
-      });
-
-      return {
-        wall,
-        cards: result.items,
-      };
-    }),
-  );
-  const filesByCard: Record<string, CardFile[]> = await listFilesByCardIds(
-    wallCards.flatMap((entry) => entry.cards.map((card) => card.id)),
-  ).catch(() => ({} as Record<string, CardFile[]>));
-  const wallCardsWithAttachments = wallCards.map(({ wall, cards }) => ({
-    wall,
-    cards: cards.map((card) => ({
-      ...card,
-      attachments: [
-        ...(filesByCard[card.id] ?? []).map(
-          (file): CanonicalAttachment => ({
-            id: file.id,
-            attachmentId: file.attachment_id ?? null,
-            fileId: file.file_id ?? file.id,
-            boardFileId: file.board_file_id ?? null,
-            kind: file.content_type?.startsWith("image/")
-              ? "image"
-              : file.content_type?.startsWith("audio/")
-                ? "audio"
-                : file.content_type?.startsWith("video/")
-                  ? "video"
-                  : file.content_type?.includes("pdf") || file.content_type?.startsWith("text/") || DOCUMENT_EXTENSIONS.has(extensionOf(file.filename))
-                    ? "document"
-                    : "file",
-            label: file.filename,
-            url: routes.api.files.download(file.id),
-            contentType: file.content_type,
-            size: file.size_bytes,
-          }),
-        ),
-        ...card.external_attachments.flatMap((item, index): CanonicalAttachment[] => {
-          if (!item.downloadPath) return [];
-          return [
-            {
-              id: `url-${card.id}-${index}`,
-              kind: "url",
-              label: item.filename ?? item.downloadPath,
-              url: item.downloadPath,
-              contentType: item.contentType,
-              size: item.byteSize,
-            },
-          ];
-        }),
-      ],
-    })),
-  }));
+  const wallCardsWithAttachments = await loadTeacherBoardWalls(board.id);
 
   const persistedBoardTheme = normalizePersistedBoardTheme(board.ui_theme_config) ?? DEFAULT_BOARD_THEME;
   const boardThemeVars = resolveBoardThemeVars(persistedBoardTheme, "teacher");
