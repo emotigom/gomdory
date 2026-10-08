@@ -2834,8 +2834,6 @@ f37364e5fa48ba38191c0cb2f4651b1bb225edb16128e3b2579ff8d1fbc2e922  10166  tests/p
 302bb673c0d2c1c2bc6b906f15d46742399f69ce0436e04aa0948ddfc937a947  1471  tests/pricing-page-links.test.ts
 8974d6a51e073981ce7f0f7b761f8f50ca85cd7490ae953579dfd01c28a61c2f  4330  tests/pro-template-import-gate.test.ts
 0b50aabc29b992a54f63be7af016d7d39a361b6409fea33dbdb0d5583ff2ec73  2863  tests/pro-template-lock.test.ts
-4d33de73f3be6d0fc3881286f9e9caacfcca0e5d72222073d8bb3d90f5eb7d1c  6389  tests/provider-impact-refinement.test.mjs
-5e45749645a14bdfc9b6535e360b612fdfc48709bd028154f29d2232e8e5c515  7706  tests/provider-impact-selector.test.mjs
 fa98f335c73a64945af454b05cf97883e7faa638646c6901ca5369dc7669e6e7  476  tests/public-report-page-marker.test.ts
 747d41d65b0d93428f6ad2fe8648fd6b1d4c4cad4ef9eadfcf1e562798b55c61  3336  tests/public-report.route.test.ts
 8c865768b22a4282289dc75e45ee207b070de43249fb7fcb474c28e19c1aef60  1174  tests/public-share-access.test.ts
