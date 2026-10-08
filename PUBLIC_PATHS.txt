@@ -2883,7 +2883,7 @@ f53faa996cba5aa9f5a56d21835143870ff8a74156b683e562a3124e3c5bd679  692  tests/q4-
 75a92b10e2ed4a06c0243ed149323696626d987ccc49697fad28e4e4eadd4d13  722  tests/r2-boundary-contract.test.ts
 d8b2187a6d0e3d95b9807156f13c321a7e0f502692c806a6b9b0823dc9c3939b  713  tests/rate-limit.test.ts
 608a800e8e21cebe147eb57e92c8cc36d258174acd9144e1a565233ca2348e80  915  tests/rateLimit.test.ts
-1b80a5dc37a3bf9febc01dc246611b6b47f36e7605ec3980d049e1146dcccf33  2088  tests/readability-guard.test.ts
+6a8b4dcbebf52f22d78d577fcd296dd6c9a3dd2971761a2bc55ecec05cf12c73  1556  tests/readability-guard.test.ts
 f434c61985b64c1a1ddd15b63433ca5f91df74b23b01a810e9e8f8d9faf595d1  11931  tests/README.md
 2e38eaf8c7c486d4a493e6a96917c50c79f36c7048ed6ee37a84f6e6f5c733e2  491  tests/recent-board-action.test.ts
 98c57ec36c4a8b366cd69569f30ee2cca2445c0132f626d8c73f4a5021dac648  695  tests/recent-board-route-error.test.ts
@@ -2923,7 +2923,7 @@ d4853fd8c2a3faa76d60e91d144cd8902977797a5e8c167d2dc884ccb430f83a  572  tests/shi
 4435fa106242d6d5ab9f26c665c2c1a3b9a73722e43734d72d816f0f8272b8bd  855  tests/shims/opentelemetry-api.ts
 8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881  11  tests/shims/server-only.ts
 1e589bdab2c594ffd598774bb3a51bacc83c438e59c8a985ee9ae069bdb5b875  731  tests/showcase-public.test.ts
-cea52e90ab90861b4380c2da1a1725fc7385ad3ef68e3bb1ccdaea7b2e3fe8a1  858  tests/showcase-route.test.ts
+b8b5906fc5a4cf7976c02fffa6791e50ed3f4fda32066ecda5842264a9c497a7  643  tests/showcase-route.test.ts
 2dfd42acccb5531d9eeb7b6db2b6873531e7bd129c4eeb0cb1a609829abf94db  1019  tests/showcase-summary.test.ts
 a72e5b8194e13d49674f1c631e549746758d76b9f8e282616f971db1013a00f4  4865  tests/showcase-template-api.test.ts
 9a50327e0ec7afdd8cd4ebb50e14e2760ad195decb9ffdbfaae464733b3cbb38  1647  tests/showcase-to-template.test.ts
@@ -2999,14 +2999,15 @@ ca1982d7423f6bb379440b85abb4416aa1ef96e35617fda958685a31a7236427  2086  tests/st
 1576612009d44e6597a5970f8debaf42720ed21a8f9ec198dda05d0f539229c0  1251  tests/student-app-validate-route-source.test.ts
 eea9a4c1ab903ab27b50df1fcfffca7295f28514659060c80a348addb5112fa2  9559  tests/student-app-zip-import-contract.test.ts
 8a7ee3d392532729e922fe32d62b689938b06a367a4ab621f80e9e6aa91ff325  2333  tests/student-app-zip-import-ui.test.ts
-ffd5625a2dda5e8c1afd6407b14bea2748962909ba6f8d370ca2f72aca9b5fe8  4569  tests/student-board-accessibility-theme-guard.test.ts
-4b5eabfdf9105d3822c1c1fc31a653ecf3add86cebf502558a4f3b56a89f6f24  9186  tests/student-board-bright-runtime-guard.test.ts
+6ad466e7309633a333a75754587966e538171c0e0c02d00dfbd976521f021667  8154  tests/student-board-accessibility-theme-guard.test.ts
+dcf2dd22775be168a1591bce6392f41a947eab1b914867b98228e3ade1ce64ff  9204  tests/student-board-bright-runtime-guard.test.ts
 17b22599006bf2b1eeec2e3244224af92edaa763422cdc0c034b526da6d58bf1  2185  tests/student-board-filter.test.ts
 51a53a3e99e5c78f9bfe778be2a8c823739386a1c89349782a91f56a002746dc  3242  tests/student-board-live-announcement.test.ts
 cdca706377eacda1dae6c49ca90025b6dd62a1b9c69959270dc6de819cf544f5  1360  tests/student-board-minimal-model-sync-regression.test.ts
 f962686ea99cee850786e0774a5495a2e6604836f845366b3aee27a7d740035e  2947  tests/student-board-overlay-guard.test.ts
 38736ab25fc98db4ec0fb1d96798e430a144baed415521e9c27c7c6145455e1b  819  tests/student-board-overlay-hit-guard.test.ts
 0dd4661b5433e47bd4247ddea47c8ee7aaa40693ba9912a4b3c787d39bd549e6  1629  tests/student-board-pointer-hit-guard.test.ts
+037c7915c034a46a6db126d750ca9c31030a99bf83442dc8c7f33a154db3b6dc  2756  tests/student-board-sync-contract.test.ts
 0aec10e776e8c77ffee94c5711fdfc92c9a27153f72be3e0e1452372b7be96ad  2737  tests/student-board-theme-mode-guard.test.ts
 a283e3232f766e8a710c009a5e548ca7342119c1b4f26a56f15c317e4d6bf92a  1534  tests/student-board-top-action-layout-source.test.ts
 e19c29b16545c86c654bc05111b84712f3605070801972a845195c4052441b0a  1895  tests/student-board-vibe-coding-mission-banner.test.ts

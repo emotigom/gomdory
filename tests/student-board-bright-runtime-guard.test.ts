@@ -160,7 +160,7 @@ test("student work wall keeps the own-card menu trigger quiet", () => {
   assert.match(wallSource, /data-student-card-menu-trigger="true"/);
   assert.match(
     globalsSource,
-    /html\[data-gom-theme="gomdory-studio"\][\s\S]*?\[data-student-card="own"\][\s\S]*?\[data-student-card-menu-trigger="true"\][\s\S]*?background: transparent !important;[\s\S]*?box-shadow: none;/,
+    /html\[data-gom-theme="gomdory-studio"\][\s\S]*?\[data-student-card="own"\][\s\S]*?\[data-student-card-menu-trigger="true"\][\s\S]*?background: var\(--theme-more-button-bg\) !important;[\s\S]*?box-shadow: none;/,
   );
 });
 

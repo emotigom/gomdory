@@ -19,15 +19,6 @@ test("teacher ui prefs keeps readability hardening invariants", () => {
   assert.match(schema, /next\.backgroundMode === "image" && !sanitizedBackgroundImageUrl \? "color" : next\.backgroundMode/);
 });
 
-test("student view tabs keep accessible tab semantics", () => {
-  const studentViewTabs = read("app", "s", "[code]", "_legacy", "ViewSwitcher.tsx");
-  assert.match(studentViewTabs, /role="tablist"/);
-  assert.match(studentViewTabs, /aria-label="보드 뷰 전환"/);
-  assert.match(studentViewTabs, /role="tab"/);
-  assert.match(studentViewTabs, /aria-selected=\{value === key\}/);
-  assert.match(studentViewTabs, /aria-current=\{value === key \? "page" : undefined\}/);
-  assert.match(studentViewTabs, /focus-visible:ring-2/);
-});
 
 test("global motion reduction and focus ring guards stay wired", () => {
   const globals = read("app", "globals.css");
