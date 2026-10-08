@@ -1111,6 +1111,7 @@ c6ed9cf19071fd60578c9531bd185338ed7732567ef0d585d84f17d6d4cf989d  17288  app/s/[
 446ac861225695e083f83d9f832cc91bc7f57ef9784d9258aab3b572f0d47e47  10581  app/s/[code]/walls/[wallId]/present/slides/SlideDeck.tsx
 af4b6ec637e4ce1b0b0e5fd54f7530f2ab76a0cfa2b84a71ea0f18768f6b5531  892  app/s/[code]/walls/[wallId]/present/WallRealtimeRefresh.tsx
 a08f1a65afadf1de395f5cec17d626a6bf6b01050ae4a87fcc96d070460cd09a  1422  app/s/[code]/walls/[wallId]/StudentCardComposerButton.tsx
+426f3c2490598fea995b8d670aa17731a5180bfcfec36a9463291d337b944e1a  9748  app/s/[code]/walls/[wallId]/StudentCardComposerModal.tsx
 59df638e68bae8783ba2292404dad8fb3800158b1c66d96cb5ebd12dbda8290c  5925  app/s/[code]/walls/[wallId]/StudentCardForm.tsx
 478165a2c36414f19edab25da1055875be4d6c01d85bb3d8b7d2f223eaa17ca2  209  app/s/[code]/walls/page.tsx
 028820fc5cdf00ad2479b72aca1127b204b80c4755865e85bb1f12d08fcc0caa  10087  app/s/enter/route.ts
@@ -1260,7 +1261,10 @@ fecdcaa39061866a9d2b164388625e0bbc0c9cc59c2da1f19e9737ea096ee921  4815  lib/boar
 c5cee51a520a79ad1e007215bc6c76a857d2347e170813ba5e6e346ae1adfcbc  6143  lib/board/studentGalleryQuality.ts
 75f0131aa951fa51c98d9e43241a959035e51be5a625915921406c6442203d55  14656  lib/board/studentGalleryStandaloneHtml.ts
 d639fe13f7fe445212a875c2f97abb3b5c43694f0bc022abb904cdd9c5e1578b  10064  lib/board/studentSubmissionSummary.ts
+19e629123de7ee92fd4e34161dafbe93f23d4a0633e14b8ed345499a342a1355  4748  lib/board/teacherBoardLiveSync.ts
 6af1f808e4b2bf2699eeba6f9c4757fd92294fcd2fcd5c6ced25ee1f5125f9a0  3363  lib/board/teacherBoardMutationState.ts
+9b59693d029679765cd544848d322e07fc3ea39edfcae7af738d3e0b2686bc96  4614  lib/board/teacherBoardSnapshot.server.ts
+1e68300281345c86e156e6fc14d3ac0577398c0b9289ab0bd0a7f70618744489  1374  lib/board/teacherBoardSnapshot.ts
 8298b9945952bb54b2cd99f4ea5548426a6e72236cc85cc661d787af68b09ea8  6629  lib/board/teacherCardDrag.ts
 c8d26bd372aa6c0be10618f184b23f3f692f8ae9c2e8a4ddd64ef78ea5e08fe9  1490  lib/board/teacherCardMenuAnnouncement.ts
 3fc70f6424ce68296baa18965664dca7b5d7da5687899a31bda0b87b0cf50784  2393  lib/board/teacherCardMoveOptimistic.ts
@@ -1765,7 +1769,7 @@ da4f2bf085724a96dabd207223b14b2d7c3dd52feb7f7b4c94ad379cd23059a6  2029  lib/goog
 b0521e93dd37ca04c0b45fb562a40f765cfa9409dc15d0ee1fd38ab9ae086b2a  1884  lib/google-drive/resumableUpload.ts
 c0e89c079fcf5d99806d509951b17a53a6cbfc1a0516e7d32df4e11098c79761  494  lib/google-drive/types.ts
 eb8b67ab446088f66fe0247af4b8add5db15386204a134eb4d4c463cfa484695  3387  lib/hooks/useStorageUsage.ts
-3de682a7526058c046d58f3235e869b6a1748a5fb86f2020209596e3988442e4  2491  lib/hooks/useWallRealtime.ts
+5e46a8ed73be26883b78d3786c8e50c9dd52a09c8dbd8b1e768987f14efa99c3  2579  lib/hooks/useWallRealtime.ts
 887c48990d258caea1d95c3036606ecd09fc58689561ea8e7afc36e4372fc4c1  921  lib/http/apiError.ts
 10a3117e4d8c9ff6793ddfa9bf1813305f5c13b9b3cfb0c7058030a023ebdfb0  2678  lib/http/apiFetch.ts
 97e47cfd97f5863024a6ac9425126f05329469b472206a0bd862cb46adc71afc  1198  lib/http/fetchWithRetry.ts

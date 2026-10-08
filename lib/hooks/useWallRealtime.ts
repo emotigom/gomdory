@@ -27,7 +27,7 @@ export function useWallRealtime(
 ): WallRealtimeHandle {
   const { debounceMs = DEFAULT_DEBOUNCE_MS, enabled = true } = options;
   const timersRef = useRef<Map<string, number>>(new Map());
-  const clientRef = useRef(createSupabaseBrowserClient());
+  const clientRef = useRef<ReturnType<typeof createSupabaseBrowserClient>>(null);
 
   const activeWallIds = useMemo(
     () => toWallSet(wallIds, MAX_WALL_SUBSCRIPTIONS),
@@ -52,7 +52,8 @@ export function useWallRealtime(
 
   useEffect(() => {
     if (!enabled) return;
-    const client = clientRef.current;
+    const client = clientRef.current ?? createSupabaseBrowserClient();
+    clientRef.current = client;
     if (!client) return;
     if (activeWallIds.length === 0) return;
 
