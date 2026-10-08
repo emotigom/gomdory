@@ -212,19 +212,59 @@ export const collectSnakeCaseResponseKeys = (content, filePath, allowlist = {}) 
   const relative = toPosixPath(path.relative(REPO_ROOT, filePath));
   const payloadArgument = new Map([["jsonOk", 0], ["jsonOkWithRequestId", 0], ["jsonError", 3], ["jsonErrorWithRequestId", 4]]);
   if (!/\bjson(?:Ok|Error)(?:WithRequestId)?\s*\(/.test(content)) return [];
-  const source = ts.createSourceFile(filePath, content, ts.ScriptTarget.Latest, true);
-  if (source.parseDiagnostics.length) throw new Error(`Cannot inspect response DTO keys in malformed source: ${relative}`);
+  const absoluteFilePath = path.resolve(filePath);
+  const canonicalCompilerPath = (value) => {
+    const resolved = path.resolve(value);
+    return ts.sys.useCaseSensitiveFileNames
+      ? resolved
+      : resolved.toLowerCase();
+  };
+  const targetCompilerPath = canonicalCompilerPath(absoluteFilePath);
+
+  const parsedSource = ts.createSourceFile(
+    absoluteFilePath,
+    content,
+    ts.ScriptTarget.Latest,
+    true,
+  );
+  if (parsedSource.parseDiagnostics.length) {
+    throw new Error(
+      `Cannot inspect response DTO keys in malformed source: ${relative}`,
+    );
+  }
+
   // A single-file, no-resolve checker binds local aliases with correct lexical
   // scope. Imported application modules are never read or executed.
   const options = { noLib: true, noResolve: true, allowJs: true };
   const host = {
     ...ts.createCompilerHost(options),
-    getSourceFile: (name) => name === filePath ? source : undefined,
-    readFile: () => undefined,
-    fileExists: (name) => name === filePath,
+    getSourceFile: (name) =>
+      canonicalCompilerPath(name) === targetCompilerPath
+        ? parsedSource
+        : undefined,
+    readFile: (name) =>
+      canonicalCompilerPath(name) === targetCompilerPath
+        ? content
+        : undefined,
+    fileExists: (name) =>
+      canonicalCompilerPath(name) === targetCompilerPath,
     writeFile: () => {},
   };
-  const checker = ts.createProgram([filePath], options, host).getTypeChecker();
+
+  const program = ts.createProgram(
+    [absoluteFilePath],
+    options,
+    host,
+  );
+  const source = program.getSourceFile(absoluteFilePath);
+
+  if (!source) {
+    throw new Error(
+      `Cannot bind response DTO source: ${relative}`,
+    );
+  }
+
+  const checker = program.getTypeChecker();
   const matches = [];
   const seen = new Set();
   const inspected = new Set();

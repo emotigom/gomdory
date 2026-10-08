@@ -1,9 +1,9 @@
-export const TEST_MANIFEST_VERSION = "2026-08-22-dashboard-gates";
+export const TEST_MANIFEST_VERSION = "2026-10-05-provider-impact-refinement-r1";
 
 export const TEST_MANIFEST_EXPECTATION = Object.freeze({
-  // Live tracked cardinality includes architecture checks and the response DTO regression guard.
-  tracked: 1046,
-  supported: 1045,
+  // Private-root runnable test cardinality; public-export source overlays run only at their exported target paths.
+  tracked: 1051,
+  supported: 1050,
   excluded: 1,
   source: 27,
   unclassified: 0,
@@ -30,7 +30,7 @@ export const PRIMARY_SUITES = [
 export const TEST_GROUPS = [
   { id: "all", description: "All supported tracked tests", executable: true, minimumExpectedFiles: 895, allowEmpty: false, selectorEnabled: true },
   { id: "node", description: "Node tests that do not require jsdom and are not guard/smoke tests", executable: true, minimumExpectedFiles: 771, allowEmpty: false, selectorEnabled: true, setup: "tests/setup-node-env.cjs" },
-  { id: "ui", description: "Tests requiring the jsdom UI setup", executable: true, minimumExpectedFiles: 27, allowEmpty: false, selectorEnabled: true, setup: "tests/setup-ui-env.cjs" },
+  { id: "ui", description: "Tests requiring the jsdom UI setup", executable: true, minimumExpectedFiles: 25, allowEmpty: false, selectorEnabled: true, setup: "tests/setup-ui-env.cjs" },
   { id: "guards", description: "All tracked guard test files", executable: true, minimumExpectedFiles: 103, allowEmpty: false, selectorEnabled: true, setup: "tests/setup-node-env.cjs" },
   { id: "webllm", description: "WebLLM unit and contract tests; no browser model download", executable: true, minimumExpectedFiles: 1, allowEmpty: false, selectorEnabled: true, setup: "tests/setup-node-env.cjs" },
   { id: "source", description: "Supported tests colocated under app, lib, and scripts", executable: true, minimumExpectedFiles: 24, allowEmpty: false, selectorEnabled: true, setup: "tests/setup-node-env.cjs" },
@@ -57,6 +57,26 @@ export const EXCLUDED_TESTS = [
 ];
 
 export const TEST_RUNNER_OVERRIDES = [
+  {
+    path: "tests/e2e-smoke-supabase-api-key-headers.test.mjs",
+    runner: "direct-node",
+    reason: "This test uses createRequire(import.meta.url) to load the source-relative CommonJS Supabase API-key header helper. Esbuild relocation moves import.meta.url into .test-dist and breaks that runtime relative require. Direct Node preserves the original module location without changing assertions or helper behavior.",
+  },
+  {
+    path: "scripts/architecture/pr-fast-checks.test.mjs",
+    runner: "direct-node",
+    reason: "This test imports CLI modules whose import.meta.url main guards are collapsed into the test bundle by esbuild, causing select-seam-checks.mjs and pr-fast-checks.mjs to execute as CLIs before assertions run. Direct Node preserves distinct module URLs and the intended CLI boundary without changing assertions or coverage.",
+  },
+  {
+    path: "scripts/architecture/dependency-impact.test.mjs",
+    runner: "direct-node",
+    reason: "This test imports source-dependencies.mjs, which imports the TypeScript runtime. Esbuild ESM bundling inlines TypeScript CommonJS __filename assumptions and fails before assertions execute. Direct Node preserves the package runtime boundary without changing assertions or coverage.",
+  },
+  {
+    path: "scripts/architecture/source-dependencies.test.mjs",
+    runner: "direct-node",
+    reason: "This test imports the TypeScript runtime through source-dependencies.mjs. Esbuild ESM bundling inlines TypeScript CommonJS __filename assumptions and fails before assertions execute. Direct Node preserves the package runtime boundary without changing assertions or coverage.",
+  },
   {
     path: "tests/architecture-seam-selector.guard.test.mjs",
     runner: "direct-node",

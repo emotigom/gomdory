@@ -2271,6 +2271,7 @@ f6b1d0f8d3afb804d1aaf09db31889b5f58d616038a23ced7fd825fc624454f6  2670  scripts/
 a0dc28c92ee339544a17ad638c3e6251de9f2940f029373f0061767d4a24fb76  1565  scripts/ci/parsecheck.mjs
 46098c747ba569caac7c2e7b19355e1b4ecf42609531451562423867b94bfb4b  7048  scripts/ci/refine-provider-impact.mjs
 b7bded5a1b31c6a646e1270fc6c01c10b45d543476ae887966383b427a027608  2873  scripts/ci/run-with-doctor.mjs
+885f0639aa5a6befa72c29c1e1dbe033f2c49a3eb7fc23222245f0c63a3a0282  6262  scripts/ci/select-provider-build.mjs
 d0a25cbff085cd5b1b8893c882178e4ce9d0e45017e024b7b81d1dcf6ec820fa  4879  scripts/codemod/map-page-to-routes.mjs
 b90b873a7263baffbed53e2f556201cd137dbcf9b0040352c064481eb201d149  3165  scripts/codemod/map-unsafe-to-routes.mjs
 42c7c8d40b38918c9e3d11bfcd5adeb2137eff1d0b97390f3b16d78ef0711af7  9107  scripts/codemod/page-to-routes.mjs
@@ -2285,7 +2286,7 @@ cbc92b8728ba2975bd25f46ff2c7b0da4578927ed6c56c7a249c46b039d17fff  264  scripts/c
 9e0566b8e3c4c9f7d05ac6abbf50716ce4e515bde9acdc337deb7e2b4843ffb4  2319  scripts/duplication/allowlist.json
 46184fe065cb3554a6b3f3f4f4659e4db140eb288beb25fb2faae2804a390f96  790353  scripts/duplication/baseline.json
 932c442db1460f6614ac84760dbc154fb86371afb4544f7dc1f159c327638e3b  5761  scripts/duplication/check.mjs
-f8c8f8c82777e20de1c86bee0a704b65b5e9f3c8e6056f7d2bbdc69c2c3aa6f0  18225  scripts/duplication/scan.mjs
+57637c79a751eadd614c71c7c618b462485f52c51000ffdb5d99911138cc5482  19002  scripts/duplication/scan.mjs
 d2f0a32796be6b1f4d19f416fa91ffda4051c69ba7c66a252254958269aeb495  3337  scripts/ensure-build-id-asset.mjs
 a0206d50425c8002ec17be7c2f141ebfa8c9c5e5716b9ba694255c5f05b83e2f  2587  scripts/eslint/local-rules.mjs
 766b7a84332e5c719b1d2d819f7ddf92dcf9a8e8f5840b62e29d2b5b47e58979  5303  scripts/eslint/no-hardcoded-api-v1.baseline.json
@@ -2301,12 +2302,12 @@ d5f5cd853717d94ed9225412253eec82acebb1243d4e636d8f9f443c7d985596  3172  scripts/
 e582163590712c9e826220bdea7f2b117bccb6c9f113e0858463ec13fd9f1c84  4669  scripts/guard/no-hardcoded.mjs
 f214ec190926d4120f535a85cb17b3136d8a478cec34f0b2c1d17fe1263c2013  6322  scripts/guard/route-invariants.mjs
 bc9b6e3fa5be870cb463c34c8ea38c1f1c1804127aab413616d7ee162f36c853  8117  scripts/qa/check-test-manifest.mjs
-51b99cfe6ca0328f04b08a675c772c727389f769f4fb215ace631528fb77ca10  7275  scripts/qa/lib/q2-b12-change-selector.mjs
+727328c3fdf745b1ca468a58cf45b5257df684d42d0160b6498a903956d50ef1  11759  scripts/qa/lib/q2-b12-change-selector.mjs
 4acfde6a8e4f405008d0fa60dfd4375081937fb70130ae012ace812fb67788d3  2932  scripts/qa/lib/read-stored-zip.mjs
 8ae88fd8e84ff893316b4d58e94316f1e4674324ae7f410b7828df3a5991fb0e  44421  scripts/qa/q2-b4-student-entry.mjs
 88e44fe2ce388eac26b84f6c45d9beb3e38f45bb76d0a918178abbf821be4436  12187  scripts/qa/q2-browser-foundation.mjs
-114af1d272627db799d8e60410bf84b07f9a5402916193157ec497fa38532b72  8606  scripts/qa/test-discovery.mjs
-b81dd1fb855830c156993aa50c1d3fb40604f3fe76237e0228d646ff1862d02e  15949  scripts/qa/test-manifest.mjs
+8bf6e817a8882ca84f3e5af3c6551f91a4fe27c6bd4ad7008fb7e33eea754012  8968  scripts/qa/test-discovery.mjs
+f5c1b2a436daa72146b45d0bf6eb76f96edfcb74d90c143e76d99f152c592a70  17621  scripts/qa/test-manifest.mjs
 a20c70a9e451f77e1b72252e782824e2cf54ae141e851c1bd6787679ce796901  12368  scripts/run-tests.mjs
 89be301166fc16b3c1429331537e6ff56a31a6d3b009a3bc3a0162a307bff6df  2567  scripts/security/check-client-supabase-access.mjs
 a80d25b99ee1ce9ac588ea42dcf06ee2f20dde03a68650dc8f4c967177a55573  288  scripts/selfcheck/allowlist.json
