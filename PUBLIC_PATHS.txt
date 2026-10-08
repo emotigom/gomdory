@@ -442,8 +442,8 @@ c48249cfc442654681c17184dc2035e895c36aab37afc1d3a6c8202d63bae3a4  5599  app/api/
 ebd0d0e00a558a7b11e39fac70f7000b61534621dd7bffdca249bc2b9362d46b  1450  app/api/v1/share/[code]/present/route.ts
 c29c901f22a0e554f604a3a6713c49447205fee8b173b0df54349c796951e596  10412  app/api/v1/share/[code]/recap/[sessionId]/export/route.ts
 1e53aa61eaab013f7c80857da821cd2e18daed9b9490b24eb7b4ad1bc8c27f2d  1200  app/api/v1/share/[code]/settings/route.ts
-a885dacdf7923277867045e0c3efcbcb6534be44e1de6a88381a7f1338c9cfbe  3545  app/api/v1/share/[code]/sync/route.ts
-02acec805f0a43e73d9c9492676f555178d9dde0cb6b9d57db8e332f25cd5cb0  15729  app/api/v1/share/[code]/walls/[wallId]/cards/route.ts
+f0dacbd600174ef17554656cca32f0052ec9f55270b88c016dc69625926707da  4068  app/api/v1/share/[code]/sync/route.ts
+78ebcbf5efee1f69f6b18f3dfcca5c14082aaafead99e8d0acf43a9e51693171  15924  app/api/v1/share/[code]/walls/[wallId]/cards/route.ts
 064aa00f2044b23e10670e02a3837b8edf4e3aa1734b97e83defbe46fb8816d0  4840  app/api/v1/share/[code]/walls/[wallId]/grid/route.ts
 01160ee278b27f953d5156b6135d34590603d54f18131c804c93d2f648574541  1312  app/api/v1/share/present-state/route.ts
 4d3e3828348b08cdc8cb1a970fe852b31c878464a51721fd1b5f74cd30005b41  2017  app/api/v1/showcase/[token]/refresh/route.ts
@@ -582,9 +582,9 @@ a5eea73c555ef504a326077637ac406feca89d6edbcc560af1135e10939680ee  26814  app/das
 f30b40fe19b6b7b84775af38704121cf2724783513f19ceea1a8502f8e211743  44862  app/dashboard/boards/[boardId]/board/_components/StudentSubmissionStatusPanel.tsx
 806abe3924c2d0c8178e5f2d11ab0c92bad3f06fb79db8f9a1b8c6c1a0c9064b  1961  app/dashboard/boards/[boardId]/board/BoardTopControls.tsx
 2efbc6641a34d4c5ca9c5182eb1aae1e459846c2ad5694f66cf57698712ad198  3883  app/dashboard/boards/[boardId]/board/loading.tsx
-901b8b4330ae054ba9e02c01bdf121fec5257d736954ffc7cf44ad50e950a131  15838  app/dashboard/boards/[boardId]/board/page.tsx
+103d1af08a5087ad4623723b314b4f7bb56cfe101fdb6a173e9bd80ed6b02fab  12838  app/dashboard/boards/[boardId]/board/page.tsx
 c9abcbfd2aa61bec587f82def62a0e48217f60632860b4b8baa2df1df7e95dd1  15995  app/dashboard/boards/[boardId]/board/TeacherBoardCanonicalClient.module.css
-9f8ec84a9841fdb489f37b5adbf4aa6a6e48fa87a1367f0458edce3ea03b3312  161796  app/dashboard/boards/[boardId]/board/TeacherBoardCanonicalClient.tsx
+a075568b327607084ad4da263016790447eac9d8d560916cc0a2b3eaadf32476  162536  app/dashboard/boards/[boardId]/board/TeacherBoardCanonicalClient.tsx
 6e900ecbdb12f16c6e7b69252c855e57944b5be7592611b769427be67b272178  156902  app/dashboard/boards/[boardId]/board/TeacherBoardMinimalClient.tsx
 cd775ac544fb8d5b2e59e15c2eab12cd17184648744abf856827019fffaf20eb  1073  app/dashboard/boards/[boardId]/boardRouteError.ts
 a403dd9b0d34b1095689bf2b6ca49975ab3c4bca5e69745d31cca4688b37f4bf  3816  app/dashboard/boards/[boardId]/cardActions.ts
@@ -605,7 +605,7 @@ c21a3dfcd30394e79ba9c66c7d6214dd0a8b07aec694786e8c70a1c5f92f97a4  3328  app/dash
 fd2e6036b2e4d0e3896682eba8bac2a1fa7c41c18dc790cccae654592eb0a594  1669  app/dashboard/boards/[boardId]/class/ClassModeBar.tsx
 4c2011f6a3fe460604d9e91757e9ab35321aa3e6e72f1dd0676f57a33f1766db  1257  app/dashboard/boards/[boardId]/class/classModes.ts
 7ac77612c424561cab96607d14cd5bb5ad422e4b2e3f1526189294bee2243ad1  4627  app/dashboard/boards/[boardId]/class/ClassStatusBar.tsx
-002a79863ad60a26cd8464d08ec51ce09aaec4081196e9fcf5fb55a897991289  4491  app/dashboard/boards/[boardId]/class/CommandPalette.tsx
+92dafbcf7e7d5763fac87eb82e5a2e54068c130f4e2ad565723845d54e15b23b  90  app/dashboard/boards/[boardId]/class/CommandPalette.tsx
 79b4d69a8b616321de72db270ccd16c7ab23ebb1c4a8519c5038bf34f9b9e439  1477  app/dashboard/boards/[boardId]/class/DeleteCardForm.tsx
 612e76d8fb582c69968ce607c1848e5285321fe36c6690d9cefc0be40ef515dd  1690  app/dashboard/boards/[boardId]/class/DragHandle.tsx
 3a9dec0561411cc77ae55ec3d92ad519795f62a1330eb08c01f0231af945cb95  25997  app/dashboard/boards/[boardId]/class/EduAssignmentsPanel.tsx

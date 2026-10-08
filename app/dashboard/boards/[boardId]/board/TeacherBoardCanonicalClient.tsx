@@ -59,6 +59,13 @@ import {
   type TeacherCardMenuAnnouncement,
 } from "@/lib/board/teacherCardMenuAnnouncement";
 import type { CardColorToken } from "@/lib/types/cards";
+import {
+  areTeacherBoardWallsEqual,
+  type TeacherBoardAttachment as BoardAttachment,
+  type TeacherBoardCard as WallCard,
+  type TeacherBoardWallEntry as WallWithCards,
+} from "@/lib/board/teacherBoardSnapshot";
+import { useTeacherBoardLiveSync } from "@/lib/board/teacherBoardLiveSync";
 import StudentSubmissionStatusPanel from "./_components/StudentSubmissionStatusPanel";
 import BoardBackupPanel from "./_components/BoardBackupPanel";
 import {
@@ -75,18 +82,6 @@ import {
 } from "@/lib/ui/boardTheme";
 import styles from "./TeacherBoardCanonicalClient.module.css";
 
-type BoardAttachment = {
-  id: string;
-  attachmentId?: string | null;
-  fileId?: string | null;
-  boardFileId?: string | null;
-  kind: "image" | "file" | "url" | "audio" | "video" | "document";
-  label: string;
-  url: string;
-  contentType?: string | null;
-  size?: number | null;
-};
-
 type AttachmentPreviewKind =
   | "image"
   | "audio"
@@ -95,26 +90,6 @@ type AttachmentPreviewKind =
   | "url"
   | "file";
 
-type WallCard = {
-  id: string;
-  owner_id?: string | null;
-  author_nickname?: string | null;
-  author_name?: string | null;
-  author_type?: "teacher" | "student" | null;
-  created_at?: string | null;
-  position?: number | null;
-  is_hidden?: boolean | null;
-  hidden_at?: string | null;
-  deleted_at?: string | null;
-  text: string;
-  card_color_token?: CardColorToken | null;
-  attachments?: BoardAttachment[];
-  tags?: { id: string; name: string; color: string | null }[];
-};
-type WallWithCards = {
-  wall: { id: string; title: string; description: string | null };
-  cards: WallCard[];
-};
 type UploadStatus = { uploading: boolean; error: string | null };
 type AttachmentDeleteStatus = { deleting: boolean; error: string | null };
 type TeacherCardDragSnapshot = {
@@ -879,6 +854,43 @@ export default function TeacherBoardCanonicalClient({
   const activeLessonTemplateId = initialActiveLessonSession?.templateId ?? null;
   const shouldShowVibePanel = isVibeCodingLessonTemplateId(activeLessonTemplateId);
   const teacherCardDragEnabled = canDeleteCards && !movingTeacherCardId;
+  const teacherLiveSyncBlocked =
+    teacherCardDragState.phase !== "idle" ||
+    movingTeacherCardId !== null ||
+    Object.values(visibilityCardIds).some(Boolean) ||
+    Object.values(sectionUploadStatus).some((status) => status.uploading) ||
+    Object.values(cardUploadStatus).some((status) => status.uploading) ||
+    Object.values(attachmentDeleteStatus).some((status) => status.deleting);
+  const teacherLiveSyncWallIds = useMemo(
+    () => boardWalls.map((entry) => entry.wall.id),
+    [boardWalls],
+  );
+
+  useTeacherBoardLiveSync({
+    boardId,
+    wallIds: teacherLiveSyncWallIds,
+    blocked: teacherLiveSyncBlocked,
+    enabled: fixtureMode === null || fixtureMode === "q2-b10",
+    realtimeEnabled: fixtureMode === null,
+    onSnapshot: (nextWalls, stateVersion) => {
+      if (fixtureMode === "q2-b10" && typeof stateVersion === "number") {
+        if (
+          isStaleTeacherBoardVersion(
+            stateVersion,
+            latestAppliedDataVersionRef.current,
+          )
+        ) {
+          return;
+        }
+        latestAppliedDataVersionRef.current = stateVersion;
+      }
+      setBoardWalls((currentWalls) =>
+        areTeacherBoardWallsEqual(currentWalls, nextWalls)
+          ? currentWalls
+          : nextWalls,
+      );
+    },
+  });
 
   const rememberDialogOpener = (
     targetRef: { current: HTMLElement | null },
@@ -2350,7 +2362,7 @@ export default function TeacherBoardCanonicalClient({
                         </p>
                       ) : null}
                     </div>
-                    <div className="flex items-center gap-2">
+                    <div data-teacher-wall-header-actions="true" className="flex shrink-0 items-center gap-1.5 lg:gap-2">
                       <div
                         className="inline-flex items-center gap-1 rounded-lg border border-[var(--theme-border)] bg-[var(--theme-surface-muted)]/60 p-0.5"
                         role="group"
@@ -2365,7 +2377,7 @@ export default function TeacherBoardCanonicalClient({
                           className="inline-flex h-9 min-w-9 items-center justify-center gap-1.5 rounded-md border border-[var(--theme-border)] bg-[var(--theme-surface)] px-2.5 text-sm font-bold text-[var(--theme-text)] shadow-sm hover:bg-[var(--theme-surface-muted)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--theme-accent)]/45 disabled:cursor-not-allowed disabled:bg-[var(--theme-surface-muted)] disabled:text-[var(--theme-text-muted)] disabled:opacity-75 disabled:hover:bg-[var(--theme-surface-muted)]"
                         >
                           <span aria-hidden className="text-base leading-none">←</span>
-                          <span className="hidden text-xs font-semibold sm:inline">왼쪽</span>
+                          <span className="hidden text-xs font-semibold lg:inline">왼쪽</span>
                         </button>
                         <button
                           type="button"
@@ -2376,7 +2388,7 @@ export default function TeacherBoardCanonicalClient({
                           className="inline-flex h-9 min-w-9 items-center justify-center gap-1.5 rounded-md border border-[var(--theme-border)] bg-[var(--theme-surface)] px-2.5 text-sm font-bold text-[var(--theme-text)] shadow-sm hover:bg-[var(--theme-surface-muted)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--theme-accent)]/45 disabled:cursor-not-allowed disabled:bg-[var(--theme-surface-muted)] disabled:text-[var(--theme-text-muted)] disabled:opacity-75 disabled:hover:bg-[var(--theme-surface-muted)]"
                         >
                           <span aria-hidden className="text-base leading-none">→</span>
-                          <span className="hidden text-xs font-semibold sm:inline">오른쪽</span>
+                          <span className="hidden text-xs font-semibold lg:inline">오른쪽</span>
                         </button>
                       </div>
                       <div
