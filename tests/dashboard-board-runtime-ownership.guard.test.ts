@@ -11,6 +11,8 @@ test("board hub and legacy grid route both redirect to canonical /board route", 
 
   assert.match(boardHub, /redirect\(boardHref\)/);
   assert.match(boardHub, /const boardHref = normalizeHref\(boardBoardHref\(boardId\)\)/);
+  assert.doesNotMatch(boardHub, /boardClassHref|classHref/);
+  assert.doesNotMatch(boardHub, /redirect\(boardHref\s*\?\?/);
   assert.match(gridRoute, /redirect\(`\/dashboard\/boards\/\$\{boardId\}\/board`\)/);
 });
 

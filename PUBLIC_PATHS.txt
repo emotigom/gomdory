@@ -2418,7 +2418,7 @@ b3ed020f15091555df084c254d84d175e5a3b76ea9c6c2b66fe11f8bf6eb04c3  7646  tests/br
 4e5e60a4962ea5e5f885f79abcd2c7a57c34d71302e23a9a3247c727cfa9319c  1423  tests/card-attachment-presentation.test.ts
 1cc8960643f3c531f1a263f56195fc4405f079359b3563921f0bea0c18d998b9  677  tests/card-attachments-detach-route-no-snakecase.guard.test.ts
 c1f089b30224630677624b57eb08683d74ecfe0a5f3a7897575dd0ca40824052  4131  tests/card-attachments-detach.route.test.ts
-cd586a09cc005789a56235b082f9387222575bae6cd08e1b0d7b8cb655a4d81c  13391  tests/card-attachments-readability.test.ts
+8e0472cbc3c678916fb7ad4dd7384f422af31690aebd49de5b294621be8d3449  13379  tests/card-attachments-readability.test.ts
 97bb35d39d8b9fb1a61d0f3fb6d115e96e72d501f4f90ddc513b519e7b564c59  3336  tests/card-colors.test.ts
 e770cb8b158230b4173499284242bfef0f33b6d623cde68abc175684c3abfd0e  649  tests/card-detail-focus-restore.test.ts
 b442464ae502861a524b5bbb93ac6c2fae17cb0bb3c4f9be37db0db1502e7e9b  391  tests/card-detail-safe-errors.guard.test.ts
@@ -2469,7 +2469,7 @@ c3e5dc6e9c60fa25e961f98295c4b5fc5c598548ab92e5873102177bcdf9a623  1153  tests/co
 bfb8a833172b459eacdc199f0817899f540042689a9483db4fae48c919539e10  2088  tests/coding-studio/submission-schema.test.ts
 96ca53433f8353a82c25a836ee056eb51ef2b81de8e18f481ff8bdbee2f8f64d  3885  tests/coding-studio/submission-store.test.ts
 55017f2a02446cb4933e45d206e7a94d32f0d5909e23a445e445d9444b6a1ee0  711  tests/coding-studio/submission-ui-copy.test.ts
-de0b32cbef674b02a56297a4f4fbece2f9d17f0e0746c6de7f76be368898c612  930  tests/command-palette-wheel-overlay.guard.test.ts
+a011cb086185700c385873bd2fb0966d651e5a16ce2d036315820330b6738a3f  2510  tests/command-palette-wheel-overlay.guard.test.ts
 188de56c74827d750ab2ae8c2460b30477a202fa76ec04d814c6e27f1b095c6d  1988  tests/community-auto-hide-rules.test.ts
 4828d1b453cd86de52f19547920716e23d7b6ed8636848114655d03082b5b554  865  tests/community-board-list-utils.test.ts
 87c723aa0c260076e82ce88c2638495fc2c5daa93f40e9a9cb5aa4cc480a8239  1568  tests/community-comment-moderation-validation.test.ts
@@ -2513,13 +2513,13 @@ a1646c3da0ef3a4a8c691ece5f850f106f8ecba901f78e07f24b4877b0ae744b  1248  tests/da
 4606d65e16a78e127d0142228511bedd259c9b2f07b2ad4473b08df0fd34c0a7  435  tests/dashboard-board-hub.test.ts
 962f7f09acd3cc64dbd1195b901d17f3a942110eb8a8819bee7f5a2a5d606745  5981  tests/dashboard-board-list-hydration.guard.test.ts
 f7a2d98b9fd86b01c22e60f24e7d0c78a5457970806c46c00c04485dacef0fa8  12883  tests/dashboard-board-menu.test.tsx
-264d8af6041438057619c03c3782d7b3aed69d724e065c91a0a8d5b7231ced7e  1169  tests/dashboard-board-runtime-ownership.guard.test.ts
+af73dda24ebde0aa1be66730e2a16c8d362224ba1b1a7fe23911f675afdc3f4f  1293  tests/dashboard-board-runtime-ownership.guard.test.ts
 1da454c3af6fabda4518aa45f7e6e742a389160df116621a39f438fe1e16c117  925  tests/dashboard-board-selection.test.ts
 95f954a63f59444a9dfc68fe784fa76ad2a17cc832cc2292b09269c193e34c35  2348  tests/dashboard-board-sort.test.ts
 7a082bef768bb487ee05336e150c147ffa8592d2b29b4c996120a008c61be859  3691  tests/dashboard-broadcast-sync.test.ts
 38b00fc773d8c567ed40c04507eba5e500875a23a6d2e1eeaa6f7c97b3e2beb2  1772  tests/dashboard-card-move-route-auth.test.ts
 50b67102e4c81a9a0be2f342f07c3ee0ff6aedef93776f55a86a9e31fae9c6a9  658  tests/dashboard-card-update-route-no-snakecase.guard.test.ts
-182e447529f336a1935e9b6daea9a20ebf289100200f074dfd298af2c546e1b3  9958  tests/dashboard-card-visibility.route.test.ts
+d0b4dcf1218ecf888ec4990198ef0271a83db23c281b47c245bc1bed906c1e07  10465  tests/dashboard-card-visibility.route.test.ts
 6263df4d809a0613e1397a74fa9490db67a31bb396c86182e5c5f4ad63e5d570  392  tests/dashboard-clean-launcher-ui.test.ts
 0fa104bc08c0f3cd13582772aa4485840e77a3fe11929227bc4e314f5c1c0ebd  1140  tests/dashboard-create-board-success.test.ts
 7df491185dd8e299891c4ea8aa61215a3ac478e687e6e269b18682bbb0087997  598  tests/dashboard-create-board.test.cjs
@@ -2736,7 +2736,7 @@ eec7a82e4b352e53681bebcaa62634be88e90f3a33a19be8ba9ce37fa0b43b9f  516  tests/edu
 62a5caeaef2f00401d62203d1a5082ff1c14f9033c3b189a15e9a12a92e3c8b0  7952  tests/end-lesson-run-facade.test.ts
 edb759eb5214864aad10aac1d87690861824190f53e411bfd11fd635e35a44ff  958  tests/engagement.test.ts
 142085c82ee26ec07db1b1ed6d9505d7ebe3f2832c4d966c0792c8253fbacb66  2876  tests/env-alias-bucket-boundary.guard.test.ts
-174087e386b3b51af2665e68e4f4221150b03f605bda4798fd456c43582ca89b  2603  tests/env-proxy-alias-boundary.guard.test.ts
+32b8f33f66d08c8b257e0c063dbf48946c82b4f25fbc50b5321b67509072f7f7  2481  tests/env-proxy-alias-boundary.guard.test.ts
 0ce88b14e4addeb8618ddce1258ce40bcc71945ba53d0be109fc2e0ce020d894  773  tests/error-response.test.ts
 c2731b1c5083a8f046c47cb69766c831eb0f89d0494096187bab535a725ecfba  3074  tests/example-prompt-popover.test.tsx
 fbe4dac63681de0ecab0dd05c65cdca06f05e25925e2eb553541682b81bf5ccf  375  tests/exhibit-page-marker.test.ts

@@ -26,8 +26,6 @@ const ALLOWLIST = new Set([
   "scripts/ssot/env.contract.test.mjs",
   "scripts/ssot/env.inventory.json",
   "docs/SSOT_ENV.md",
-  "docs/edu/phase-61-lesson-ai-structural-inventory.md",
-  "docs/edu/phase-64-env-config-runtime-inventory-alignment.md",
   "tests/env-proxy-alias-boundary.guard.test.ts",
 ]);
 

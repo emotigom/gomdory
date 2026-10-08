@@ -282,12 +282,37 @@ test("share and teacher board card contracts keep hidden filtering separated", (
     path.join(process.cwd(), "app/dashboard/boards/[boardId]/board/TeacherBoardCanonicalClient.tsx"),
     "utf8",
   );
+  const teacherSnapshotSource = fs.readFileSync(
+    path.join(process.cwd(), "lib/board/teacherBoardSnapshot.server.ts"),
+    "utf8",
+  );
+  const teacherSnapshotTypeSource = fs.readFileSync(
+    path.join(process.cwd(), "lib/board/teacherBoardSnapshot.ts"),
+    "utf8",
+  );
 
   assert.match(shareSource, /listCardsForShare[\s\S]*\.eq\("is_hidden", false\)/);
   assert.match(shareSource, /listCardsForSharePaged[\s\S]*includeHidden: false/);
   assert.match(shareSource, /listWallCardsPaginatedForShare[\s\S]*includeHidden: false/);
   assert.match(shareSource, /countCardsForShare[\s\S]*\.eq\("is_hidden", false\)/);
-  assert.match(teacherPageSource, /listWallCardsPaginated\(\{[\s\S]*includeHidden: true/);
-  assert.match(teacherClientSource, /is_hidden\?: boolean \| null/);
-  assert.match(teacherClientSource, /hidden_at\?: string \| null/);
+  assert.match(
+    teacherPageSource,
+    /loadTeacherBoardWalls\(board\.id\)/,
+  );
+  assert.match(
+    teacherSnapshotSource,
+    /listWallCardsPaginatedFn\(\{[\s\S]*includeHidden: true/,
+  );
+  assert.match(
+    teacherClientSource,
+    /type TeacherBoardCard as WallCard/,
+  );
+  assert.match(
+    teacherSnapshotTypeSource,
+    /is_hidden\?: boolean \| null/,
+  );
+  assert.match(
+    teacherSnapshotTypeSource,
+    /hidden_at\?: string \| null/,
+  );
 });
